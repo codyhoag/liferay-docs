@@ -230,7 +230,7 @@ OpenSocial consists of a set of APIs for social networking and other web applica
 
 2. Select the *Sharing* tab and then select *OpenSocial Gadget*
 
-3. Check the box labeled *Allow users to add Loan Calculator to iGoogle*
+3. Check the box labeled *Allow users to add Loan Calculator to iGoogle*. Also, replace "localhost:8080" with the name of your public domain.
 
 	![Figure 8.17: Allow users to add OpenSocial Gadget to iGoogle](../../images/15-opensocial-7.PNG)
 
