@@ -164,7 +164,7 @@ Beyond Liferay's social API, there is also support for the OpenSocial standard.
 
 ## Exporting portal applications as widgets and OpenSocial gadgets [](id=opensocial-integration)
 
-OpenSocial is a framework designed for creation of socially themed application programming interfaces (APIs). OpenSocial  applications, called *gadgets*, can be used in any web-based application that supports them. They are characterized as simple, widely available, and easy to deploy. Gadgets are especially popular on social networking sites, however, they can be utilized in many different ways throughout your site. Liferay allows any OpenSocial gadget to be used on a page. An OpenSocial gadget is specified in an XML document and consists of embedded HTML and Javascript. Liferay allows gadgets to communicate with each other and portlets. This allows your site to run efficiently and be easily maintained. OpenSocial supports numerous open web technologies, like *OAuth*, which we'll discuss in more detail later in the chapter. 
+OpenSocial is a framework designed for creation of socially themed application programming interfaces (APIs). OpenSocial  applications, called *gadgets*, can be used in any web-based application that supports them. They are characterized as simple, widely available, and easy to deploy. Gadgets are especially popular on social networking sites, however, they can be utilized in many different ways throughout your site. Liferay allows any OpenSocial gadget to be used on a page. An OpenSocial gadget is specified in an XML document and consists of embedded HTML and Javascript. Liferay allows gadgets to communicate with each other and portlets. This allows your gadgets to run seamlessly without you having to constantly check or update their content. They automatically update based on their connections with other applications. Therefore, this allows your site to run efficiently and be easily maintained. OpenSocial gadgets support numerous open web technologies, like *OAuth*, which we'll discuss in more detail later in the chapter. 
 
 Gadgets are socially aware and can share data across an entire community of users. You can define your own groups and create gadgets to communicate information based on: pages (community/team pages), applications (gadgets/widgets/portlets), data, users, roles and authorization, and policies. In short, you can develop gadgets to access and share data of individuals defined within your social network.
 
@@ -175,20 +175,23 @@ The OpenSocial plugin is included with Liferay Community Edition and can be inst
 -	"Adhoc" gadgets that users can add to a page via URL
 -	Gadgets published by the Control Panel that are available portal-wide
 
-First, we'll go through steps to an "Adhoc" gadget to a page.
+First, we'll go through steps to add an "Adhoc" gadget to a page.
 
 #### Adding "Adhoc" gadgets
-This method is quick way to add a gadget to a single page. To do this, go to the *Add* &rarr; *More* menu and add *OpenSocial Gadget* to the page. The portlet will display a message with a link to configure a gadget to be displayed in the portlet:
+
+This method is a quick way to add a gadget to a single page. To do this, go to the *Add* &rarr; *More* menu and add *OpenSocial Gadget* to the page. The portlet will display a message with a link to configure a gadget to be displayed in the portlet:
 
 ![Figure 8.12: Configuration message](../../images/15-opensocial-1.png)
 
 Click on the configure message link and a configuration window will open. The only thing you need to do is insert a URL for an OpenSocial plugin. We'll  insert the URL for a colorful calculator which is:
 
 	http://www.labpixies.com/campaigns/calc/calc.xml
+	
+![Figure 8.13: Configuration window with URL](../../images/15-opensocial-37.png)
 
 After pasting the URL into the text field, click *Save* and your new gadget will be visible on your page.
 
-![Figure 8.13: Calculator Gadget](../../images/15-opensocial-2.png)
+![Figure 8.14: Calculator Gadget](../../images/15-opensocial-2.png)
 
 This particular gadget allows you to change its "skins" to fit your needs. Likewise, there are many other user-friendly interactive gadgets that give you flexibility to fit them into your themed sites. As you find gadgets that would work nicely throughout your portal, you can publish them for portal-wide use. You'll learn that next.
 
@@ -202,15 +205,13 @@ You can easily make gadgets available for adding to pages as you would any other
 4. Select an appropriate category for your gadget
 5. Click *Save*
 
+![Figure 8.15: Configuring new gadget](../../images/15-opensocial-38.png)
+
 Your *OpenSocial Gadget Publisher* should now look like this:
 
-![Figure 8.14: OpenSocial Gadget Publisher](../../images/15-opensocial-3.png)
+![Figure 8.16: OpenSocial Gadget Publisher](../../images/15-opensocial-3.png)
 
-If you go back and navigate to *Add* &rarr; *More* &rarr; *Gadgets*, you should see the *To-Do List* gadget.
-
-![Figure 8.15: Gadgets list](../../images/15-opensocial-4.png)
-
-Now, return to the Control Panel and revisit the *OpenSocial Gadget Publisher* under the *Portal* heading. Clicking *Actions* next to the gadget enables you to edit, refresh, change permissions on, or delete the gadget. Here is a brief listing of what these four buttons do:
+Clicking *Actions* next to the gadget enables you to edit, refresh, change permissions on, or delete the gadget. Here is a brief listing of what these four buttons do:
 
 -	*Edit*: allows you to change the URL or category
 
@@ -220,31 +221,37 @@ Now, return to the Control Panel and revisit the *OpenSocial Gadget Publisher* u
 
 -	*Delete*: removes the listing for the gadget
 
+If you navigate to *Add* &rarr; *More* &rarr; *Gadgets*, you should see the *To-Do List* gadget.
+
+![Figure 8.17: Gadgets list](../../images/15-opensocial-4.png)
+
+In the next section, we will demonstrate how to share OpenSocial gadgets with other sites.
+
 ### Sharing OpenSocial Gadgets 
 
 OpenSocial consists of a set of APIs for social networking. Liferay's implementation of the OpenSocial API meets the OpenSocial standard and you can be assured gadgets that run on Liferay meet the OpenSocial standards as well. That means your gadgets on Liferay can also be deployed and run in any standard OpenSocial container. It may be beneficial for you to share gadgets from Liferay with other sites, such as iGoogle. Google's iGoogle lets users customize their own page and add gadgets to their page. Your Liferay Portal users can share their portlets and other OpenSocial gadgets on iGoogle or any other OpenSocial-compatible site. Let's try this now.
 
 For our example, we'll share Liferay's *Loan Calculator* on iGoogle.
 
-1. Add the *Loan Calculator* portlet onto a page
+1. Add the *Loan Calculator* portlet onto your Liferay page
 
 2. Click the wrench icon in the upper right corner of the portlet and select *Configuration*
 
-	![Figure 8.16: Select the *Configuration* button](../../images/15-opensocial-6.png)
+	![Figure 8.18: Select the *Configuration* button](../../images/15-opensocial-6.png)
 
 3. Select the *Sharing* tab and the *OpenSocial Gadget* sub-tab
 
-4. Check the box labeled *Allow users to add Loan Calculator to iGoogle*. Also, replace "localhost:8080" with the name of your public domain and your port.
+4. Check the box labeled *Allow users to add Loan Calculator to iGoogle*. Also, replace "localhost:8080" with the name of your public domain and port.
 
-	![Figure 8.17: Allow users to add OpenSocial Gadget to iGoogle](../../images/15-opensocial-7.png)
+	![Figure 8.19: Allow users to add OpenSocial Gadget to iGoogle](../../images/15-opensocial-7.png)
 
 5. Click Save
 
-6. Close out the window and navigate back to the wrench icon in the upper right corner of your portlet. There is a new option named *Add to iGoogle* available. Click on this button to add your portlet to the iGoogle directory.
+6. Close out the window and navigate back to the wrench icon in the upper right corner of your portlet. There is a new option named *Add to iGoogle* available. Click on this button to add your portlet to your iGoogle page.
 
-	![Figure 8.18: *Add to iGoogle* button](../../images/15-opensocial-8.PNG)
+	![Figure 8.20: *Add to iGoogle* button](../../images/15-opensocial-8.PNG)
 
-Your portlet is now available in iGoogle's gadget directory!
+Your portlet is now available on your iGoogle page!
 
 By going through this process, Liferay shared the URL of your portlet to iGoogle. The URL you provided is unique to your specific instance of the portlet. This allows you to share multiple instances of the same portlet as different Google Gadgets.
 
@@ -281,61 +288,69 @@ For this example, we will set up a demo Twitter account gadget using OAuth. Firs
 
 3. For OAuth enabled gadgets, you will be able to select the *Manage OAuth* button from the *Actions* tab. Select *Manage OAuth* for your Twitter gadget. As shown below, you are given several options under "twitter" that you will need to fill in to configure your gadget. You will need to register your gadget with Twitter to access the Consumer Key and Consumer Secret.
 
-	![Figure 8.19: The *Manage OAuth* view in the *Configuration* tab](../../images/15-opensocial-9.png)
+	![Figure 8.21: The *Manage OAuth* view in the *Configuration* tab](../../images/15-opensocial-9.png)
 
 4. Go to https://www.twitter.com and, before logging in, scroll to the bottom of the page and select *Developers*. Then, click *Create an app* to begin registering your gadget.
 
-	![Figure 8.20: The *Developers* tab on Twitter](../../images/15-opensocial-10.png)
+	![Figure 8.22: The *Developers* tab on Twitter](../../images/15-opensocial-10.png)
 
-	![Figure 8.21: The *Create an app* button on Twitter](../../images/15-opensocial-11.png)
+	![Figure 8.23: The *Create an app* button on Twitter](../../images/15-opensocial-11.png)
 
-5. Fill in the *Name*, *Description*, and *Website* fields with what you prefer. For the *Callback URL* field, enter Liferay's default callback URL: http://myLiferayServer/opensocial-portlet/gadgets/oauthcallback (replace "myLiferayServer" with an appropriate value-- for this demonstration, you will use 127.0.0.1:8080). Finally, select the *Create your Twitter application* tab at the bottom of the page.
+5. Fill in the *Name*, *Description*, and *Website* fields with what you prefer.
 
-	![Figure 8.22: The *Create an app* button on Twitter](../../images/15-opensocial-12.png)
+	a. For the *Callback URL* field, enter Liferay's default callback URL: http://myLiferayServer/opensocial-portlet/gadgets/oauthcallback (replace "myLiferayServer" with an appropriate value-- for this demonstration, you will use 127.0.0.1:8080). 
+	
+	b. Finally, select the *Create your Twitter application* tab at the bottom of the page.
+
+	![Figure 8.24: The *Create an app* button on Twitter](../../images/15-opensocial-12.png)
 
 6. You are given the OAuth setting that you need to configure your gadget on Liferay. Copy the Consumer Key and Consumer Secret to your clipboard.
 
-	![Figure 8.23: Consumer Key and Consumer Secret (blacked out for security)](../../images/15-opensocial-13.png)
+	![Figure 8.25: Consumer Key and Consumer Secret (blacked out for security)](../../images/15-opensocial-13.png)
 
 7. Enter your Consumer Key and Consumer Secret under the *Manage OAuth* that you navigated to earlier. Also, select "HMAC_SYMMETRIC" for the *Key Type* and then click *Save*.
+	
+		Note: Liferay offers "PLAINTEXT" and "RSA_PRIVATE" as alternative key types. HMAC_SYMMETRIC and RSA_PRIVATE are common key types whereas PLAINTEXT shouldn't be used in real-world settings. 
 
 8. Navigate to the *Settings* tab
 
-	![Figure 8.24: Settings tab](../../images/15-opensocial-18.png)
+	![Figure 8.26: Settings tab](../../images/15-opensocial-18.png)
 
 9. Under *Application Type*, select *Read and Write*. Then click *Update this Twitter application's settings* at the bottom of the page.
 
-	![Figure 8.25: Select the *Read and Write* option](../../images/15-opensocial-19.png)
+	![Figure 8.27: Select the *Read and Write* option](../../images/15-opensocial-19.png)
 
-Congratulations! Your Twitter gadget is now configured with Liferay Portal.
+Congratulations! Your Twitter gadget is now configured with OAuth.
+
+Next, we'll configure the gadget within Liferay Portal.
 
 ### Incorporating OAuth within your site
 
-In the next set of instructions, we will demonstrate how to add the OAuth configured gadget to your page. Please follow the steps below:
+Now that your gadget is registered with Twitter and is configured with OAuth, you can add it to your Liferay Portal. The OAuth client you configured in the previous section allows users to protect their credentials while accessing resources on your site. For this section, we'll demonstrate how to add the OAuth configured gadget to your page.
 
 1. Navigate to *My Private Pages* and click *Add* &rarr; *More...* &rarr; *Twitter Gadget*. If your gadget is configured correctly, it should appear like this:
 
-	![Figure 8.26: Configured Twitter gadget](../../images/15-opensocial-14.png)
+	![Figure 8.28: Configured Twitter gadget](../../images/15-opensocial-14.png)
 
 2. Click on *Personalize this gadget* to be redirected to the service provider.
 
 3. Fill in your Twitter username and password and select *Authorize app*
 
-	![Figure 8.27: Authorize application](../../images/15-opensocial-15.png)
+	![Figure 8.29: Authorize application](../../images/15-opensocial-15.png)
 
 4. Your Twitter Gadget should now show your last 20 tweets from your timeline. Your gadget should look similar to the snapshot below:
 
-	![Figure 8.28: Twitter gadget timeline](../../images/15-opensocial-16.png)
+	![Figure 8.30: Twitter gadget timeline](../../images/15-opensocial-16.png)
 
 5. Using this gadget, you can tweet your current status and have it display on your Liferay site and Twitter page. To change the amount of tweets displayed, click on the wrench icon in the upper right corner and select *Configuration*. Under the *Setup* tab, you can type the number of tweets to display.
 
-	![Figure 8.29: Number of Tweets to Display](../../images/15-opensocial-17.png)
+	![Figure 8.31: Number of Tweets to Display](../../images/15-opensocial-17.png)
 
 6. Lastly, you can tweet and view your Twitter timeline as you have configured. The snapshot below displays what the Twitter Gadget will look like when finished.
 
-	![Figure 8.30: Finished Twitter Gadget](../../images/15-opensocial-20.png)
+	![Figure 8.32: Finished Twitter Gadget](../../images/15-opensocial-20.png)
 	
-As you can see, OAuth is easy to configure and offers users unlimited freedom to your site.
+As you can see, OAuth is easy to configure and offers users the freedom to securely add valuable data from third-party sites.
 
 ### Creating and editing OpenSocial gadgets [](id=lp-6-1-ugen08-creating-and-editing-opensocial-gadgets-0)
 
