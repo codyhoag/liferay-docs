@@ -302,7 +302,7 @@ For this example, we will set up a demo Twitter account gadget using OAuth. Firs
 	
 	b. Finally, select the *Create your Twitter application* tab at the bottom of the page.
 
-	![Figure 8.24: The *Create an app* button on Twitter](../../images/15-opensocial-12.png)
+	![Figure 8.24: *Application Details* window](../../images/15-opensocial-12.png)
 
 6. You are given the OAuth setting that you need to configure your gadget on Liferay. Copy the Consumer Key and Consumer Secret to your clipboard.
 

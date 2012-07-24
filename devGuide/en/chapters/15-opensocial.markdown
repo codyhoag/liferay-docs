@@ -38,11 +38,11 @@ Some of the attributes usable by ModulePrefs are listed below along with brief d
 -	*scrolling*: gives your gadget a scrollbar if the content exceeds the page capacity (must be set to "true")
 -	*thumbnail*: a small thumbnail used in your gadget's directory. It should be exactly 120 pixels wide and 60 pixels high for maximum clarity, otherwise it will be stretched to this size.
 
-Within this section, you can also specify dependencies for the gadget using the `<Require>` and `<Optional>` tags. If a feature is specified with `<Require>`, it will not render if the feature is unavailable. Moreover, if the feature is tagged as `<Optional>`, the gadget will render but the feature will not be included. An important example of these tags can be demonstrated by the use of the UserPrefs feature. If you want to include a `<UserPref>` section, you must enable it by including `<Require feature="setprefs"/>`. This is explained in more detail within the *User Preferences* section.
+Within this section, you can also specify dependencies for the gadget using the `<Require>` and `<Optional>` tags. If a feature is specified with `<Require>`, it will not render if the feature is unavailable. Likewise, if the feature is tagged as `<Optional>`, the gadget will render but the feature will not be included. An important example of these tags can be demonstrated by the use of the `<UserPref>` feature. If you want to include a `<UserPref>` section, you must enable it by including `<Require feature="setprefs"/>`. This is explained in more detail within the *User Preferences* section.
 
 Also, `<ModulePrefs>` stores other important features that will be explained in more detail in later sections, which include the PubSub and OAuth features. The PubSub feature allows for communication between gadgets and portlets on the same page by allowing them to publish and subscribe on message channels. Furthermore, the OAuth feature provides secure connections between your portal and third-party sites. Of course, there are many other features that can be defined by these tags that can be useful throughout your gadget's source code.
 
-Lastly, here is an example of what a `<ModulePrefs>` section looks like for our previously mentioned Google Calendar gadget:
+Lastly, here is an example of what a `<ModulePrefs>` section looks like for the Google Calendar gadget:
 
 	<ModulePrefs 
 	title="__MSG_Google_Calendar__"
@@ -60,19 +60,21 @@ Lastly, here is an example of what a `<ModulePrefs>` section looks like for our 
 	<Require feature="setprefs"/>
 	<Require feature="dynamic-height"/>
 	
+The weather gadget's full source code can be viewed here: `http://gadgets.weather.com/services/gadgets/googlegadget/gadget.xml`
+
 Overall, this section allows you to setup your gadget on a directory and establish settings and tools that you will use throughout your gadget's source code.
 
 ### User Preferences
 
 Some gadgets are configured with more options from which you can choose. These are called user preferences (UserPrefs) and are used by app developers to store configuration values for a given user of an application. This section of the XML document is wrapped with `<UserPref>...</UserPref>` tags. Users typically set the UserPrefs and these persist across a given instance of a gadget.  When working with gadgets on your page, they are somewhat different than what other users see. As you make changes in the gadget's interface, those changes are loaded onto the database as UserPrefs. When you reload your gadget, those UserPrefs are fed back to the gadget and are rendered in the user interface. 
 
-An example of a gadget requiring UserPrefs is a weather gadget. You would not want to know the weather of an unknown, distant land, but rather, of your current residence. Therefore, a weather gadget would need to know your location. It would also be nice to have the temperature unit, theme, and name the way you would want it. UserPrefs allows these items and many others to be customizable to your liking. Here is the URL to our example weather gadget: http://gadgets.weather.com/services/gadgets/googlegadget/gadget.xml
+An example of a gadget requiring UserPrefs is a weather gadget. You would not want to know the weather of an unknown, distant land, but rather, of your current residence. Therefore, a weather gadget would need to know your location. It would also be nice to have the temperature unit, theme, and name the way you would want it. UserPrefs allows these items and many others to be customizable to your liking.
 
-In order to set preference values from within your gadget, you will need to include the `setprefs` feature. This feature is set inside the `<ModulePrefs>...</ModulePrefs>` tags, which was previously stated in the *Gadget Preferences* section. If you look within the weather gadget code, we can see the `setprefs` feature is included. 
+In order to set preference values from within your gadget, you will need to include the `setprefs` feature. This feature is set inside the `<ModulePrefs>...</ModulePrefs>` tags, which was previously stated in the *Gadget Preferences* section. If you look within the weather gadget's source code, we can see the `setprefs` feature is included. 
 
 	<Require feature="setprefs"/>
 
-You can specify <UserPref> elements for your gadget after the </ModulePrefs> element and before the first <Content> element. You can set properties which include:
+You can specify `<UserPref>` elements for your gadget after the `</ModulePrefs>` element and before the first `<Content>` element. You can set properties which include:
 
 -	*name* (required) - the internal key that your UserPrefs are stored against.
 -	*display_name* - how the preference is presented to the user in the edit window (must be unique)
@@ -82,7 +84,7 @@ You can specify <UserPref> elements for your gadget after the </ModulePrefs> ele
 
 For the *datatype* property, the possible values are `bool`, `enum`, `hidden`, `list`, and `string`. The default data type is `string`. Here are some explanations and examples for each data type:
 
--	`bool`: Sometimes there are two options to choose from. Maybe you would rather have a bar graph over a pie chart, or maybe the color red over blue. The `bool` data type allows you to choose between two options, usually denoted true or false. This data type also allows you to duplicate the same gadget and enable your site to display the data side by side. Here is an example of a `<UserPref>` section using the `bool` data type for displaying an icon:
+-	`bool`: Sometimes there are two options to choose from. For instance, maybe you would want an option between displaying or not displaying a graphic. The `bool` data type allows you to choose between these two options, usually denoted true or false. Also, this data type also allows you to duplicate the same gadget and enable your site to display the data side by side. Here is an example of a `<UserPref>` section using the `bool` data type for displaying an icon:
 
 		<UserPref name="myicon" display_name="Display Icon?" default_value="true" datatype="bool" />
 
@@ -165,7 +167,7 @@ Every gadget will have a `<Content>` section, which stores content displayed to 
 2. How your gadget is rendered
 3. Where you deploy your gadget
 
-We will describe how the `html` content type is used and what it offers to your gadget. It is the default content type. This is due to the fact that it is the most flexible and is most frequently used, unless there are specific requirements you want to address. All of the code resides in the gadget specification, which includes HTML markup, JavaScript, and the gadget XML. With this content type, some rules must be followed for it to run correctly and accomplish the tasks you want. First, it must include a `CDATA` section and all your HTML must be placed within this section. This section would look something like this:
+We will describe how the `html` content type is used and what it offers to your gadget. It is the default content type. This is due to the fact that it is the most flexible and is most frequently used. All of the code resides in the gadget specification, which includes HTML markup, JavaScript, and the gadget XML. With this content type, some rules must be followed for it to run correctly and accomplish the tasks you want. First, it must include a `CDATA` section and all your HTML must be placed within this section. This section would look something like this:
 
 	<Content type="html">
 		<![CDATA[ "Your HTML goes here" ]]>
@@ -182,7 +184,7 @@ Both content types offer beneficial traits and each can be used effectively, dep
 
 ## Supporting third-party applications
 
-Liferay allows gadgets to be personalized by adding third-party applications to your site. Because these applications require different credentials, users are sometimes hesitant to share their private info with other sites. However, you can provide a richer user experience by allowing a means for the user to interact with protected resources from service providers within Liferay Portal. This process is possible by implementing *OAuth*. OAuth is often characterized as a "handshake mechanism" where, instead of requiring personal information, your site redirects the user to their service provider, such as Twitter. Then, they can tell Twitter to allow your site access to their account with limited resources. This is accomplished by acquiring request and access tokens as well as a token secret to authenticate the uses of your gadget.  There are many other service providers that use this mechanism, such as Evernote, Facebook, Google, Netflix, Photobucket, Yahoo and many more. 
+Liferay allows gadgets to be personalized by adding third-party applications to your site. Because these applications require different credentials, users are sometimes hesitant to share their private info with other sites. However, you can provide a richer user experience by allowing a means for the user to interact with protected resources from service providers within Liferay Portal. This process is possible by implementing *OAuth*. OAuth is often characterized as a "handshake mechanism" where, instead of requiring personal information, your site redirects the user to their service provider, such as Twitter. Then, they can tell Twitter to allow your site access to their account with limited resources. This is accomplished by acquiring request and access tokens as well as a token secret to authenticate the uses of your gadget. This process is explained in detail in Liferay's User Guide: <place link here>. There are many other service providers that use this mechanism, such as Evernote, Facebook, Google, Netflix, Photobucket, Yahoo and many more. 
 
 Your gadget must include certain calls and properties to enable OAuth to run effectively. Below, the requirements for OAuth are listed along with examples from a Twitter gadget that views a user's timeline:
 
@@ -319,7 +321,10 @@ Your gadget must include certain calls and properties to enable OAuth to run eff
 			gadgets.io.makeRequest(url, callback, params);
 		}
         
-OAuth gives your website freedom to incorporate popular sites, like Twitter, to enhance your site and give freedom and peace of mind to your users. The twitter gadget's source code can be viewed in its entirety at: 	http://opensocialdeju.googlecode.com/svn-history/r15/Twitter/TwitterDemo.xml 
+OAuth gives your website freedom to incorporate popular sites, like Twitter, to enhance your site and give freedom and peace of mind to your users. The twitter gadget's source code can be viewed in its entirety at: 
+
+	http://opensocialdeju.googlecode.com/svn-history/r15/Twitter/TwitterDemo.xml
+	
 The OAuth client dramatically improves your gadget's security and gives your users peace of mind when accessing their private resources on your site.
 
 ## Inter-gadget communication
@@ -330,18 +335,22 @@ Have you ever wondered how portlets communicate to each other? An even more intr
 -	gadget to gadget
 -	portlet to gadget or vice versa
 
-Publishers do not specifically send messages to a certain subscriber but, rather, publish messages that are characterized into classes and sent via message channel. Therefore, they have no knowledge of where they are sending their messages to but just simply broadcast them over a channel. So you may ask: "How do subscribers receive messages if they are not sent to them?" Subscribers express interest in certain classes and only receive messages that are related to their expressed interest. Like publishers, they don't have knowledge of who they are subscribing to but, only know what they are subscribing for. This process makes it much easier for multiple gadgets and portlets to communicate with each other without specifically stating who they want to send/receive data from. PubSub also offers the ability for portlets and gadgets to publish and subscribe to multiple channels. You can see how your site's communications methods can get complex quickly! 
+Publishers do not specifically send messages to a certain subscriber but, rather, publish messages that are characterized into classes and sent via message channel. Therefore, they have no knowledge of where they are sending their messages to but just simply broadcast them over a channel. So you may ask: "How do subscribers receive messages if they are not sent to them?" Subscribers express interest in certain classes and only receive messages that are related to their expressed interest. Like publishers, they don't have knowledge of who they are subscribing to but, only know what they are subscribing for. This process makes it much easier for multiple gadgets and portlets to communicate with each other without specifically stating who they want to send/receive data from. 
 
-For a fundamental example of how PubSub works, you will import two simple portlets and convey how messages are sent and received. One acts as a publisher portlet and the other as a subscriber portlet. Please follow the steps below:
+PubSub can be compared to a TV station and your TV. The TV station does not directly send their material to your TV but, rather, broadcasts the material over a channel. You subscribe to that channel by turning you TV channel to what you want to watch. The process TV's use to communicate with TV stations is similar to how PubSub regulates communication within your site.
+
+PubSub also offers the ability for portlets and gadgets to publish and subscribe to multiple channels. Although this may seem like a complex process, PubSub's use of message channels creates a network for gadgets to communicate across that is easy to maintain and understand. 
+
+For a fundamental example of how PubSub works, we will import two simple portlets and convey how messages are sent and received. One acts as a publisher portlet and the other as a subscriber portlet. Follow the steps below:
 
 1. To publish the two portlets, navigate to the Control Panel and select *OpenSocial Gadget Publisher* from under the *Portal* heading.
 
 2. Select *Publish Gadget* and, for each portlet, enter in the URL and click *Save*
 
-*Sample PubSub Publisher*: http://svn.apache.org/repos/asf/shindig/trunk/content/container/sample-pubsub-2-publisher.xml
+	*Sample PubSub Publisher*: http://svn.apache.org/repos/asf/shindig/trunk/content/container/sample-pubsub-2-publisher.xml
 
-*Sample PubSub Subscriber*: http://svn.apache.org/repos/asf/shindig/trunk/content/container/sample-pubsub-2-subscriber.xml
-
+	*Sample PubSub Subscriber*: http://svn.apache.org/repos/asf/shindig/trunk/content/container/sample-pubsub-2-subscriber.xml
+	
 3. Go back to the home page and navigate to *Add* &rarr; *More...* and add your two portlets to the page
 
 4. First, click *Publish a random number* on the publisher portlet. You will notice it publishes a number but the subscriber portlet does not receive a random number.
@@ -376,7 +385,7 @@ First, you will complete a simple example for gadget to gadget communication whe
 
 	![Figure 15.6: Input custom address](../../images/15-opensocial-26.png)
 
-This is a simple example of two separate gadgets that communicate with each other using PubSub. You will now dive into the source code and analyze how it accomplishes this. First, you will view the *Google Map*'s XML file named *GoogleMapsViewer.xml*. The source code for this file is listed below:
+This is a simple example of two separate gadgets that communicate with each other using PubSub. We will now dive into the source code and analyze how it accomplishes this. First, we will view the *Google Map*'s XML file named *GoogleMapsViewer.xml*. The source code for this file is listed below:
 
 	<?xml version="1.0" encoding="UTF-8" ?> 
 	
@@ -430,7 +439,7 @@ This is a simple example of two separate gadgets that communicate with each othe
 		</Content>
 	</Module>
 
-A requirement that enables your gadget to communicate with other gadgets and use PubSub is the code below:
+A requirement that enables your gadget to communicate with other gadgets and use PubSub is listed below:
 
 	<Require feature="pubsub-2">
 		<Param name="topics">
@@ -501,7 +510,7 @@ Overall, PubSub allows your site to run efficiently and enables, otherwise, unco
 
 ###Portlet to Gadget (or vice versa)
 	
-For this section, you will continue implementing the *Google Map* gadget in your site. It would be convenient for a user to, not only implement "gadget to gadget" communications, but to also allow communications between those gadgets and their already existing portlets. For this example, you will link Liferay's *Directory* portlet with the previously mentioned *Google Map* gadget. Your goal is to create a link for an individual's address in the *Directory* portlet which will, then, send the address information to our *Google Map* gadget. Please follow the instructions below:
+For this section, we will continue implementing the *Google Map* gadget in our site. It would be convenient for a user to, not only implement "gadget to gadget" communications, but to also allow communications between those gadgets and their already existing portlets. For this example, we will link Liferay's *Directory* portlet with the previously mentioned *Google Map* gadget. Our goal is to create a link for an individual's address in the *Directory* portlet which will, then, send the address information to our *Google Map* gadget. Please follow the instructions below:
 
 1. First, you will need to add the *Directory* portlet and *Google Map* gadget to your page. To do this, navigate to *Add* &rarr; *More...* and select these from the menu.
 
@@ -677,13 +686,13 @@ As you know from explanations given earlier, the *Google Map* gadget is distingu
 		}
 	</script>
 
-This text involves a `publishAddress()` function which is called whenever you click on the *Show in Google Maps* link. The line below the function sends out two methods, the channel and whatever you're sending across. One thing to note is that when a portlet is sending data to a gadget, there must be a `gadget:` prefix before the channel declaration. This distinguishes who the messages are intended for when they are broadcast across a channel. Also, if you would like to broadcast the messages to portlets, you can add a similar line, but with a removed `gadget:` prefix. Notice that you did not need to change anything for your *Google Map* gadget. Since it is already subscribed to a channel, you only needed to define a publisher to send messages across that channel.
+This code involves a `publishAddress()` function which is called whenever you click on the *Show in Google Maps* link. The line below the function sends out two methods, the channel and whatever you're sending across. One thing to note is that when a portlet is sending data to a gadget, there must be a `gadget:` prefix before the channel declaration. This distinguishes who the messages are intended for when they are broadcast across a channel. Also, if you would like to broadcast the messages to portlets, you can add a similar line, but with a removed `gadget:` prefix. Notice that you did not need to change anything for your *Google Map* gadget. Since it is already subscribed to a channel, you only needed to define a publisher to send messages across that channel.
 
 ## Using the gadget editor
 
 OpenSocial gadgets are XML documents, so as part of Liferay's OpenSocial integration, a gadget editor is included. The gadget editor is a complete development environment for gadgets providing syntax highlighting, a preview function, undo/redo options, and built in tabs for working on multiple gadgets at once. You can also organize and manage gadgets through a simple file manager embedded into the portlet. This gives you the opportunity to edit and improve your XML files within Liferay Portal.
 
-Each gadget's XML file has a wrench icon enabling you to close, rename, delete, publish, or show the URL of the file. In detail, The *Publish* button redirects you to a screen similarly found in *OpenSocial Gadget Publisher* which allows you to publish your updated gadget. This feature creates a new gadget and leaves your former gadget available as well. The *Show URL* button allows you to add the gadget "adhoc" and share with other sites. These options offer a user-friendly and easy testing station for enhancing the gadgets on your site.
+Each gadget's XML file has a wrench icon enabling you to close, rename, delete, publish, or show the URL of the file. In detail, the *Publish* button redirects you to a screen similarly found in *OpenSocial Gadget Publisher* which allows you to publish your updated gadget. This feature creates a new gadget and leaves your former gadget available as well. The *Show URL* button allows you to add the gadget "adhoc" and share with other sites. These options offer a user-friendly and easy testing station for enhancing the gadgets on your site.
 
 For a brief exercise, you will improve the *Google Map* gadget. As you probably noticed, the gadget offered a small screen that was sometimes hard to view. By using *OpenSocial Gadget Editor*, you can edit the XML file and choose the appropriate size you desire. Follow the steps below:
 
@@ -717,7 +726,7 @@ For a brief exercise, you will improve the *Google Map* gadget. As you probably 
 
 	![Figure 15.12: How to publish the updated gadget](../../images/15-opensocial-35.png)
 	
-9. A *Publish Gadget* screen will open with the URL for your new gadget and a choice of which category to place your gadget. After choosing a category, click *Save*.
+9. A *Publish Gadget* screen will open with the URL for your new gadget and a choice for your gadget's category. After choosing a category, click *Save*.
 
 	![Figure 15.13: *Publish Gadget* window](../../images/15-opensocial-36.png)
 
@@ -732,13 +741,13 @@ We have talked extensively about how gadgets are social applications, but we hav
 
 For an example of a gadget used in Liferay's social API, you will publish the *Friends' Albums* gadget that enables you to view and share your friends' photos on your personal page. To begin this example, you must have a friend who has posted pictures in their profile. Follow the steps below:
 
-1. First, view your friend's public page and view a picture they uploaded in the *Documents and Media Display* portlet. For this photo, a *Blue Coupe* is listed under the *Car for Sale!!!!!!!* folder and appears it is for sale:
+1. First, view your friend's public page and view a picture they uploaded in the *Documents and Media Display* portlet. For this example, a *Blue Coupe* is listed under the *Car for Sale!!!!!!!* folder:
 
 	![Figure 15.14: Viewing friend's uploaded photo](../../images/15-opensocial-28.png)
 
 2. To help your friend, you decide to also post this listing on your profile as well. To accomplish this, you will need to publish the *Friends' Albums* gadget.  Navigate to the Control Panel and select *OpenSocial Gadget Publisher* located under the *Portal* heading.
 
-3. Next, select *Publish Gadget* and enter the URL: http://opensocialdeju.googlecode.com/svn/MediaItems/MediaItemsFriends.xml
+3. Next, select *Publish Gadget* and enter the URL: `http://opensocialdeju.googlecode.com/svn/MediaItems/MediaItemsFriends.xml`
 
 4. Select a category you want your gadget to reside in and then press *Save*
 
