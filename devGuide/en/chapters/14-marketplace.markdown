@@ -105,6 +105,12 @@ other Liferay plugins that are detailed in the *Portlet Development* chapter of
 this guide. In addition to those, there are some Marketplace-specific
 requirements to keep in mind.
 
+- *Target the Java 6 JRE*: Your app's byte code must be compatible with Java 6
+  (i.e., Java 1.6). Liferay's Plugins SDK already targets Java 6 via the
+  `build.properties` setting `ant.build.javac.target=1.6`; so don't override
+  this setting. Your app will be rejected if its byte code is not compatible
+  with Java 6. 
+
 - *WAR (`.war`) files*:
     - WARs must contain a `WEB-INF/liferay-plugin-package.properties` file.
     - WARs must not contain any `WEB-INF/liferay-plugin-package.xml` file.
@@ -130,16 +136,34 @@ requirements to keep in mind.
 
 - *liferay-plugin-package.properties file*:
     - Property `recommended.deployment.context` must not be set.
-    - Property `security-manager-enabled` must be set to `true`.  This enables
-      Liferay's Plugin Security Manager.  Read the [Plugin Security Management
-      Chapter](http://www.liferay.com/documentation/liferay-portal/6.1/development/-/ai/lp-6-1-dgen11-plugin-security-management-0)
-      in this guide for information on developing secure apps.  Every
-      app you submit on the Marketplace must use this framework.
+    - Setting property `security-manager-enabled` to `true` is mandatory for all
+      paid apps on 6.1 CE GA3, 6.1 EE GA3, and later, but is optional for free
+      apps. Setting this property to `true` enables Liferay's Plugin Security
+      Manager. If you're enabling the security manager, you'll also need to
+      define your Portal Access Control List (PACL) in this file. Read the
+      [Plugin Security Management 
+      Chapter](http://www.liferay.com/documentation/liferay-portal/6.1/development/-/ai/lp-6-1-dgen11-plugin-security-management-0) 
+      in this guide for information on developing secure apps. 
 - *Deployment contexts*:
     - Liferay reserves the right to deny an application if any of its plugin
       deployment contexts is the same as another plugin in the Marketplace.
     - Liferay reserves the right to replace WAR files of app plugins that have
       the same deployment context as plugins built by Liferay.
+
+---
+
+ ![note](../../images/tip-pen-paper.png) **Important:** If you're developing a
+ paid app or want your free app to satisfy Liferay's Plugin Security Manager,
+ read the [Plugin Security Management
+ Chapter](http://www.liferay.com/documentation/liferay-portal/6.1/development/-/ai/lp-6-1-dgen11-plugin-security-management-0)  
+ in this guide. Give yourself adequate time to develop your app's PACL and time
+ to test your app thoroughly with the security manager enabled. 
+
+---
+
+Now that you've learned the packaging and deployment requirements for your app,
+let's consider the versions of Liferay you're targetting for your app and how to
+prepare your app for them. 
 
 ### Things you need before you can publish [](id=lp-6-1-dgen10-things-you-need-before-you-can-publish-0)
 
