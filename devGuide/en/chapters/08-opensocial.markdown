@@ -16,7 +16,6 @@ In this chapter, we'll cover the following topics:
 
 - OpenSocial Gadget Basics
 - Accessing Third-Party Applications from Your Gadget
-- Gadget/Portlet Communication with PubSub
 - Liferay's Gadget Editing Environment
 
 Let's first look at the structure of an OpenSocial gadget and consider the
@@ -109,13 +108,9 @@ a `<Require/>` tag, the gadget only renders itself if the feature is available.
 If you specify a feature in an `<Optional/>` tag, the gadget renders despite
 feature availability.
 
-ModulePrefs can also be used to configure important features such as PubSub and
-OAuth. The PubSub feature allows for communication between gadgets on the same
-page: they can publish and subscribe on message channels. Liferay also enables
-gadgets to communicate with portlets using the same mechanism. The OAuth
-feature provides secure connections between your portal and third-party sites.
-These are just a couple of useful features that can be defined in the
-ModulePrefs. You'll learn more about them later in this chapter.
+ModulePrefs can also be used to configure OAuth. The OAuth feature provides
+secure connections between your portal and third-party sites. You'll learn more
+about OAuth later in this chapter. 
 
 Overall, this `<ModulePrefs>` element allows you to register your gadget on a
 gadget directory and establish settings and tools to use in your gadget's
@@ -721,10 +716,10 @@ of OpenSocial gadgets.
 
 OpenSocial gadgets offer a plethora of new features to Liferay that present new
 opportunities for your portal customization. You've learned the anatomy of a
-gadget, how to access third-party applications from a gadget, and gadget
-communication with PubSub. Also, you learned that Liferay's gadget editor makes
-editing and customizing your gadgets easier than ever. Take a deep breath and
-give yourself a pat on the back; you're now a trained gadget guru! 
+gadget and how to access third-party applications from a gadget. Also, you
+learned that Liferay's gadget editor makes editing and customizing your gadgets
+easier than ever. Take a deep breath and give yourself a pat on the back; you're
+now a trained gadget guru! 
 
 What better way to keep things rolling than to focus on your portal's overall
 look and feel using Liferay Themes! While we're at it, let's learn how to
