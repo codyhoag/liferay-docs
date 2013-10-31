@@ -259,10 +259,10 @@ section.
 
 ![EE Only Feature](../../images/ee-feature-web.png)
 
-For this tutorial, we'll demonstrate how to configure your Liferay infratructure
-to properly use OAuth, create an OAuth application, and set up an OpenSocial
-gadget to use your created OAuth application. Let's get started by configuring
-Liferay:
+For this tutorial, we'll demonstrate how to configure your Liferay
+infrastructure to properly use OAuth, create an OAuth application, and set up an
+OpenSocial gadget to use your created OAuth application. Let's get started by
+configuring Liferay:
 
 1. Make sure you have an EE 6.2 version of Liferay Portal running on your
 machine.
@@ -281,9 +281,6 @@ directory.
 4. You'll need to deploy three portlets to your Liferay instance:
 `oauth-portlet`, `opensocial-portlet`, and `test-oauth-portlet`. To deploy them,
 navigate into each portlet directory and enter `ant deploy`.
-
-<!-- May need to add instructions on creating "oauth-portlet" folder and
-uploading documents to it. -->
 
 Congratulations! Your Liferay infrastructure is now configured to use OAuth with
 your OpenSocial gadgets! Let's begin creating an OAuth application.
