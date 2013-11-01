@@ -292,26 +292,28 @@ completion of this section's tutorial, you'll also possess your application's
 credentials, which is required for configuring your gadget with OAuth
 authorization. Let's continue our tutorial:
 
-1. Navigate to the Control Panel and click *OAuth Admin* located under the
-*Users* heading.
+1.  Navigate to the Control Panel and click *OAuth Admin* located under the
+    *Users* heading.
 
-2. Click *Add* and define your new OAuth application as follows:
+2.  Click *Add* and define your new OAuth application as follows (remove line
+    break `\`):
 
-	- **Name:** Docs/Media Application
+    **Name:** Docs/Media Application
 
-	- **Description:** Show document media content
+    **Description:** Show document media content
 
-	- **Website URL:** http://www.liferay.com
+    **Website URL:** http://www.liferay.com
 
-	- **Callback URL:** http://localhost:8080/opensocial-portlet/gadgets/oauthcallback
+    **Callback URL:**
+    http://localhost:8080/opensocial-portlet/gadgets/oauthcallback
 
-	- **Access Level:** Read
+    **Access Level:** Read
 
-	Then, click *Save*.
+    Then, click *Save*.
 
-3. The application's consumer credentials are now generated. To access them,
-click on *Actions* &rarr; *View*. You'll need to make a note of the consumer key
-and secret located beneath *Application Credentials*.
+3.  The application's consumer credentials are now generated. To access them,
+    click on *Actions* &rarr; *View*. You'll need to make a note of the consumer
+    key and secret located beneath *Application Credentials*.
 
 ![Figure 11.3: You'll need to remember your application's credentials to complete its OAuth configuration.](../../images/oauth-app-credentials.png)
 
