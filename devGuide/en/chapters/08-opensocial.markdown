@@ -251,6 +251,113 @@ to the service provider (e.g. Netflix, Photobucket, etc). Users approve the
 gadget's access to their resources on the external web applications. It's just
 that easy!
 
+For a step-by-step tutorial on how to configure an OAuth authorization service
+for Liferay using JSON web services, follow the instructions in the next
+section.
+
+### Configure Liferay's OAuth Infrastructure
+
+![EE Only Feature](../../images/ee-feature-web.png)
+
+For this tutorial, we'll demonstrate how to configure your Liferay
+infrastructure to properly use OAuth, create an OAuth application, and set up an
+OpenSocial gadget to use your created OAuth application. Let's get started by
+configuring Liferay:
+
+1. Make sure you have an EE 6.2 version of Liferay Portal running on your
+machine.
+
+2. The plugins needed for this tutorial are currently only accessible on
+Liferay's *liferay-plugins-ee/ee-6.2.x* branch on Github
+([https://github.com/liferay/liferay-plugins-ee/tree/ee-6.2.x](https://github.com/liferay/liferay-plugins-ee/tree/ee-6.2.x)).
+You'll need to have access to this repository and clone it to your local machine
+to obtain the plugins. For instructions on using Github and the cloning process,
+consult Github's documentation at
+[https://help.github.com/](https://help.github.com/).
+
+3. Open a terminal window and navigate to the `../liferay-plugins-ee/portlets`
+directory.
+
+4. You'll need to deploy three portlets to your Liferay instance:
+`oauth-portlet`, `opensocial-portlet`, and `test-oauth-portlet`. To deploy them,
+navigate into each portlet directory and enter `ant deploy`.
+
+Congratulations! Your Liferay infrastructure is now configured to use OAuth with
+your OpenSocial gadgets! Let's begin creating an OAuth application.
+
+### Creating an OAuth Application
+
+Let's continue our tutorial by creating an OAuth application. After the
+completion of this section's tutorial, you'll also possess your application's
+credentials, which is required for configuring your gadget with OAuth
+authorization. Let's continue our tutorial:
+
+1.  Navigate to the Control Panel and click *OAuth Admin* located under the
+    *Users* heading.
+
+2.  Click *Add* and define your new OAuth application as follows (remove line
+    break `\`):
+
+    **Name:** Docs/Media Application
+
+    **Description:** Show document media content
+
+    **Website URL:** http://www.liferay.com
+
+    **Callback URL:**
+    http://localhost:8080/opensocial-portlet/gadgets/oauthcallback
+
+    **Access Level:** Read
+
+    Then, click *Save*.
+
+3.  The application's consumer credentials are now generated. To access them,
+    click on *Actions* &rarr; *View*. You'll need to make a note of the consumer
+    key and secret located beneath *Application Credentials*.
+
+![Figure 11.3: You'll need to remember your application's credentials to complete its OAuth configuration.](../../images/oauth-app-credentials.png)
+
+Your OAuth application is officially created and you also have its application
+credentials. The last step is configuring an OpenSocial gadget with OAuth.
+
+### Configuring OpenSocial Gadgets with OAuth
+
+Now that your OAuth application is configured and you possess its application
+credentials, it's time to configure an OpenSocial gadget with OAuth
+authorization. Let's complete this process so we can marvel at our new OAuth
+gadget!
+
+1. Navigate to the *OpenSocial Gadget Publisher*, which is located in the
+*Apps* section of the Control Panel. Validate that the *Test OAuth Gadget* we
+deployed earlier is listed and copy its URL. We'll use this URL in the next
+step. If the gadget isn't listed, you'll need to return to the *Configure
+Liferay's OAuth Infrastructure* section and deploy the `test-oauth-portlet`.
+
+2. Navigate back to your site and add the *OpenSocial Gadget* application to a
+page. Click the *Configure* link and paste in your *Test OAuth Gadget*'s URL.
+Then click *Save* and exit the Configuration menu. Notice you're given an OAuth
+error inside your gadget. That's because we haven't specified its application
+credentials.
+
+3. Navigate back to the Configuration menu by clicking the gear icon in the
+gadget's upper right corner and selecting *Configuration*. Then click the
+*Manage OAuth* tab.
+
+4. Copy and paste your consumer key and secret that you noted in the previous
+section into the required fields. Click *Save* and exit the Configuration menu
+and notice that your gadget is no longer displaying errors.
+
+5. Click the *Personalize* link that is now available on your gadget and you're
+given the OAuth Authorize screen. Click either *Grant Access* or *Deny Access*
+to allow the Docs/Media application to read data on your behalf.
+
+![Figure 11.3: Once you've completed your gadget's OAuth configuration, users can grant or deny access to our application's requests using OAuth.](../../images/oauth-authorize.png)
+
+Congratulations! You've successfully configured a test gadget to use OAuth
+inside Liferay Portal! OAuth acts as an intermediary between your portal's
+content and outside services. It will not let outside services access your portal's
+content unless you grant them access to.
+
 Read the [Gadget
 personalization](https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/exporting-portal-applications-as-widget-liferay-portal-6-2-user-guide-09-en)
 section of the *Social Networking* chapter in *Using Liferay Portal 6.2* for
