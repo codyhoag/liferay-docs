@@ -326,10 +326,10 @@ authorization. Let's complete this process so we can marvel at our new OAuth
 gadget!
 
 1. Navigate to the *OpenSocial Gadget Publisher*, which is located in the
-*Portal* section of the Control Panel. Validate that the *Test OAuth Gadget* we
+*Apps* section of the Control Panel. Validate that the *Test OAuth Gadget* we
 deployed earlier is listed and copy its URL. We'll use this URL in the next
 step. If the gadget isn't listed, you'll need to return to the *Configure
-Liferay's OAuth infrastructure* section and deploy the `test-oauth-portlet`.
+Liferay's OAuth Infrastructure* section and deploy the `test-oauth-portlet`.
 
 2. Navigate back to your site and add the *OpenSocial Gadget* application to a
 page. Click the *Configure* link and paste in your *Test OAuth Gadget*'s URL.
