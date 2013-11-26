@@ -79,6 +79,8 @@ public class LocationListingPortlet extends MVCPortlet {
 		return location;
 	}
 
+	public final static String PORTLET_ID = "locationlisting_WAR_eventlistingportlet";
+
 	private static Log _log = LogFactoryUtil.getLog(LocationListingPortlet.class);
 
 }
