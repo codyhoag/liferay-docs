@@ -5,7 +5,7 @@
 Add content describing your API changes. If a Dev Guide chapter/section related
 to your feature already exists, integrate your content with it and provide a
 reference here. Otherwise, add a new section here in this APIs chapter with
-content describing the your feature's new or modified API. 
+content describing your feature's new or modified API. 
 
 For example,
 
@@ -60,21 +60,21 @@ authorized portal users the ability to apply custom display settings to
 portlets. This would save portlet developers from having to change portlet
 configuration code every time you need new settings. 
 
-Be of good cheer! That's precisely what Application Display Templates (ADTs) provide--
-the ability to add custom display settings to your portlets from the portal. This isn't
-actually a new concept in Liferay. In some portlets (e.g., *Web Content*,
-*Documents and Media*, and *Dynamic Data Lists*, you can already add as many
-display options (or templates) as you want. Now you can add them to your custom
-portlets, too.
+Be of good cheer! That's precisely what Application Display Templates (ADTs)
+provide-- the ability to add custom display settings to your portlets from the
+portal. This isn't actually a new concept in Liferay. In some portlets (e.g.,
+*Web Content*, *Documents and Media*, and *Dynamic Data Lists*, you can already
+add as many display options (or templates) as you want. Now you can add them to
+your custom portlets, too.
 
 You can use the Application Display Templates API to add this new feature to
 your plugins. Let's get started learning how.
 
 ### Using the Application Display Templates API [](id=application-display-templates-api-liferay-portal-6-2-dev-guide-14-en)
 
-To leverage the ADT API, there are several steps you need to follow. These steps involve
-registering your portlet to use ADTs, defining permissions, and exposing the
-ADT functionality to users. 
+To leverage the ADT API, there are several steps you need to follow. These steps
+involve registering your portlet to use ADTs, defining permissions, and exposing
+the ADT functionality to users.
 
 1.  Register your custom `PortletDisplayTemplateHandler`
 
@@ -158,10 +158,11 @@ ADT functionality to users.
     <!--Does this go into the configuration.jsp, too?-->
 
     You're almost finished, but you still have to extend your view code to
-    render your portlet with the selected Application Display Template. Here is where you
-    decide exactly which part of your view will be rendered by the Application
-    Display Template and what will be available in the template context. You'll be
-    adding some code to your `configuration.jsp`, similar to this:
+    render your portlet with the selected Application Display Template. Here is
+    where you decide exactly which part of your view will be rendered by the
+    Application Display Template and what will be available in the template
+    context. You'll be adding some code to your `configuration.jsp`, similar to
+    this:
  
         <%
         List<MyType> myList = getMyList();
@@ -187,6 +188,61 @@ ADT functionality to users.
 
 <!-- We need to point out where this code specifies the rendering based on the
 ADT. It's not obvious how it works. Jim --> 
+
+Next, let's talk about dynamic data mapping and how to control behaviors in your
+ADT.
+
+### Dynamic Data Mapping for ADTs
+
+The Dynamic Data Mapping (DDM) framework is prevalent throughout Liferay,
+providing structures and templates for application display templates, document
+library, dynamic data lists, web content, etc. In fact, the DDM portlet manages
+all the operations for every Liferay application with structures and templates,
+including ADTs.
+
+Below, you can view where DDM plays a role in the creation of your application's
+rendered HTML.
+
+![Figure 15.1: Dynamic Data Mapping provides the first step in rendering your ADT as HTML.](../../images/ddm-adt-implementation.png)
+
+For Liferay 6.2, if you're using a portlet that uses DDM, you have the ability
+to control labels, columns, and key behaviors and adapt them for your portlet.
+Previous to Liferay 6.2, to make DDM behave differently for specific portlets,
+you had to include "hard-coded" conditions. This option was not good in terms of
+maintainability and scalability. It was also hard to find out how a portlet was
+expected to behave, since those conditions were spread among many files.
+
+Therefore, the
+[DDMDisplay](https://github.com/liferay/liferay-portal/blob/master/portal-service/src/com/liferay/portlet/dynamicdatamapping/util/DDMDisplay.java)
+interface is now available, which concentrates all DDM behavior rules for a
+portlet in just one implementation of this interface. *DDMDisplay* contains a
+set of behaviors for DDM that can be customized for different portlets, from the
+title in the views to the visible columns. The default behaviors are defined in
+the
+[BaseDDMDisplay](https://github.com/liferay/liferay-portal/blob/master/portal-service/src/com/liferay/portlet/dynamicdatamapping/util/BaseDDMDisplay.java)
+class.
+
+Now that we know the basics behind how to adapt DDM behavior for our portlets
+using ADTs, let's show how to do define custom behaviors through *DDMDisplay*.
+
+1. Create an implementation of the *DDMDisplay* interface. It should extend
+   *BaseDDMDisplay* so that it inherits default behaviors when not specified:
+
+        public class MyPortletDDMDisplay extends BaseDDMDisplay {
+        ...
+        }
+
+2. Declare this custom DDMDisplay in the liferay-portlet.xml file:
+
+        <portlet>
+            <ddm-display>com.liferay.portlet.myportlet.MyPortletDDMDisplay</ddm-display>
+        </portlet>
+
+After completing these steps, you no longer need to change the code of the DDM
+views. Your ADT can now control key visual aspects and behaviors that might need
+to be changed from portlet to portlet.
+
+Next, we'll recommend the best ways to use ADTs.
 
 ### Recommendations [](id=adt-recommendations-liferay-portal-6-2-dev-guide-14-en)
 
