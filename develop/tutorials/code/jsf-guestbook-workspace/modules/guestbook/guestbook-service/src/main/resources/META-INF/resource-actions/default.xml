@@ -6,8 +6,10 @@
 	<model-resource>
 		<model-name>com.liferay.docs.guestbook</model-name>
 		<portlet-ref>
-			<portlet-name>guestbook-jsf</portlet-name>
-			<portlet-name>guestbook-admin</portlet-name>
+			<portlet-name>com_liferay_docs_guestbook_portlet_GuestbookPortlet</portlet-name>
+			<portlet-name>com_liferay_docs_guestbook_portlet_GuestbookAdminPortlet</portlet-name>
+			<portlet-name>guestbookjsf_WAR_guestbookjsfportlet</portlet-name>
+			<portlet-name>guestbookadmin_WAR_guestbookjsfportlet</portlet-name>
 		</portlet-ref>
 		<root>true</root>
 		<permissions>
@@ -32,8 +34,10 @@
 	<model-resource>
 		<model-name>com.liferay.docs.guestbook.model.Guestbook</model-name>
 		<portlet-ref>
-			<portlet-name>guestbook-jsf</portlet-name>
-			<portlet-name>guestbook-admin</portlet-name>
+			<portlet-name>com_liferay_docs_guestbook_portlet_GuestbookPortlet</portlet-name>
+			<portlet-name>com_liferay_docs_guestbook_portlet_GuestbookAdminPortlet</portlet-name>
+			<portlet-name>guestbookjsf_WAR_guestbookjsfportlet</portlet-name>
+			<portlet-name>guestbookadmin_WAR_guestbookjsfportlet</portlet-name>
 		</portlet-ref>
 		<permissions>
 			<supports>
@@ -59,7 +63,8 @@
 	<model-resource>
 		<model-name>com.liferay.docs.guestbook.model.Entry</model-name>
 		<portlet-ref>
-			<portlet-name>guestbook-jsf</portlet-name>
+			<portlet-name>com_liferay_docs_guestbook_portlet_GuestbookPortlet</portlet-name>
+			<portlet-name>guestbookjsf_WAR_guestbookjsfportlet</portlet-name>
 		</portlet-ref>
 		<permissions>
 			<supports>
