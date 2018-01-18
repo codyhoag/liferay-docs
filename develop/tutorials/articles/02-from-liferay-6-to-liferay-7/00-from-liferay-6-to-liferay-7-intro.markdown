@@ -29,6 +29,10 @@ your existing plugins for @product-ver@.
 In the end, we believe you'll both want to adopt @product-ver@, and you'll see
 how you can thrive using it. 
 
+First, start with planning your plugin upgrades.
+
+<!-- Replace the paragraph above with the commented content here. Jim
+
 +$$$
 
 **Note**: If you want to learn about @product-ver@'s architectural improvements,
@@ -40,3 +44,4 @@ $$$
 
 You'll start by seeing the familiar, good things that remain the same and then
 examine what’s changed the most since Liferay Portal 6. 
+-->
