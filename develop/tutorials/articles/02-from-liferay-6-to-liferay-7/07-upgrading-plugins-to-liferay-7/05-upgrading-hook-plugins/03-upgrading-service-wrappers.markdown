@@ -4,7 +4,7 @@ Upgrading traditional
 [service wrapper hook plugins](/develop/tutorials/-/knowledge_base/6-2/overriding-a-portal-service-using-a-hook) 
 to @product-ver@ is quick and easy. 
 
-1.  Use [Liferay @ide@'s Code Upgrade Tool](/develop/tutorials/-/knowledge_base/7-0/adapting-to-liferay-7s-api-with-the-code-upgrade-tool)
+1.  Use [Liferay @ide@'s Code Upgrade Tool](/develop/tutorials/-/knowledge_base/7-1/adapting-to-liferay-7s-api-with-the-code-upgrade-tool)
     to adapt the plugin's code to @product-ver@'s API. 
 
 2.  Deploy the plugin. 
@@ -16,6 +16,6 @@ Application Bundle (WAB) and installs it to Liferay's OSGi Runtime.
 
 [Overriding Liferay Services \(Service Wrappers\)](/develop/tutorials/-/knowledge_base/7-0/customizing-liferay-services-service-wrappers)
 
-[Resolving a Plugin's Dependencies](/develop/tutorials/-/knowledge_base/7-0/resolving-a-plugins-dependencies)
+[Resolving a Plugin's Dependencies](/develop/tutorials/-/knowledge_base/7-1/resolving-a-plugins-dependencies)
 
-[Upgrading the Liferay Maven Build](/develop/tutorials/-/knowledge_base/7-0/upgrading-the-liferay-maven-build)
+[Upgrading the Liferay Maven Build](/develop/tutorials/-/knowledge_base/7-1/upgrading-the-liferay-maven-build)
