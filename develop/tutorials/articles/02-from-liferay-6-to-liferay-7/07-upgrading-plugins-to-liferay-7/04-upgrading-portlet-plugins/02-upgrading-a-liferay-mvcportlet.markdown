@@ -38,12 +38,12 @@ The Stocks portlet uses as traditional Liferay Plugins SDK folder structure, as 
 
 Upgrading a Liferay MVC Portlet involves these steps:
 
-1.  [Adapt the code to @product-ver@'s API](/develop/tutorials/-/knowledge_base/7-0/adapting-to-liferay-7s-api-with-the-code-upgrade-tool)
+1.  [Adapt the code to @product-ver@'s API](/develop/tutorials/-/knowledge_base/7-1/adapting-to-liferay-7s-api-with-the-code-upgrade-tool)
 
-2.  [Resolve dependencies](/develop/tutorials/-/knowledge_base/7-0/resolving-a-plugins-dependencies)
+2.  [Resolve dependencies](/develop/tutorials/-/knowledge_base/7-1/resolving-a-plugins-dependencies)
 
 Liferay's 
-[Code Upgrade Tool](/develop/tutorials/-/knowledge_base/7-0/adapting-to-liferay-7s-api-with-the-code-upgrade-tool)
+[Code Upgrade Tool](/develop/tutorials/-/knowledge_base/7-1/adapting-to-liferay-7s-api-with-the-code-upgrade-tool)
 identifies code affected by the new API, explains the API changes and how to
 adapt to them, and in many cases, provides options for adapting the code
 automatically. 
@@ -73,11 +73,11 @@ provide them.  Here's the `portal-dependency-jars` property from the portlet's
         jstl-api.jar,\
         jstl-impl.jar
 
-Since @product-ver@ application provides these standard JARs in its
+Since the @product-ver@ application provides these standard JARs in its
 `WEB-INF/lib` folder, you can continue to use them via the
 `portal-dependency-jars` property. 
 
-[Resolve your portlet's dependencies](/develop/tutorials/-/knowledge_base/7-0/resolving-a-plugins-dependencies)
+[Resolve your portlet's dependencies](/develop/tutorials/-/knowledge_base/7-1/resolving-a-plugins-dependencies)
 and deploy it the same way you always do. 
 
 The server prints messages that indicate the following portlet status:
@@ -91,6 +91,8 @@ The server prints messages that indicate the following portlet status:
 Note: On deploying the upgraded sample portlet, the
 [WAB processor](/develop/tutorials/-/knowledge_base/7-0/using-the-wab-generator)
 warns that the `portal-dependency-jars` property is deprecated. 
+<br>
+<br>
 
     21:40:25,347 WARN  [fileinstall-...][WabProcessor:564] The property "portal-dependency-jars" is deprecated. Specified JARs may not be included in the class path.
 
@@ -116,7 +118,7 @@ instance. Have fun showing off your upgraded portlet!
 
 [Migrating Plugins SDK Projects to Workspace and Gradle](/develop/tutorials/-/knowledge_base/7-0/migrating-traditional-plugins-to-workspace-web-applications)
 
-[Using Dependency Management Tools](/develop/tutorials/-/knowledge_base/7-0/resolving-a-plugins-dependencies#managing-dependencies-with-ivy)
+[Using Dependency Management Tools](/develop/tutorials/-/knowledge_base/7-1/resolving-a-plugins-dependencies#managing-dependencies-with-ivy)
 
 [Using the WAB Generator](/develop/tutorials/-/knowledge_base/7-0/using-the-wab-generator)
 

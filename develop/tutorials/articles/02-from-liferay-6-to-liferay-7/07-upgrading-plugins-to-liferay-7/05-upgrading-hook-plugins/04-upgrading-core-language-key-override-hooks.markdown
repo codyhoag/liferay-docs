@@ -1,6 +1,6 @@
 # Upgrading Core Language Key Hooks [](id=upgrading-core-language-key-hooks)
 
-Here are the steps for upgrading a  core language key hook to @product-ver@. 
+Here are the steps for upgrading a core language key hook to @product-ver@. 
 
 1.  Create a new module based on the Blade sample `resource-bundle` in 
     [Gradle](https://github.com/liferay/liferay-blade-samples/tree/master/gradle/extensions/resource-bundle)
@@ -27,8 +27,8 @@ Your core language key customizations are deployed to @product-ver@.
 
 [Overriding Core Language Keys](/develop/tutorials/-/knowledge_base/7-0/overriding-language-keys)
 
-[Upgrading Portlet Language Key Hooks](/develop/tutorials/-/knowledge_base/7-0/upgrading-portlet-language-key-hooks)
+[Upgrading Portlet Language Key Hooks](/develop/tutorials/-/knowledge_base/7-1/upgrading-portlet-language-key-hooks)
 
-[Resolving a Plugin's Dependencies](/develop/tutorials/-/knowledge_base/7-0/resolving-a-plugins-dependencies)
+[Resolving a Plugin's Dependencies](/develop/tutorials/-/knowledge_base/7-1/resolving-a-plugins-dependencies)
 
-[Upgrading the Liferay Maven Build](/develop/tutorials/-/knowledge_base/7-0/upgrading-the-liferay-maven-build)     
+[Upgrading the Liferay Maven Build](/develop/tutorials/-/knowledge_base/7-1/upgrading-the-liferay-maven-build)     
