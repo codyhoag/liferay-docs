@@ -86,12 +86,6 @@
 								<f:ajax render="@all" />
 							</h:commandButton>
 						</h:panelGroup>
-						<portal:permissionsURL resourcePrimKey="#{entryBacking.portletResourcePrimaryKey}" var="permissionsUrl" />
-						<h:panelGroup rendered="#{entry.permissible}">
-							<h:outputLink styleClass="btn btn-default" value="#{permissionsUrl}">
-								<h:outputText value=" #{i18n['permissions']} " />
-							</h:outputLink>
-						</h:panelGroup>
 					</h:column>
 				</h:dataTable>
 			</c:otherwise>

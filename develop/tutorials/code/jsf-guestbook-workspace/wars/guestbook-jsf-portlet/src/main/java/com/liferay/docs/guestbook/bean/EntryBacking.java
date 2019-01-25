@@ -154,7 +154,7 @@ public class EntryBacking extends AbstractBacking {
 		this.guestbookBacking = guestbookBacking;
 	}
 
-	public Boolean isPermittedToAdd() {
+	public Boolean getPermittedToAdd() {
 
 		if (permittedToAdd == null) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -164,6 +164,10 @@ public class EntryBacking extends AbstractBacking {
 		}
 
 		return permittedToAdd;
+	}
+	
+	public void setPermittedToAdd(Boolean permittedToAdd) {
+		this.permittedToAdd = permittedToAdd;
 	}
 
 }

@@ -49,7 +49,7 @@ import com.liferay.portal.kernel.service.permission.PortletPermissionUtil;
 public class GuestbookBacking extends AbstractBacking {
 
 	public static final String DEFAULT_GUESTBOOK_NAME = "Main";
-	public static final String MODEL = "com.liferay.docs.guestbook.model";
+	public static final String MODEL = "com.liferay.docs.guestbook";
 
 	private GuestbookLocalServiceTracker guestbookLocalServiceTracker;
 	private EntryLocalServiceTracker entryLocalServiceTracker;
@@ -341,7 +341,7 @@ public class GuestbookBacking extends AbstractBacking {
 		this.guestbooks = guestbooks;
 	}
 
-	public boolean isPermittedToAdd() {
+	public Boolean getPermittedToAdd() {
 
 		if (permittedToAdd == null) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -351,6 +351,10 @@ public class GuestbookBacking extends AbstractBacking {
 		}
 
 		return permittedToAdd;
+	}
+
+	public void setPermittedToAdd(Boolean permittedToAdd) {
+		this.permittedToAdd = permittedToAdd;
 	}
 
 	public boolean isEditingGuestbook() {
