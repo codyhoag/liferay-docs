@@ -5,36 +5,20 @@
 	xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<h:form>
-		<c:choose>
-			<c:when test="#{empty guestbookBacking.selectedEntry.name}">
-				<h3>#{i18n['new-entry']}</h3>
-			</c:when>
-			<c:otherwise>
-				<h3>#{i18n['editing']} #{guestbookBacking.selectedEntry.name}</h3>
-			</c:otherwise>
-		</c:choose>
-		<alloy:fieldset>
-			<alloy:field id="entryNameField" label="#{i18n['name']}">
-				<h:message for="entryName" />
-				<h:inputText id="entryName" required="true" value="#{guestbookBacking.selectedEntry.name}">
-					<f:ajax render="entryNameField" />
-				</h:inputText>
-			</alloy:field>
-			<alloy:field id="entryEmailField" label="#{i18n['email']}">
-				<h:message for="entryEmail" />
-				<h:inputText id="entryEmail" required="true" validatorMessage="#{i18n['please-enter-a-valid-email-address']}"
-					value="#{guestbookBacking.selectedEntry.email}">
-					<f:validateRegex pattern=".+[@].+[.].+" />
-					<f:ajax render="entryEmailField" />
-				</h:inputText>
-			</alloy:field>
-			<alloy:field id="entryMessageField" label="#{i18n['message']}">
-				<h:message for="entryMessage" />
-				<h:inputTextarea id="entryMessage" required="true" value="#{guestbookBacking.selectedEntry.message}">
-					<f:ajax render="entryMessageField" />
-				</h:inputTextarea>
-			</alloy:field>
-		</alloy:fieldset>
+		<h3>#{i18n['new-entry']}</h3>
+		<br />
+		<h:outputLabel for="entryName">Name: </h:outputLabel>
+		<h:inputText id="entryName" required="true" value="#{guestbookBacking.selectedEntry.name}" />
+		<br /><br />
+		<h:outputLabel for="entryEmail">Email: </h:outputLabel>
+		<h:inputText id="entryEmail" required="true" validatorMessage="#{i18n['please-enter-a-valid-email-address']}"
+			value="#{guestbookBacking.selectedEntry.email}">
+			<f:validateRegex pattern=".+[@].+[.].+" />
+		</h:inputText>
+		<br /><br />
+		<h:outputLabel for="entryMessage">Message: </h:outputLabel>
+		<h:inputTextarea id="entryMessage" required="true" value="#{guestbookBacking.selectedEntry.message}" />
+		<br /><br />
 		<h:commandButton action="#{entryBacking.save}" styleClass="btn btn-default" value="#{i18n['save']}">
 			<f:ajax execute="@form" render="@all" />
 		</h:commandButton>

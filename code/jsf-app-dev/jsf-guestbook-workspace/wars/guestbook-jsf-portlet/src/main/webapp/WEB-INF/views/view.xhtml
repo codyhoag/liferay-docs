@@ -9,9 +9,6 @@
 	</h:head>
 	<h:body>
 		<c:choose>
-			<c:when test="#{guestbookBacking.editingGuestbook}">
-				<ui:include src="/WEB-INF/views/guestbook.xhtml" />
-			</c:when>
 			<c:when test="#{guestbookBacking.editingEntry}">
 				<ui:include src="/WEB-INF/views/entry.xhtml" />
 			</c:when>
