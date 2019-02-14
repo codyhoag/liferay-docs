@@ -96,6 +96,21 @@
 
 	<!-- targets -->
 
+	<target name="git-dist" description="Generates files from differing commits.">
+		<java
+			classname="com.liferay.documentation.util.CheckLatestCommitTask"
+			classpathref="project.classpath"
+			failonerror="true"
+			fork="true"
+		>
+			<arg value="${doc.dir}"/>
+			<arg value="${purpose.dir}/${doc.dir}"/>
+			<arg value="false"/>
+		</java>
+	</target>
+	
+	
+	
 	<target name="add-article-to-temp" depends="process-article-to-temp, check-images-dist" description="Processes the article (-Darticle=...) and its parent article structure, adding the target article and all related parent articles and images to temp/">
 	</target>
 
@@ -299,6 +314,17 @@
 			<fileset dir="${temp.dir}" includes="images/" />
 			<fileset dir="./" includes="${metadata.filename}" />
 		</zip>
+		
+		<java
+			classname="com.liferay.documentation.util.CheckLatestCommitTask"
+			classpathref="project.classpath"
+			failonerror="true"
+			fork="true"
+		>
+			<arg value="${doc.dir}"/>
+			<arg value="${purpose.dir}/${doc.dir}"/>
+			<arg value="${full.zip}"/>
+		</java>
 
 		<delete dir="${temp.dir}"/>
 	</target>
