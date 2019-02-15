@@ -105,6 +105,7 @@
 		>
 			<arg value="${doc.dir}"/>
 			<arg value="${purpose.dir}/${doc.dir}"/>
+			<arg value="${dist.dir}"/>
 			<arg value="false"/>
 		</java>
 	</target>
