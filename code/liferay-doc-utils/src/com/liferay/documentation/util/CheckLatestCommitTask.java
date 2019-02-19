@@ -48,30 +48,30 @@ public class CheckLatestCommitTask {
 			generateLatestCommitFile(headCommit);
 			System.exit(0);
 		}
+
 		// If a metadata file exists, copy the last published commit and find all
 		// modified files since that commit's publication.
+
+		String lastPublishedCommit = FileUtils.readFileToString(commitFile);
+
+		if (!headCommit.equals(lastPublishedCommit)) {
+			List<String> modifiedFiles = getModifiedFiles(lastPublishedCommit, docLocation);
+
+			// build out Zip with these new modified file paths
+			// Logic...
+
+
+
+
+
+
+
+
+			generateLatestCommitFile(headCommit);
+		}
 		else {
-			String lastPublishedCommit = FileUtils.readFileToString(commitFile);
-
-			if (!headCommit.equals(lastPublishedCommit)) {
-				List<String> modifiedFiles = getModifiedFiles(lastPublishedCommit, docLocation);
-
-				// build out Zip with these new modified file paths
-				// Logic...
-
-				
-				
-				
-				
-				
-				
-
-				generateLatestCommitFile(headCommit);
-			}
-			else {
-				System.out.println("There are no new files to publish!");
-				System.exit(0);
-			}
+			System.out.println("There are no new files to publish!");
+			System.exit(0);
 		}
 	}
 
@@ -133,29 +133,13 @@ public class CheckLatestCommitTask {
 			}
 		}
 
-		//Verify this works as expected when finished
 		if (modifiedFiles.isEmpty()) {
 			System.out.println("There are no new files to publish!");
 			System.exit(0);
 		}
 
 		if (!deletedFiles.isEmpty() || !renamedFiles.isEmpty()) {
-
-			PrintWriter writer = new PrintWriter(distDir + "/delete-files.txt", "UTF-8");
-			writer.println("DELETED:\n");
-
-			for (String file : deletedFiles) {
-				writer.println(file);
-			}
-
-			writer.println("");
-			writer.println("\nRENAMED:\n");
-
-			for (Map.Entry<String, String> entry : renamedFiles.entrySet()) {
-				writer.println("Old article to delete: " + entry.getKey() + " (renamed/moved to: " + entry.getValue() + ")");
-			}
-
-			writer.close();
+			writeDeletedTextFile(deletedFiles, renamedFiles);
 		}
 
 		repo.close();
@@ -169,6 +153,26 @@ public class CheckLatestCommitTask {
 		Repository repo = repoBuilder.readEnvironment().findGitDir().build();
 
 		return repo;
+	}
+
+	private static void writeDeletedTextFile(List<String> deletedFiles, HashMap<String, String> renamedFiles)
+			throws IOException {
+
+		PrintWriter writer = new PrintWriter(distDir + "/delete-files.txt", "UTF-8");
+		writer.println("DELETED:\n");
+
+		for (String file : deletedFiles) {
+			writer.println(file);
+		}
+
+		writer.println("");
+		writer.println("\nRENAMED:\n");
+
+		for (Map.Entry<String, String> entry : renamedFiles.entrySet()) {
+			writer.println("Old article to delete: " + entry.getKey() + " (renamed/moved to: " + entry.getValue() + ")");
+		}
+
+		writer.close();
 	}
 
 	private static String distDir;
