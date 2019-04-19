@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
@@ -94,99 +95,46 @@ public class CheckLatestCommitTask {
 				}
 			}
 
-			Set<File> zipMarkdownFiles = new HashSet<File>();
-			Set<File> zipMarkdownFilesWithImageFinal = new HashSet<File>();
-			List<String> filesWithImageString = new ArrayList<String>();
-			List<String> filesWithImagePath = new ArrayList<String>();
-
 			// Unzip dist Zip
-			
 			unzipFile(docDir, zipName);
 			File unzippedDir = new File("../" + docDir + "/" + zipName);
-			//System.exit(0);
 			
 			// Find all MD files in directory
-			zipMarkdownFiles = getMarkdownFiles(unzippedDir);
+			Set<File> zipMarkdownFiles = getMarkdownFiles(unzippedDir);
 			
-			articlesWithModifiedImages
+			
+			Set<String> articlesWithModifiedImages = getArticlesWithModifiedImages(zipMarkdownFiles, modifiedImages, docDir);
 
-			for (String img : modifiedImages) {
+			modifiedArticles.addAll(articlesWithModifiedImages);
+			System.out.println("modifiedArticles: " + modifiedArticles);
+			Set<String> modifiedArticlesAbsolutePaths = new HashSet<String>();
 
-				// Scan directory's MD files for modified/new image
-				Set<File> zipMarkdownFilesWithImage = new HashSet<File>();
-				zipMarkdownFilesWithImage = scanMarkdownForImage(img, zipMarkdownFiles);
-
-				// Add the set of MD files that contain the image to a master set
-				for (File file : zipMarkdownFilesWithImage) {
-					zipMarkdownFilesWithImageFinal.add(file);
-					System.out.println("New image " + img + " found in file " + file.getName());			
-				}
-			}
-
-			// Convert the set of MD files to a list of strings
-			for (File file : zipMarkdownFilesWithImageFinal) {
-				filesWithImageString.add(file.toString());
-			}
-
-			// Convert the list of MD files (the modified images' MD files) to
-			// readable directory paths
-			for (String file : filesWithImageString) {
-				int x = file.indexOf(docDir, file.indexOf(docDir) + 1);
-				int y = x + docDir.length() + 1;
-				String filePath = file.substring(y, file.length());
-				filesWithImagePath.add(filePath);
-			}
-
-			modifiedArticles.addAll(filesWithImagePath);
-
-			Set<String> modifiedMarkdownArticlesFinal = new HashSet<String>();
-
-			// Make sure all dashes are the same, so MD sets are unique
-			for (String article : modifiedArticles) {
-				article = article.replace("\\", "/");
-				modifiedMarkdownArticlesFinal.add(article);
-			}
-
-			Set<File> markdownImages = new HashSet<File>();
-			Set<File> markdownFiles = new HashSet<File>();
-			Set<String> markdownImagesString = new HashSet<String>();
-
-			// Convert list of MD String files to regular files so we can scan for images
-			for (String file : modifiedArticles) {
-				File markdownFile = new File(file);
-				markdownFiles.add(markdownFile);				
+			for (String modifiedArticle : modifiedArticles) {
+				File article = new File(modifiedArticle);
+				String articleAbsPath = article.getCanonicalPath();
+				System.out.println("absPath: " + articleAbsPath);
+				modifiedArticlesAbsolutePaths.add(articleAbsPath);
 			}
 			
 			// Find and add all modified/new MD files' intro file
-			findIntroFiles(markdownFiles, modifiedMarkdownArticlesFinal);
+			Set<String> introFiles = getIntroFiles(modifiedArticlesAbsolutePaths, docDir, docLocation);
+			modifiedArticles.addAll(introFiles);
 
 			// Scan each MD file for remainder of images to include in ZIP file. When
 			// re-importing a new MD file, all of its images must also be re-imported.
-			scanMarkdownForAllImages(markdownFiles, markdownImages);
+			Set<String> markdownImages = scanMarkdownForAllImages(modifiedArticles);
 
-			for (File markdownImage : markdownImages) {
-				markdownImagesString.add(markdownImage.toString());
-			}
-
-			markdownImagesString.addAll(modifiedImages);
-
-			Set<String> markdownImagesFinal = new HashSet<String>();
-
-			// Make sure all dashes are the same, so image sets are unique
-			for (String image : markdownImagesString) {
-				image = image.replace("\\", "/");
-				markdownImagesFinal.add(image);
-			}
+			modifiedImages.addAll(markdownImages);
 
 				try {
 					System.out.println("Creating ../dist/diffs.zip file");
 					FileOutputStream fileOutputStream = new FileOutputStream("dist/diffs.zip");
 					ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream);
 
-					for (String markdown : modifiedMarkdownArticlesFinal) {
+					for (String markdown : modifiedArticles) {
 						addToZipFile(markdown, zipOutputStream);
 					}
-					for (String image : markdownImagesFinal) {
+					for (String image : modifiedImages) {
 						addToZipFile(image, zipOutputStream);
 					}
 
@@ -227,31 +175,91 @@ public class CheckLatestCommitTask {
 		fileInputStream.close();
 	}
 
-private static void findIntroFiles(Set<File> markdownFiles, Set<String> markdownArticlesFinal) {
+private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDir, String docLocation) {
 
-		Set<File> introFiles = new HashSet<File>();
+	Set<String> fileList = new HashSet<String>();
+	
+	for (String markdownFile: markdownFiles) {
 
-		for (File file : markdownFiles) {
-			if (!file.toString().contains("intro.markdown") ||
-					!file.toString().contains("introduction.markdown")) {
+		docLocation = docLocation.replace("/", File.separator);
+		
+		// docLocation replicated twice for currently unknown reason. Fix that here.
+		markdownFile = markdownFile.replace(docLocation + File.separator + "articles", "articles");
+		
+		File article = new File(markdownFile);
+		File parentDir = article.getParentFile();
+
+		boolean containsIntro = true;
+
+		while (containsIntro) {
+			
+			File[] parentFiles = parentDir.listFiles();
+
+			System.out.println("parentFiles: " + parentFiles);
+			
+			containsIntro = false;
+
+			for (File file : parentFiles) {
+				if (file.getName().endsWith("introduction.markdown") ||
+						file.getName().endsWith("intro.markdown")) {
+
+					fileList.add(file.toString());
+					System.out.println("Test Z");
+					containsIntro = true;
+				}
+			}
+
+			parentDir = parentDir.getParentFile();
+		}
+	}
+	
+	return fileList;
+	
+	/**
+	Set<String> introFiles = new HashSet<String>();
+
+		for (String markdownFile : markdownFiles) {
+			if (!markdownFile.contains("intro.markdown") ||
+					!markdownFile.contains("introduction.markdown")) {
+
+				File file = new File(markdownFile);
+				
+				System.out.println("file: " + file.toString());
 
 				File parentDir = file.getParentFile();
+				
+				
 				File[] dirIntroFiles = parentDir.listFiles(new FilenameFilter() {
 					public boolean accept(File dir, String name) {
 						return name.equals("intro.markdown") ||
 								name.equals("introduction.markdown");
 					}
-				});
-
-				for (File introFile : dirIntroFiles) {
-					introFiles.add(introFile);
+				});**/
+				/**
+				File[] parentDirFiles = parentDir.listFiles();
+				Set<File> dirIntroFiles = new HashSet<File>();
+				
+				System.out.println("parentDirFiles: " + parentDirFiles);
+				
+				System.out.println("Test2");
+				for (File dirIntroFile : parentDirFiles) {
+					if (dirIntroFile.toString().equals("intro.markdown") ||
+					dirIntroFile.toString().equals("introduction.markdown")) {
+						dirIntroFiles.add(dirIntroFile);
+					}
 				}
+
+				System.out.println("dirIntroFiles: " + dirIntroFiles);
+				
+				System.out.println("Test3");
+				for (File introFile : dirIntroFiles) {
+					introFiles.add(introFile.toString());
+				}
+				System.out.println("Test4");
 			}
 		}
 
-		for (File intro : introFiles) {
-			markdownArticlesFinal.add(intro.toString().replace("\\", "/"));
-		}
+		return introFiles;**/
 	}
 
 	private static Set<File> getMarkdownFiles(File dir) {
@@ -289,7 +297,33 @@ private static void findIntroFiles(Set<File> markdownFiles, Set<String> markdown
 		writer.close();
 	}
 	
-	private static List<String> getArticlesWithModifiedImages {
+	private static Set<String> getArticlesWithModifiedImages(Set<File> zipMarkdownFiles, Set<String> modifiedImages, String docDir) {
+
+		Set<File> zipMarkdownFilesWithImageFinal = new HashSet<File>();
+		Set<String> filesWithImagePath = new HashSet<String>();
+
+		for (String img : modifiedImages) {
+
+			// Scan directory's MD files for modified/new image
+			Set<File> zipMarkdownFilesWithImage = scanMarkdownForImage(img, zipMarkdownFiles);
+
+			// Add the set of MD files that contain the image to a master set
+			for (File file : zipMarkdownFilesWithImage) {
+				zipMarkdownFilesWithImageFinal.add(file);
+				System.out.println("New image " + img + " found in file " + file.getName());			
+			}
+		}
+
+		// Convert the list of MD files (the modified images' MD files) to
+		// readable directory paths
+		for (File file : zipMarkdownFilesWithImageFinal) {
+			int x = file.toString().indexOf(docDir, file.toString().indexOf(docDir) + 1);
+			int y = x + docDir.length() + 1;
+			String filePath = file.toString().substring(y, file.toString().length());
+			filesWithImagePath.add(filePath);
+		}
+
+		return filesWithImagePath;
 		
 	}
 
@@ -366,10 +400,16 @@ private static void findIntroFiles(Set<File> markdownFiles, Set<String> markdown
 		return repo;
 	}
 
-	private static void scanMarkdownForAllImages(Set<File> modifiedMarkdownFiles, Set<File> markdownImages) {
-		for (File file : modifiedMarkdownFiles) {
+	private static Set<String> scanMarkdownForAllImages(Set<String> modifiedArticles) {
+		
+		Set<File> markdownImages = new HashSet<File>();
+		Set<String> markdownImagesString = new HashSet<String>();
+
+		for (String modifiedArticle : modifiedArticles) {
 
 			Scanner scanner = null;
+			File file = new File(modifiedArticle);
+			
 			try {
 				scanner = new Scanner(file);
 
@@ -398,13 +438,19 @@ private static void findIntroFiles(Set<File> markdownFiles, Set<String> markdown
 				e.printStackTrace();
 			}
 		}
+		
+		for (File markdownImage : markdownImages) {
+			markdownImagesString.add(markdownImage.toString());
+		}
+
+		return markdownImagesString;
 	}
 
-	private static Set<File> scanMarkdownForImage(String img, Set<File> chFiles) {
+	private static Set<File> scanMarkdownForImage(String img, Set<File> files) {
 
 		Set<File> filesWithImage = new HashSet<File>();
 
-		for (File file : chFiles) {
+		for (File file : files) {
 
 			Scanner scanner = null;
 			try {
@@ -432,7 +478,7 @@ private static void findIntroFiles(Set<File> markdownFiles, Set<String> markdown
 		byte[] buffer = new byte[1024];
 		int bytesRead = 0;
 		
-		System.out.println("Test");
+		//System.out.println("Test");
 
 		File zipFile = new File("../" + docDir + "/" + zipName + ".zip");
 		File destinationDir = new File("../" + docDir + "/" + zipName);
