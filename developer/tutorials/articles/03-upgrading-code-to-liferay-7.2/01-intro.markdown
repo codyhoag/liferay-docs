@@ -6,7 +6,7 @@ section.
 
 Here are the code upgrade steps:
 
-1.  [Upgrade Your Development Environment](/docs/tutorials/7-2/-/knowledge_base/t/upgrading-your-development-environment)
+1.  {requiredProperties='currentProjectLocation'}[Upgrade Your Development Environment](/docs/tutorials/7-2/-/knowledge_base/t/upgrading-your-development-environment)
 
     Legacy project environments should be upgraded to the latest version of
     Liferay Workspace to ensure you leverage all available features.
