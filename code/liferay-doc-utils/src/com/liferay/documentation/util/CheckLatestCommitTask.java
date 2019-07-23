@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
@@ -45,6 +44,8 @@ public class CheckLatestCommitTask {
 		String fullZipParam = args[3];
 		boolean fullZip = Boolean.parseBoolean(fullZipParam);
 		String zipName = args[4];
+		String dxpParam = args[5];
+		boolean dxp = Boolean.parseBoolean(dxpParam);
 
 		if (fullZip) {
 			System.exit(0);
@@ -71,7 +72,7 @@ public class CheckLatestCommitTask {
 		String lastPublishedCommit = FileUtils.readFileToString(commitFile);
 
 		if (!headCommit.equals(lastPublishedCommit)) {
-			List<String> modifiedFiles = getModifiedFiles(lastPublishedCommit, docLocation);
+			List<String> modifiedFiles = getModifiedFiles(lastPublishedCommit, docLocation, docDir, dxp);
 
 			// build out Zip with these new modified file paths
 			// Logic...
@@ -99,43 +100,38 @@ public class CheckLatestCommitTask {
 			unzipFile(docDir, zipName);
 			File unzippedDir = new File("../" + docDir + "/" + zipName);
 			
-			// Find all MD files in directory
-			Set<File> zipMarkdownFiles = getMarkdownFiles(unzippedDir);
+			// Find all MD and image files in directory
+			Set<File> allZipArticles = getMarkdownFiles(unzippedDir);
+			Set<File> allZipImages = getImageFiles(unzippedDir);
 			
+			//map modified files to zip files
+			Set<String> modifiedZipArticles = mapModFilesToZipFiles(modifiedArticles, allZipArticles, "articles");
+			Set<String> modifiedZipImages = mapModFilesToZipFiles(modifiedImages, allZipImages, "images");
 			
-			Set<String> articlesWithModifiedImages = getArticlesWithModifiedImages(zipMarkdownFiles, modifiedImages, docDir);
+			Set<String> articlesWithModifiedImages = getArticlesWithModifiedImages(allZipArticles, modifiedZipImages, docDir);
 
-			modifiedArticles.addAll(articlesWithModifiedImages);
-			System.out.println("modifiedArticles: " + modifiedArticles);
-			Set<String> modifiedArticlesAbsolutePaths = new HashSet<String>();
-
-			for (String modifiedArticle : modifiedArticles) {
-				File article = new File(modifiedArticle);
-				String articleAbsPath = article.getCanonicalPath();
-				System.out.println("absPath: " + articleAbsPath);
-				modifiedArticlesAbsolutePaths.add(articleAbsPath);
-			}
+			modifiedZipArticles.addAll(articlesWithModifiedImages);
 			
 			// Find and add all modified/new MD files' intro file
-			Set<String> introFiles = getIntroFiles(modifiedArticlesAbsolutePaths, docDir, docLocation);
-			modifiedArticles.addAll(introFiles);
+			Set<String> introFiles = getIntroFiles(modifiedZipArticles, docDir, docLocation);
+			modifiedZipArticles.addAll(introFiles);
 
 			// Scan each MD file for remainder of images to include in ZIP file. When
 			// re-importing a new MD file, all of its images must also be re-imported.
-			Set<String> markdownImages = scanMarkdownForAllImages(modifiedArticles);
+			Set<String> markdownImages = scanMarkdownForAllImages(modifiedZipArticles);
 
-			modifiedImages.addAll(markdownImages);
+			modifiedZipImages.addAll(markdownImages);
 
 				try {
 					System.out.println("Creating ../dist/diffs.zip file");
 					FileOutputStream fileOutputStream = new FileOutputStream("dist/diffs.zip");
 					ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream);
 
-					for (String markdown : modifiedArticles) {
-						addToZipFile(markdown, zipOutputStream);
+					for (String markdown : modifiedZipArticles) {
+						addToZipFile(markdown, docDir, zipOutputStream);
 					}
-					for (String image : modifiedImages) {
-						addToZipFile(image, zipOutputStream);
+					for (String image : modifiedZipImages) {
+						addToZipFile(image, docDir, zipOutputStream);
 					}
 
 					zipOutputStream.close();
@@ -155,8 +151,14 @@ public class CheckLatestCommitTask {
 		}
 	}
 
-	private static void addToZipFile(String modFile, ZipOutputStream zipOutputStream)
+	private static void addToZipFile(String modFile, String docDir, ZipOutputStream zipOutputStream)
 			throws FileNotFoundException, IOException {
+
+		String uniformDistDir = distDir.replaceAll("/", Matcher.quoteReplacement(File.separator));
+
+		int folderIndex = modFile.indexOf(uniformDistDir) + uniformDistDir.length() + 1;
+		int begIndex = modFile.indexOf(File.separator, folderIndex) + 1;
+		modFile = modFile.substring(begIndex, modFile.length());
 
 		System.out.println("Adding " + modFile + " to zip file");
 
@@ -179,12 +181,8 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 
 	Set<String> fileList = new HashSet<String>();
 	
-	for (String markdownFile: markdownFiles) {
+	for (String markdownFile : markdownFiles) {
 
-		docLocation = docLocation.replace("/", File.separator);
-		
-		// docLocation replicated twice for currently unknown reason. Fix that here.
-		markdownFile = markdownFile.replace(docLocation + File.separator + "articles", "articles");
 		
 		File article = new File(markdownFile);
 		File parentDir = article.getParentFile();
@@ -195,8 +193,6 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 			
 			File[] parentFiles = parentDir.listFiles();
 
-			System.out.println("parentFiles: " + parentFiles);
-			
 			containsIntro = false;
 
 			for (File file : parentFiles) {
@@ -204,7 +200,6 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 						file.getName().endsWith("intro.markdown")) {
 
 					fileList.add(file.toString());
-					System.out.println("Test Z");
 					containsIntro = true;
 				}
 			}
@@ -299,31 +294,20 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 	
 	private static Set<String> getArticlesWithModifiedImages(Set<File> zipMarkdownFiles, Set<String> modifiedImages, String docDir) {
 
-		Set<File> zipMarkdownFilesWithImageFinal = new HashSet<File>();
-		Set<String> filesWithImagePath = new HashSet<String>();
+		Set<String> zipMarkdownFilesWithImageFinal = new HashSet<String>();
 
-		for (String img : modifiedImages) {
+		for (String imgPath : modifiedImages) {
 
 			// Scan directory's MD files for modified/new image
-			Set<File> zipMarkdownFilesWithImage = scanMarkdownForImage(img, zipMarkdownFiles);
+			Set<File> zipMarkdownFilesWithImage = scanMarkdownForImage(imgPath, zipMarkdownFiles);
 
 			// Add the set of MD files that contain the image to a master set
 			for (File file : zipMarkdownFilesWithImage) {
-				zipMarkdownFilesWithImageFinal.add(file);
-				System.out.println("New image " + img + " found in file " + file.getName());			
+				zipMarkdownFilesWithImageFinal.add(file.toString());
 			}
 		}
 
-		// Convert the list of MD files (the modified images' MD files) to
-		// readable directory paths
-		for (File file : zipMarkdownFilesWithImageFinal) {
-			int x = file.toString().indexOf(docDir, file.toString().indexOf(docDir) + 1);
-			int y = x + docDir.length() + 1;
-			String filePath = file.toString().substring(y, file.toString().length());
-			filesWithImagePath.add(filePath);
-		}
-
-		return filesWithImagePath;
+		return zipMarkdownFilesWithImageFinal;
 		
 	}
 
@@ -337,7 +321,22 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
         return headCommit;
 	}
 
-	private static List<String> getModifiedFiles(String commit, String docLocation)
+	private static Set<File> getImageFiles(File dir) {
+
+		Set<File> imageFiles = new HashSet<File>();
+		File imageDir = new File(dir.getAbsolutePath() + "/images");
+		File[] images = (File[])ArrayUtils.addAll(imageDir.listFiles());
+		
+		for (File img : images) {
+			if (img.toString().endsWith(".png") || img.toString().endsWith(".jpg")) {
+				imageFiles.add(img);
+			}
+		}
+
+		return imageFiles;
+	}
+
+	private static List<String> getModifiedFiles(String commit, String docLocation, String docDir, boolean dxp)
 			throws IOException {
 
 		Repository repo = openGitRepository();
@@ -365,7 +364,13 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 
 			if (entry.getNewPath().startsWith(docLocation)) {
 
-				if (entry.getChangeType().toString().equals("RENAME")) {
+				if (!dxp && 
+						(entry.getNewPath().contains("articles-dxp") ||
+						entry.getNewPath().contains("images-dxp"))) {
+				continue;
+				}
+				
+				else if (entry.getChangeType().toString().equals("RENAME")) {
 					renamedFiles.put(entry.getOldPath(), entry.getNewPath());
 				}
 				else {
@@ -392,6 +397,32 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		return modifiedFiles;
 	}
 
+	private static Set<String> mapModFilesToZipFiles(Set<String> modifiedFiles, Set<File> zipFiles, String fileType) {
+		
+		// Zip:
+		// .\dist\lp-ce-7.1-discover-portal\articles\210-setting-up\08-custom-fields.markdown
+		
+		// modified
+		// discover/portal/articles/210-setting-up/08-custom-fields.markdown
+		
+		File zipFile = (File) zipFiles.toArray()[0];
+		String zipFileString = zipFile.toString();
+		int endIndex = zipFileString.indexOf(fileType + File.separator);
+		String zipPrePath = zipFileString.substring(0, endIndex);
+		
+		Set<String> convertedFiles = new HashSet<String>();
+		
+		for (String modifiedFile : modifiedFiles) {
+			int begIndex = modifiedFile.indexOf("/" + fileType) + 1;
+			String partialPath = modifiedFile.substring(begIndex, modifiedFile.length());
+			String uniformPath = partialPath.replaceAll("/", Matcher.quoteReplacement(File.separator));
+
+			convertedFiles.add(zipPrePath + uniformPath);
+		}
+
+		return convertedFiles;
+	}
+	
 	private static Repository openGitRepository() throws IOException {
 
 		FileRepositoryBuilder repoBuilder = new FileRepositoryBuilder();
@@ -404,6 +435,11 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		
 		Set<File> markdownImages = new HashSet<File>();
 		Set<String> markdownImagesString = new HashSet<String>();
+		
+		String zipFile = (String) modifiedArticles.toArray()[0];
+
+		int endIndex = zipFile.indexOf("articles" + File.separator);
+		String zipPrePath = zipFile.substring(0, endIndex);
 
 		for (String modifiedArticle : modifiedArticles) {
 
@@ -416,7 +452,7 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 				while (scanner.hasNextLine()) {
 					String lineFromFile = scanner.nextLine();
 
-					if (lineFromFile.contains(".png")) { 
+					if (lineFromFile.contains(".png")) {
 						int w = lineFromFile.indexOf(".png");
 						int x = w + 4;
 						int y = lineFromFile.indexOf("../../images");
@@ -440,13 +476,16 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		}
 		
 		for (File markdownImage : markdownImages) {
-			markdownImagesString.add(markdownImage.toString());
+			markdownImagesString.add(zipPrePath + markdownImage.toString());
 		}
 
 		return markdownImagesString;
 	}
 
-	private static Set<File> scanMarkdownForImage(String img, Set<File> files) {
+	private static Set<File> scanMarkdownForImage(String imgPath, Set<File> files) {
+
+		int imgStart = imgPath.lastIndexOf(File.separator) + 1;
+		String img = imgPath.substring(imgStart, imgPath.length());
 
 		Set<File> filesWithImage = new HashSet<File>();
 
@@ -461,6 +500,7 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 
 					if (lineFromFile.contains(img)) { 
 						filesWithImage.add(file);
+						System.out.println("New image " + img + " found in file " + file.getName());
 					}
 				}
 			}
@@ -477,8 +517,6 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 
 		byte[] buffer = new byte[1024];
 		int bytesRead = 0;
-		
-		//System.out.println("Test");
 
 		File zipFile = new File("../" + docDir + "/" + zipName + ".zip");
 		File destinationDir = new File("../" + docDir + "/" + zipName);
