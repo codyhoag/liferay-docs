@@ -41,15 +41,9 @@ public class CheckLatestCommitTask {
 		String docDir = args[0];
 		String docLocation = args[1];
 		distDir = args[2];
-		String fullZipParam = args[3];
-		boolean fullZip = Boolean.parseBoolean(fullZipParam);
-		String zipName = args[4];
-		String dxpParam = args[5];
+		String zipName = args[3];
+		String dxpParam = args[4];
 		boolean dxp = Boolean.parseBoolean(dxpParam);
-
-		if (fullZip) {
-			System.exit(0);
-		}
 
 		File dir = new File("../" + docDir);
 		String absDir = dir.getAbsolutePath();
@@ -158,13 +152,13 @@ public class CheckLatestCommitTask {
 
 		int folderIndex = modFile.indexOf(uniformDistDir) + uniformDistDir.length() + 1;
 		int begIndex = modFile.indexOf(File.separator, folderIndex) + 1;
-		modFile = modFile.substring(begIndex, modFile.length());
+		String destModFile = modFile.substring(begIndex, modFile.length());
 
-		System.out.println("Adding " + modFile + " to zip file");
+		System.out.println("Adding " + destModFile + " to zip file");
 
 		File file = new File(modFile);
 		FileInputStream fileInputStream = new FileInputStream(file);
-		ZipEntry zipEntry = new ZipEntry(modFile);
+		ZipEntry zipEntry = new ZipEntry(destModFile);
 		zipOutputStream.putNextEntry(zipEntry);
 
 		byte[] bytes = new byte[1024];
@@ -362,19 +356,29 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 
 		for (DiffEntry entry : entries) {
 
-			if (entry.getNewPath().startsWith(docLocation)) {
+			String entryPath = entry.getNewPath();
+			
+			if (entryPath.startsWith(docLocation)) {
 
 				if (!dxp && 
-						(entry.getNewPath().contains("articles-dxp") ||
-						entry.getNewPath().contains("images-dxp"))) {
-				continue;
+						(entryPath.contains("/articles-dxp/") ||
+						entryPath.contains("/images-dxp/"))) {
+					continue;
 				}
 				
-				else if (entry.getChangeType().toString().equals("RENAME")) {
-					renamedFiles.put(entry.getOldPath(), entry.getNewPath());
+				if (dxp && entryPath.contains("/articles-dxp/")) {
+					entryPath = entryPath.replace("/articles-dxp/", "/articles/");
+				}
+
+				if (dxp && entryPath.contains("/images-dxp/")) {
+					entryPath = entryPath.replace("/images-dxp/", "/images/");
+				}
+				
+				if (entry.getChangeType().toString().equals("RENAME")) {
+					renamedFiles.put(entry.getOldPath(), entryPath);
 				}
 				else {
-					modifiedFiles.add(entry.getNewPath());
+					modifiedFiles.add(entryPath);
 				}
 			}
 			else if (entry.getOldPath().startsWith(docLocation) &&
@@ -455,13 +459,13 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 					if (lineFromFile.contains(".png")) {
 						int w = lineFromFile.indexOf(".png");
 						int x = w + 4;
-						int y = lineFromFile.indexOf("../../images");
+						int y = lineFromFile.indexOf("../images");
 
 						if (y < 0) {
 							continue;
 						}
 
-						int z = y + 6;
+						int z = y + 3;
 						String img = lineFromFile.substring(z, x);
 
 						File markdownImage = new File(img);

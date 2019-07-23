@@ -184,8 +184,24 @@
 			<arg value="${doc.dir}"/>
 			<arg value="${purpose.dir}/${doc.dir}"/>
 			<arg value="${dist.dir}"/>
-			<arg value="false"/>
 			<arg value="${dist.dir}/${product.abbrev}-${product.community}-${product.version}-${purpose.dir}-${doc.dir}"/>
+			<arg value="false"/>
+		</java>
+	</target>
+
+	<target name="git-dist-dxp" description="Generates files from differing commits.">
+		<property file="${project.dir}/release-site.properties" />
+		<java
+			classname="com.liferay.documentation.util.CheckLatestCommitTask"
+			classpathref="project.classpath"
+			failonerror="true"
+			fork="true"
+		>
+			<arg value="${doc.dir}"/>
+			<arg value="${purpose.dir}/${doc.dir}"/>
+			<arg value="${dist.dir}"/>
+			<arg value="${dist.dir}/${product.abbrev}-${product.enterprise}-${product.version}-${purpose.dir}-${doc.dir}"/>
+			<arg value="true"/>
 		</java>
 	</target>
 	
