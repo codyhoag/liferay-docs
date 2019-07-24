@@ -396,7 +396,7 @@
 		</convertsidebars>
 	</target>
 
-	<target name="dist-diff-ce" description="Generates files from differing commits based on CE content.">
+	<target name="dist-diff-ce" depends="dist-ce" description="Generates files from differing commits based on CE content.">
 		<property file="${project.dir}/release-site.properties" />
 		<distdiff
 			docdir="${doc.dir}"
@@ -406,9 +406,11 @@
 			dxpparam="false"
 		>
 		</distdiff>
+
+		<delete dir="${dist.dir}/${product.abbrev}-${product.community}-${product.version}-${purpose.dir}-${doc.dir}"/>
 	</target>
 
-	<target name="dist-diff-dxp" description="Generates files from differing commits based on CE and DXP content.">
+	<target name="dist-diff-dxp" depends="dist-dxp" description="Generates files from differing commits based on CE and DXP content.">
 		<property file="${project.dir}/release-site.properties" />
 		<distdiff
 			docdir="${doc.dir}"
@@ -418,6 +420,8 @@
 			dxpparam="true"
 		>
 		</distdiff>
+
+		<delete dir="${dist.dir}/${product.abbrev}-${product.enterprise}-${product.version}-${purpose.dir}-${doc.dir}"/>
 	</target>
 
 	<target name="dist-article-ce" depends="clean-temp, add-article-to-temp, dist-temp" description="Creates a ZIP file for importing the specified article (-Darticle=...), its images, and supporting structure to a Knowledge Base.">

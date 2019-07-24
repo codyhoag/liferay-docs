@@ -125,9 +125,11 @@ public class CheckLatestCommitTask extends Task {
 
 			modifiedZipImages.addAll(markdownImages);
 
+			String metadataFile = zipPrePath + ".METADATA";
+
 				try {
-					System.out.println("Creating ../dist/diffs.zip file");
-					FileOutputStream fileOutputStream = new FileOutputStream("dist/diffs.zip");
+					System.out.println("Creating" + zipName + "-diffs-only.zip");
+					FileOutputStream fileOutputStream = new FileOutputStream(zipName + "-diffs-only.zip");
 					ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream);
 
 					for (String markdown : modifiedZipArticles) {
@@ -136,6 +138,8 @@ public class CheckLatestCommitTask extends Task {
 					for (String image : modifiedZipImages) {
 						addToZipFile(image, zipOutputStream, distDir);
 					}
+
+					addToZipFile(metadataFile, zipOutputStream, distDir);
 
 					zipOutputStream.close();
 					fileOutputStream.close();
@@ -471,7 +475,7 @@ public class CheckLatestCommitTask extends Task {
 		File zipFile = (File) zipFiles.toArray()[0];
 		String zipFileString = zipFile.toString();
 		int endIndex = zipFileString.indexOf(fileType + File.separator);
-		String zipPrePath = zipFileString.substring(0, endIndex);
+		zipPrePath = zipFileString.substring(0, endIndex);
 		
 		Set<String> convertedFiles = new HashSet<String>();
 		
@@ -671,6 +675,8 @@ public class CheckLatestCommitTask extends Task {
 
 		writer.close();
 	}
+
+	private static String zipPrePath;
 
 	private String _distDir;
 	private String _docDir;
