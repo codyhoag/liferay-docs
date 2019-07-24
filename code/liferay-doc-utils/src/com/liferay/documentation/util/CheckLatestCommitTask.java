@@ -23,6 +23,8 @@ import java.util.zip.ZipOutputStream;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.tools.ant.BuildException;
+import org.apache.tools.ant.Task;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.diff.DiffEntry;
 import org.eclipse.jgit.diff.DiffFormatter;
@@ -34,21 +36,31 @@ import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import org.eclipse.jgit.treewalk.CanonicalTreeParser;
 import org.eclipse.jgit.util.io.DisabledOutputStream;
 
-public class CheckLatestCommitTask {
+/**
+ * Finds the changed files (added, deleted, modified, and renamed) that occurred
+ * since the last publication date. This is done by comparing two Git commits
+ * and finding what changed between them. These files are gathered in a Zip file
+ * and formatted for publication to Liferay's Knowledge Base portlet.
+ *
+ * @author Cody Hoag
+ */
+public class CheckLatestCommitTask extends Task {
 
-	public static void main(String[] args) throws IOException {
+	@Override
+	public void execute() throws BuildException {
 
-		String docDir = args[0];
-		String docLocation = args[1];
-		distDir = args[2];
-		String zipName = args[3];
-		String dxpParam = args[4];
+		String docDir = _docDir;
+		String docLocation = _docLocation;
+		String distDir = _distDir;
+		String zipName = _zipName;
+		String dxpParam = _dxpParam;
 		boolean dxp = Boolean.parseBoolean(dxpParam);
 
 		File dir = new File("../" + docDir);
 		String absDir = dir.getAbsolutePath();
 		File commitFile = new File(absDir + "/last-publication-commit.txt");
 
+		try {
 		String headCommit = getHeadCommit();
 
 		// Create new metadata file with current HEAD commit, if one doesn't exist.
@@ -66,13 +78,9 @@ public class CheckLatestCommitTask {
 		String lastPublishedCommit = FileUtils.readFileToString(commitFile);
 
 		if (!headCommit.equals(lastPublishedCommit)) {
-			List<String> modifiedFiles = getModifiedFiles(lastPublishedCommit, docLocation, docDir, dxp);
+			List<String> modifiedFiles = getModifiedFiles(lastPublishedCommit, docLocation, docDir, distDir, dxp);
 
 			// build out Zip with these new modified file paths
-			// Logic...
-
-
-/////////////////////
 
 			Set<String> modifiedImages = new HashSet<String>();
 			Set<String> modifiedArticles = new HashSet<String>();
@@ -98,7 +106,7 @@ public class CheckLatestCommitTask {
 			Set<File> allZipArticles = getMarkdownFiles(unzippedDir);
 			Set<File> allZipImages = getImageFiles(unzippedDir);
 			
-			//map modified files to zip files
+			// Convert modified file paths to consistent paths pointing to dist zip files
 			Set<String> modifiedZipArticles = mapModFilesToZipFiles(modifiedArticles, allZipArticles, "articles");
 			Set<String> modifiedZipImages = mapModFilesToZipFiles(modifiedImages, allZipImages, "images");
 			
@@ -106,8 +114,9 @@ public class CheckLatestCommitTask {
 
 			modifiedZipArticles.addAll(articlesWithModifiedImages);
 			
-			// Find and add all modified/new MD files' intro file
-			Set<String> introFiles = getIntroFiles(modifiedZipArticles, docDir, docLocation);
+			// Find and add all modified/new MD files' intro file. A modified file must
+			// be accompanied with hierarchy of parent intros to import correctly.
+			Set<String> introFiles = getIntroFiles(modifiedZipArticles);
 			modifiedZipArticles.addAll(introFiles);
 
 			// Scan each MD file for remainder of images to include in ZIP file. When
@@ -122,10 +131,10 @@ public class CheckLatestCommitTask {
 					ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream);
 
 					for (String markdown : modifiedZipArticles) {
-						addToZipFile(markdown, docDir, zipOutputStream);
+						addToZipFile(markdown, zipOutputStream, distDir);
 					}
 					for (String image : modifiedZipImages) {
-						addToZipFile(image, docDir, zipOutputStream);
+						addToZipFile(image, zipOutputStream, distDir);
 					}
 
 					zipOutputStream.close();
@@ -135,17 +144,47 @@ public class CheckLatestCommitTask {
 					e.printStackTrace();
 				}
 
-/////////////////////
-
 			generateLatestCommitFile(headCommit);
 		}
 		else {
 			System.out.println("There are no new files to publish!");
 			System.exit(0);
 		}
+		} catch (IOException e) {
+			throw new BuildException(e.getLocalizedMessage());
+		}
 	}
 
-	private static void addToZipFile(String modFile, String docDir, ZipOutputStream zipOutputStream)
+	public void setDocDir(String docDir) {
+		_docDir = docDir;
+	}
+
+	public void setDocLocation(String docLocation) {
+		_docLocation = docLocation;
+	}
+
+	public void setDxpParam(String dxpParam) {
+		_dxpParam = dxpParam;
+	}
+
+	public void setDistDir(String distDir) {
+		_distDir = distDir;
+	}
+
+	public void setZipName(String zipName) {
+		_zipName = zipName;
+	}
+
+	/**
+	 * Adds the modified file to a distributable Zip file.
+	 *
+	 * @param  modFile the modified file
+	 * @param  zipOutputStream the output stream used to add files to the Zip
+	 * @param  distDir the folder where the Zip is generated (e.g., {@code dist})
+	 * @throws FileNotFoundException if the modified file was not found
+	 * @throws IOException if an IO exception occurred
+	 */
+	private static void addToZipFile(String modFile, ZipOutputStream zipOutputStream, String distDir)
 			throws FileNotFoundException, IOException {
 
 		String uniformDistDir = distDir.replaceAll("/", Matcher.quoteReplacement(File.separator));
@@ -171,7 +210,13 @@ public class CheckLatestCommitTask {
 		fileInputStream.close();
 	}
 
-private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDir, String docLocation) {
+	/**
+	 * Returns the parent intro articles for the given Markdown files.
+	 *
+	 * @param markdownFiles the Markdown files to find intros for
+	 * @return the parent intro articles
+	 */
+	private static Set<String> getIntroFiles(Set<String> markdownFiles) {
 
 	Set<String> fileList = new HashSet<String>();
 	
@@ -202,55 +247,15 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		}
 	}
 	
-	return fileList;
-	
-	/**
-	Set<String> introFiles = new HashSet<String>();
-
-		for (String markdownFile : markdownFiles) {
-			if (!markdownFile.contains("intro.markdown") ||
-					!markdownFile.contains("introduction.markdown")) {
-
-				File file = new File(markdownFile);
-				
-				System.out.println("file: " + file.toString());
-
-				File parentDir = file.getParentFile();
-				
-				
-				File[] dirIntroFiles = parentDir.listFiles(new FilenameFilter() {
-					public boolean accept(File dir, String name) {
-						return name.equals("intro.markdown") ||
-								name.equals("introduction.markdown");
-					}
-				});**/
-				/**
-				File[] parentDirFiles = parentDir.listFiles();
-				Set<File> dirIntroFiles = new HashSet<File>();
-				
-				System.out.println("parentDirFiles: " + parentDirFiles);
-				
-				System.out.println("Test2");
-				for (File dirIntroFile : parentDirFiles) {
-					if (dirIntroFile.toString().equals("intro.markdown") ||
-					dirIntroFile.toString().equals("introduction.markdown")) {
-						dirIntroFiles.add(dirIntroFile);
-					}
-				}
-
-				System.out.println("dirIntroFiles: " + dirIntroFiles);
-				
-				System.out.println("Test3");
-				for (File introFile : dirIntroFiles) {
-					introFiles.add(introFile.toString());
-				}
-				System.out.println("Test4");
-			}
-		}
-
-		return introFiles;**/
+		return fileList;
 	}
 
+	/**
+	 * Returns all the Markdown files in the given folder.
+	 *
+	 * @param  dir the folder in which to find Markdown files
+	 * @return the Markdown files
+	 */
 	private static Set<File> getMarkdownFiles(File dir) {
 
 		Set<File> chFiles = new HashSet<File>();
@@ -278,6 +283,14 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		return chFiles;
 	}
 
+	/**
+	 * Writes the provided head Git commit number to a {@code .txt} file stored
+	 * in the {@code docDir}. This is referenced every time the associated Ant
+	 * target is executed, serving as the last published Git commit.
+	 *
+	 * @param headCommit   the head commit on the current Git branch
+	 * @throws IOException if an IO exception occurred
+	 */
 	private static void generateLatestCommitFile(String headCommit)
 			throws IOException {
 
@@ -285,7 +298,15 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		writer.print(headCommit);
 		writer.close();
 	}
-	
+
+	/**
+	 * Returns the Markdown articles containing the given modified images.
+	 *
+	 * @param  zipMarkdownFiles the articles to scan for modified images
+	 * @param  modifiedImages the modified images to search for
+	 * @param  docDir the file's parent folder (e.g., {@code tutorials})
+	 * @return the Markdown articles containing the given modified images
+	 */
 	private static Set<String> getArticlesWithModifiedImages(Set<File> zipMarkdownFiles, Set<String> modifiedImages, String docDir) {
 
 		Set<String> zipMarkdownFilesWithImageFinal = new HashSet<String>();
@@ -305,6 +326,13 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		
 	}
 
+	/**
+	 * Returns the most current Git commit associated with the current
+	 * Git repository.
+	 *
+	 * @return the most current Git commit
+	 * @throws IOException if an IO exception occurred
+	 */
 	private static String getHeadCommit() throws IOException {
 
 		Repository repo = openGitRepository();
@@ -315,6 +343,12 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
         return headCommit;
 	}
 
+	/**
+	 * Returns all the images residing in the given folder.
+	 *
+	 * @param  dir the folder to grab images from
+	 * @return the images residing in the given folder
+	 */
 	private static Set<File> getImageFiles(File dir) {
 
 		Set<File> imageFiles = new HashSet<File>();
@@ -330,7 +364,20 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		return imageFiles;
 	}
 
-	private static List<String> getModifiedFiles(String commit, String docLocation, String docDir, boolean dxp)
+	/**
+	 * Returns the files that were modified since the last published Git commit.
+	 *
+	 * @param  commit the last published Git commit
+	 * @param  docLocation the folder path following {@code liferay-docs} (e.g,
+	 *         {@code develop/tutorials}
+	 * @param  docDir the parent folder of where the Ant task was executed (e.g.,
+	 *         {@code tutorials})
+	 * @param  distDir the folder where the Zip is generated (e.g., {@code dist})
+	 * @param  dxp whether to include DXP-only modified files
+	 * @return the files that were modified since the last published Git commit
+	 * @throws IOException if an IO exception occurred
+	 */
+	private static List<String> getModifiedFiles(String commit, String docLocation, String docDir, String distDir, boolean dxp)
 			throws IOException {
 
 		Repository repo = openGitRepository();
@@ -393,7 +440,7 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		}
 
 		if (!deletedFiles.isEmpty() || !renamedFiles.isEmpty()) {
-			writeDeletedTextFile(deletedFiles, renamedFiles);
+			writeDeletedTextFile(deletedFiles, renamedFiles, distDir);
 		}
 
 		repo.close();
@@ -401,6 +448,18 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		return modifiedFiles;
 	}
 
+	/**
+	 * Converts the modified file paths as they're stored in the Github repo to
+	 * the regular distributable Zip's file path. This ensures that the articles
+	 * have been overwritten with their DXP counterparts and/or the tokens have
+	 * been applied.
+	 *
+	 * @param  modifiedFiles the modified files to convert
+	 * @param  zipFiles the Zip files, which are used solely to extract its
+	 *         general path
+	 * @param  fileType the file type (article or image)
+	 * @return the converted file paths
+	 */
 	private static Set<String> mapModFilesToZipFiles(Set<String> modifiedFiles, Set<File> zipFiles, String fileType) {
 		
 		// Zip:
@@ -426,7 +485,13 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 
 		return convertedFiles;
 	}
-	
+
+	/**
+	 * Opens the Git repository connection.
+	 *
+	 * @return the Git repository
+	 * @throws IOException if an IO exception occurred
+	 */
 	private static Repository openGitRepository() throws IOException {
 
 		FileRepositoryBuilder repoBuilder = new FileRepositoryBuilder();
@@ -435,6 +500,13 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		return repo;
 	}
 
+	/**
+	 * Returns the images displayed in the given Markdown articles. When an
+	 * article is republished, its images must also be included.
+	 *
+	 * @param  modifiedArticles the modified Markdown articles
+	 * @return the images displayed in the given Markdown articles
+	 */
 	private static Set<String> scanMarkdownForAllImages(Set<String> modifiedArticles) {
 		
 		Set<File> markdownImages = new HashSet<File>();
@@ -486,6 +558,13 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		return markdownImagesString;
 	}
 
+	/**
+	 * Returns the Markdown articles that reference the given image.
+	 *
+	 * @param  imgPath the image's path to search for
+	 * @param  files the files in which to search for the image
+	 * @return the Markdown articles that reference the given image
+	 */
 	private static Set<File> scanMarkdownForImage(String imgPath, Set<File> files) {
 
 		int imgStart = imgPath.lastIndexOf(File.separator) + 1;
@@ -516,6 +595,16 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		return filesWithImage;
 	}
 
+	/**
+	 * Unzips the Zip file. This is used to unzip the generated distributable
+	 * Zip to extract already parsed (DXP overrides and token generations
+	 * applied) Markdown articles and images.
+	 *
+	 * @param  docDir the parent folder of where the Ant task was executed (e.g.,
+	 *         {@code tutorials})
+	 * @param  zipName the Zip file to unzip
+	 * @throws IOException if an IO exception occurred
+	 */
 	private static void unzipFile(String docDir, String zipName)
 			throws IOException {
 
@@ -550,7 +639,20 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		//zipFile.delete();
 	}
 
-	private static void writeDeletedTextFile(List<String> deletedFiles, HashMap<String, String> renamedFiles)
+	/**
+	 * Writes deleted and renamed files to a {@code .txt} file. This is useful
+	 * to notify the publisher of the files that must be manually deleted from
+	 * the Knowledge Base portlet, since the import of a Zip only adds files or
+	 * modifies existing files, but cannot delete them.
+	 *
+	 * @param  deletedFiles the files that were deleted in the Git repo since
+	 *         the last publication
+	 * @param  renamedFiles the files that were renamed in the Git repo since
+	 *         the last publication
+	 * @param  distDir the folder where the Zip is generated (e.g., {@code dist})
+	 * @throws IOException if an IO exception occurred
+	 */
+	private static void writeDeletedTextFile(List<String> deletedFiles, HashMap<String, String> renamedFiles, String distDir)
 			throws IOException {
 
 		PrintWriter writer = new PrintWriter(distDir + "/delete-files.txt", "UTF-8");
@@ -570,5 +672,9 @@ private static Set<String> getIntroFiles(Set<String> markdownFiles, String docDi
 		writer.close();
 	}
 
-	private static String distDir;
+	private String _distDir;
+	private String _docDir;
+	private String _docLocation;
+	private String _dxpParam;
+	private String _zipName;
 }
