@@ -1,4 +1,10 @@
-# Making Configurable Theme Settings [](id=making-configurable-theme-settings)
+---
+header-id: making-configurable-theme-settings
+---
+
+# Making Configurable Theme Settings
+
+[TOC levels=1-4]
 
 Every time you want to make a change to a theme, you must make the change and
 then deploy it to your server. For a Site Administrator, this process is
@@ -18,13 +24,9 @@ Follow these steps:
     element inside the parent `<settings>` element for each setting the theme 
     requires:
 
-        <?xml version="1.0"?>
-        <!DOCTYPE look-and-feel PUBLIC "-//Liferay//DTD Look and Feel 7.0.0//EN"
-        "http://www.liferay.com/dtd/liferay-look-and-feel_7_0_0.dtd">
-
         <look-and-feel>
         	<compatibility>
-        		<version>7.0.0+</version>
+        		<version>7.1.0+</version>
         	</compatibility>
         	<theme id="your-theme-name" name="Your Theme Name">
         		<template-extension>ftl</template-extension>
@@ -107,10 +109,10 @@ Follow these steps:
 
 Now you know how to make configurable theme settings for your themes!
 
-## Related Topics [](id=related-topics)
+## Related Topics
 
-[Creating Reusable Pieces of Code for Your Themes](/develop/tutorials/-/knowledge_base/7-1/creating-reusable-pieces-of-code-for-your-themes)
+[Creating Reusable Pieces of Code for Your Themes](/docs/7-1/tutorials/-/knowledge_base/t/creating-reusable-pieces-of-code-for-your-themes)
 
-[Listing Your Theme's Extensions](/develop/tutorials/-/knowledge_base/7-1/listing-your-themes-extensions)
+[Listing Your Theme's Extensions](/docs/7-1/tutorials/-/knowledge_base/t/listing-your-themes-extensions)
 
-[Importing Resources with a Theme](/develop/tutorials/-/knowledge_base/7-1/importing-resources-with-a-theme)
+[Importing Resources with a Theme](/docs/7-1/tutorials/-/knowledge_base/t/importing-resources-with-a-theme)

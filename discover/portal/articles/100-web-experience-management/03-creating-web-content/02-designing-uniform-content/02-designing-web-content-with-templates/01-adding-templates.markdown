@@ -1,4 +1,10 @@
-# Adding Templates with Structures [](id=adding-templates)
+---
+header-id: adding-templates
+---
+
+# Adding Templates with Structures
+
+[TOC levels=1-4]
 
 To better understand templates, now you'll create a structure and an associated
 template. First create the structure:

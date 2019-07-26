@@ -1,10 +1,16 @@
-# Layout Template [](id=layout-template)
+---
+header-id: layout-template
+---
+
+# Layout Template
+
+[TOC levels=1-4]
 
 In this article, you'll learn how to create a Liferay layout template as a WAR
 project. To create a Liferay layout template via the command line using Blade
 CLI or Maven, use one of the commands with the following parameters:
 
-    blade create -t layout-template projectName
+    blade create -t layout-template -v 7.1 projectName
 
 or
 
@@ -21,7 +27,7 @@ The template for this kind of project is `layout-template`. Suppose you want to
 create a layout template project called `my-layout-template-project`. You
 could run one of the following commands to accomplish this:
 
-    blade create -t layout-template my-layout-template-project
+    blade create -t layout-template -v 7.1 my-layout-template-project
 
 or
 

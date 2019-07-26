@@ -1,13 +1,19 @@
-# Checking for Permission in JSPs [](id=checking-for-permission-in-jsps)
+---
+header-id: checking-for-permission-in-jsps
+---
 
-<div class="learn-path-step">
-    <p>Implementing Permissions<br>Step 4 of 4</p>
+# Checking for Permission in JSPs
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Implementing Permissions</p><p>Step 4 of 4</p>
 </div>
 
 You've already seen how user interface components can be wrapped in permission
 checks pretty easily. In this step, you'll implement the rest. 
 
-## Checking Permissions in the UI [](id=checking-permissions-in-the-ui)
+## Checking Permissions in the UI
 
 Recall that you want to restrict access to three areas in your application: 
 
@@ -72,7 +78,7 @@ First, you'll create the guestbook tabs and check permissions for them:
     `<aui:button-row cssClass="guestbook-buttons">`. Just below this line, add 
     the following line of code to check for the `ADD_ENTRY` permission: 
 
-        <c:if test='<%= GuestbookPermission.contains(permissionChecker, guestbookId, "ADD_ENTRY") %>'>
+        <c:if test='<%= GuestbookPermission.contains(permissionChecker, scopeGroupId, "ADD_ENTRY") %>'>
 
 3.  After this is the code that creates the `addEntryURL` and the Add Entry 
     button. After the `aui:button` tag and above the `</aui:button-row>` tag, 
@@ -172,21 +178,17 @@ test your application with different users. Administrative users see all the
 buttons, regular users see the Add Entry button, and guests see no buttons at 
 all (but can navigate). 
 
-+$$$
-
-**Note:** You may see an error where the Guestbook portlet doesn't appear at 
-all, and you see this error in the log: 
-
-    Someone may be trying to circumvent the permission checker. 
-
-This is because any data you currently have in the Guestbook application doesn't 
-have resources. In this case, you must drop and re-create your database. To do
-this, find your Liferay Workspace on your file system (it should be inside your
-Eclipse workspace). Inside the `bundles/data` folder is a `hypersonic` folder.
-Shut down @product@, remove everything from this folder, and then restart. After
-adding guestbook to a page, the portlet will work normally. 
-
-$$$
+| **Note:** You may see an error where the Guestbook portlet doesn't appear at
+| all, and you see this error in the log:
+| 
+|     Someone may be trying to circumvent the permission checker.
+| 
+| This is because any data you currently have in the Guestbook application doesn't
+| have resources. In this case, you must drop and re-create your database. To do
+| this, find your Liferay Workspace on your file system (it should be inside your
+| Eclipse workspace). Inside the `bundles/data` folder is a `hypersonic` folder.
+| Shut down @product@, remove everything from this folder, and then restart. After
+| adding guestbook to a page, the portlet will work normally.
 
 Now see if you can do the same for the Guestbook Admin portlet. Don't worry if
 you can't: at the end of this Learning Path is a link to the completed project

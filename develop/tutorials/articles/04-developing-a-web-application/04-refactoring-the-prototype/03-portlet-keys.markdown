@@ -1,7 +1,13 @@
-# Creating Portlet Keys [](id=creating-portlet-keys)
+---
+header-id: creating-portlet-keys
+---
 
-<div class="learn-path-step">
-    <p>Refactoring the Prototype<br>Step 3 of 6</p>
+# Creating Portlet Keys
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Refactoring the Prototype</p><p>Step 3 of 6</p>
 </div>
 
 `PortletKeys` manage important things like the portlet name or other repeatable,

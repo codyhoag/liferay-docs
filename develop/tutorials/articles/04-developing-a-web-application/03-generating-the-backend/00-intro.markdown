@@ -1,4 +1,10 @@
-# Generating the Back-end [](id=generating-the-back-end)
+---
+header-id: generating-the-back-end
+---
+
+# Generating the Back-end
+
+[TOC levels=1-4]
 
 So far, you have a prototype application that uses Liferay's 
 Model-View-Controller (MVC) portlet framework. MVC is a great design pattern for 
@@ -21,5 +27,5 @@ web services (more on that later) and support every database @product@ supports.
 
 Ready to begin? 
 
-<a class="go-link btn btn-primary" href="/develop/tutorials/-/knowledge_base/7-1/what-is-service-builder-0">Let's Go!<span class="icon-circle-arrow-right"></span></a>
+<a class="go-link btn btn-primary" href="/docs/7-1/tutorials/-/knowledge_base/t/what-is-service-builder-0">Let's Go!<span class="icon-circle-arrow-right"></span></a>
 

@@ -1,4 +1,10 @@
-# Configurable Applications [](id=configurable-applications)
+---
+header-id: configurable-applications
+---
+
+# Configurable Applications
+
+[TOC levels=1-4]
 
 Many applications must be configurable, whether by end users or administrators.
 A viable configuration solution must support use cases ranging from setting a

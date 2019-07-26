@@ -1,4 +1,10 @@
-# Collaboration [](id=collaboration)
+---
+header-id: collaboration
+---
+
+# Collaboration
+
+[TOC levels=1-4]
 
 The collaboration suite helps users interact and create content together. This
 can be as simple as a quick conversation in the Message Boards app or as complex

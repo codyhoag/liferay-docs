@@ -1,4 +1,10 @@
-# Updating Your User Interface For Search [](id=updating-your-user-interface-for-search)
+---
+header-id: updating-your-user-interface-for-search
+---
+
+# Updating Your User Interface For Search
+
+[TOC levels=1-4]
 
 Updating the Guestbook portlet's user interface for search takes two steps:
 
@@ -9,4 +15,4 @@ Updating the Guestbook portlet's user interface for search takes two steps:
 
 You'll start by updating the Guestbook portlet's view JSP.
 
-<a class="go-link btn btn-primary" href="/develop/tutorials/-/knowledge_base/7-1/adding-a-search-bar-to-the-guestbook-portlet">Let's Go!<span class="icon-circle-arrow-right"></span></a>
+<a class="go-link btn btn-primary" href="/docs/7-1/tutorials/-/knowledge_base/t/adding-a-search-bar-to-the-guestbook-portlet">Let's Go!<span class="icon-circle-arrow-right"></span></a>

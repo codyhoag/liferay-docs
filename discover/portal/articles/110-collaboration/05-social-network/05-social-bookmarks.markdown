@@ -1,10 +1,16 @@
-# Using Social Bookmarks [](id=using-social-bookmarks)
+---
+header-id: using-social-bookmarks
+---
+
+# Using Social Bookmarks
+
+[TOC levels=1-4]
 
 Social bookmarks appear below content as buttons for sharing that content on
 social networks. For example, social bookmarks appear by default in the Blogs
 widget below each blog post. For more information on configuring social
 bookmarks in the Blogs widget, see the documentation on 
-[displaying blogs](/discover/portal/-/knowledge_base/7-1/displaying-blogs). 
+[displaying blogs](/docs/7-1/user/-/knowledge_base/u/displaying-blogs). 
 
 These social bookmarks are available by default: 
 
@@ -29,4 +35,4 @@ adds the following social bookmarks:
 -   Slashdot
 
 If you need help installing apps from Liferay Marketplace, see 
-[the article on using Marketplace](/discover/portal/-/knowledge_base/7-1/using-the-liferay-marketplace). 
+[the article on using Marketplace](/docs/7-1/user/-/knowledge_base/u/using-the-liferay-marketplace). 

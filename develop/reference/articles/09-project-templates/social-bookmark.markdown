@@ -1,10 +1,16 @@
-# Social Bookmark Template [](id=social-bookmark-template)
+---
+header-id: social-bookmark-template
+---
+
+# Social Bookmark Template
+
+[TOC levels=1-4]
 
 In this article, you'll learn how to create a Liferay social bookmark as a
 Liferay module. To create a social bookmark as a module via the command line
 using Blade CLI or Maven, use one of the commands with the following parameters:
 
-    blade create -t social-bookmark [-p packageName] [-c className] projectName
+    blade create -t social-bookmark -v 7.1 [-p packageName] [-c className] projectName
 
 or
 
@@ -24,7 +30,7 @@ create a social bookmark project called `my-social-bookmark-project` with a
 package name of `com.liferay.docs.socialbookmark` and a class name of
 `TestSocialBookmark`. You could run the following command to accomplish this:
 
-    blade create -t social-bookmark -p com.liferay.docs.socialbookmark -c Test my-social-bookmark-project
+    blade create -t social-bookmark -v 7.1 -p com.liferay.docs.socialbookmark -c Test my-social-bookmark-project
 
 or
 
@@ -77,7 +83,7 @@ bookmark named *Test* that searches the current URL using Google Search.
 To build upon the generated app, modify the project by adding logic and
 additional files to the folders outlined above. For more information on
 developing social bookmarks, see the
-[Social API](/develop/tutorials/-/knowledge_base/7-1/social-api) section of
+[Social API](/docs/7-1/tutorials/-/knowledge_base/t/social-api) section of
 tutorials. For information on configuring social bookmarks for the Blogs widget,
-see the [Displaying Blogs](/discover/portal/-/knowledge_base/7-1/displaying-blogs)
+see the [Displaying Blogs](/docs/7-1/user/-/knowledge_base/u/displaying-blogs)
 article.

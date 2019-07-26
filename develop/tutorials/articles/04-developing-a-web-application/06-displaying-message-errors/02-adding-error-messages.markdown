@@ -1,7 +1,13 @@
-# Adding Failure and Success Messages [](id=adding-failure-and-success-messages)
+---
+header-id: adding-failure-and-success-messages
+---
 
-<div class="learn-path-step">
-    <p>Displaying Messages and Errors<br>Step 2 of 3</p>
+# Adding Failure and Success Messages
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Displaying Messages and Errors</p><p>Step 2 of 3</p>
 </div>
 
 To display feedback to users properly, you must edit your portlet classes to use

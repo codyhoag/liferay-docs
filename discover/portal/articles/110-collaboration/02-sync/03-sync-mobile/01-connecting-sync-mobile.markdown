@@ -1,4 +1,10 @@
-# Connecting Liferay Sync Mobile [](id=connecting-liferay-sync-mobile)
+---
+header-id: connecting-liferay-sync-mobile
+---
+
+# Connecting Liferay Sync Mobile
+
+[TOC levels=1-4]
 
 When Liferay Sync first starts on your mobile device, press the *Get Started*
 button to begin setup. The setup screen asks for your login credentials and your

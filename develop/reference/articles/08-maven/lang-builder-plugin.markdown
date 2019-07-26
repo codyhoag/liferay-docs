@@ -1,9 +1,15 @@
-# Lang Builder Plugin [](id=lang-builder-plugin)
+---
+header-id: lang-builder-plugin
+---
+
+# Lang Builder Plugin
+
+[TOC levels=1-4]
 
 The Lang Builder plugin lets you sort and translate the language keys in your
 project.
 
-## Usage [](id=usage)
+## Usage
 
 To use the plugin, include it in your project's root `pom.xml` file:
 
@@ -13,7 +19,7 @@ To use the plugin, include it in your project's root `pom.xml` file:
             <plugin>
                 <groupId>com.liferay</groupId>
                 <artifactId>com.liferay.lang.builder</artifactId>
-                <version>1.0.28</version>
+                <version>1.0.31</version>
                 <configuration>
                 </configuration>
             </plugin>
@@ -24,7 +30,7 @@ To use the plugin, include it in your project's root `pom.xml` file:
 You can view an example POM containing the Lang Builder configuration
 [here](https://github.com/liferay/liferay-portal/blob/master/modules/util/lang-builder/samples/pom.xml).
 
-## Goals [](id=goals)
+## Goals
 
 The plugin adds one Maven goal to your project:
 
@@ -32,7 +38,7 @@ Name | Description
 ---- | -----------
 `lang-builder:build` | Runs Liferay Lang Builder to translate language property files.
 
-## Available Parameters [](id=available-parameters)
+## Available Parameters
 
 You can set the following parameters in the `<configuration>` section of the
 POM:

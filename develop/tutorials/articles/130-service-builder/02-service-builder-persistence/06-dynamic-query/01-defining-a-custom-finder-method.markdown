@@ -1,4 +1,10 @@
-# Defining a Custom Finder Method [](id=defining-a-custom-finder-method)
+---
+header-id: defining-a-custom-finder-method
+---
+
+# Defining a Custom Finder Method
+
+[TOC levels=1-4]
 
 Dynamic queries belong in finder methods. You implement them and then make them
 available through an interface. This tutorial demonstrates defining the finder

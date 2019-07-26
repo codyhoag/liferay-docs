@@ -1,7 +1,13 @@
-# What is Service Builder? [](id=what-is-service-builder-0)
+---
+header-id: what-is-service-builder-0
+---
 
-<div class="learn-path-step">
-    <p>Generating the Back-end<br>Step 1 of 3</p>
+# What is Service Builder?
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Generating the Back-end</p><p>Step 1 of 3</p>
 </div>
 
 Now you'll use Service Builder to generate create, read, update, delete, and
@@ -9,7 +15,7 @@ find operations for your application. You'll also use Service Builder to
 generate the necessary model, persistence, and service layers for your 
 application. Then you can add your application's necessary business logic. 
 
-## Guestbook Application Design [](id=guestbook-application-design)
+## Guestbook Application Design
 
 In the prototype application, you defined a single guestbook's entries and 
 displayed them in a list. The full application will handle multiple Guestbooks 
@@ -18,7 +24,7 @@ one for guestbooks and one for guestbook entries.
 
 ![Figure 1: When you're done, the Guestbook supports multiple guestbooks and makes use of many Liferay features.](../../../images/guestbook-final.png)
 
-## Service Layer [](id=service-layer)
+## Service Layer
 
 This application is data-driven. It uses services for storing and retrieving 
 data. The application asks for data, and the service fetches it from the

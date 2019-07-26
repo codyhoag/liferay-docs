@@ -1,4 +1,10 @@
-# Troubleshooting Front-End Development Issues [](id=troubleshooting-front-end-development-issues)
+---
+header-id: troubleshooting-front-end-development-issues
+---
+
+# Troubleshooting Front-End Development Issues
+
+[TOC levels=1-4]
 
 Front-end development involves many moving parts. Sometimes it's hard to tell 
 what may be causing the issues you run into along the way. This can be 
@@ -15,7 +21,7 @@ Here are the troubleshooting sections:
 
 Click a question to view the answer.
 
-## CSS [](id=css)
+## CSS
 
 - [Why are my CSS templates not applied in my Angular app?](#broken-css-angular-app)
 - [Why is Liferay Portal's CSS broken in Internet Explorer?](#portal-css-broken-ie)
@@ -37,7 +43,7 @@ Click a question to view the answer.
   </div>
 </div>
 
-## Modules [](id=modules)
+## Modules
 
 - [Why does my JQuery module throw an anonymous module error when I try to load it?](#jquery-anonymous-module-error)
 - [Why are my source maps not showing for my Angular or Typescript module?](#source-maps-not-showing)
@@ -46,7 +52,7 @@ Click a question to view the answer.
 <div class="ldn-faq-question" id="jquery-anonymous-module-error">
   <span class="ldn-faq-toggle-button" data-show="false" style="font-weight: normal;">Why does my JQuery module throw an anonymous module error when I try to load it?&nbsp;<span class="icon-caret-right" style="pointer-events:none;"></span></span>
   <div class="hide">
-    <p>If you're using an external library that you host, you must disable the <i>Expose Global</i> option as described in the <a href="https://dev.liferay.com/en/develop/tutorials/-/knowledge_base/7-1/using-external-javascript-libraries#using-libraries-that-you-host">Using External JavaScript Libraries</a> tutorial.</p>
+    <p>If you're using an external library that you host, you must disable the <i>Expose Global</i> option as described in the <a href="https://portal.liferay.dev/docs/7-1/tutorials/-/knowledge_base/t/using-external-javascript-libraries#using-libraries-that-you-host">Using External JavaScript Libraries</a> tutorial.</p>
   </div>
 </div>
 
@@ -76,19 +82,19 @@ Click a question to view the answer.
   </div>
 </div>
 
-## Portlets [](id=portlets)
+## Portlets
 
 - [I want to use a custom router in my Angular/React/Vue portlet. How can I disable the default Senna JS SPA engine in my portlet?](#angular-react-vue-portlet-disable-spa)
 
 <div class="ldn-faq-question" id="angular-react-vue-portlet-disable-spa">
   <span class="ldn-faq-toggle-button" data-show="false" style="font-weight: normal;">I want to use a custom router in my Angular/React/Vue portlet. How can I disable the default Senna JS SPA engine in my portlet?&nbsp;<span class="icon-caret-right" style="pointer-events:none;"></span></span>
   <div class="hide">
-    <p>By default, the <a href="https://dev.liferay.com/en/develop/tutorials/-/knowledge_base/7-1/automatic-single-page-applications#what-is-sennajs">Senna JS SPA engine</a> is enabled in your portlets and sites. This disables full page reloads during portlet navigation.</p>
-    <p>If you want to use a custom router in your portlet instead, follow the <a href="https://dev.liferay.com/en/develop/tutorials/-/knowledge_base/7-1/automatic-single-page-applications#disabling-spa">instructions in the SPA documentation</a> to blacklist your portlet from SPA.</p>
+    <p>By default, the <a href="https://portal.liferay.dev/docs/7-1/tutorials/-/knowledge_base/t/automatic-single-page-applications#what-is-sennajs">Senna JS SPA engine</a> is enabled in your portlets and sites. This disables full page reloads during portlet navigation.</p>
+    <p>If you want to use a custom router in your portlet instead, follow the <a href="https://portal.liferay.dev/docs/7-1/tutorials/-/knowledge_base/t/automatic-single-page-applications#disabling-spa">instructions in the SPA documentation</a> to blacklist your portlet from SPA.</p>
   </div>
 </div>
 
-## Templates [](id=templates)
+## Templates
 
 - [Why does my web content break when I refresh the page?](#cacheable-web-content-taglibs)
 
@@ -101,7 +107,7 @@ Click a question to view the answer.
   </div>
 </div>
 
-## Themes [](id=themes)
+## Themes
 
 - [How can I use the Classic theme as my base theme?](#classic-base-theme)
 - [How can I include OSGi headers in my theme?](#osgi-headers-in-themes)
@@ -111,7 +117,7 @@ Click a question to view the answer.
 <div class="ldn-faq-question" id="classic-base-theme">
   <span class="ldn-faq-toggle-button" data-show="false" style="font-weight: normal;">How can I use the Classic theme as my base theme?&nbsp;<span class="icon-caret-right" style="pointer-events:none;"></span></span>
   <div class="hide">
-    <p>The Classic theme is already an implementation of an existing base theme and should not be extended. You can use the <a href="/develop/tutorials/-/knowledge_base/7-1/copying-an-existing-themes-files">Gulp kickstart</a> task to copy files from the Classic theme into your theme if you wish. If you want to start off with some base styling, start with the Styled theme instead.</p>
+    <p>The Classic theme is already an implementation of an existing base theme and should not be extended. You can use the <a href="/docs/7-1/tutorials/-/knowledge_base/t/copying-an-existing-themes-files">Gulp kickstart</a> task to copy files from the Classic theme into your theme if you wish. If you want to start off with some base styling, start with the Styled theme instead.</p>
   </div>
 </div>
 
@@ -129,7 +135,7 @@ Click a question to view the answer.
 <div class="ldn-faq-question" id="developer-mode">
   <span class="ldn-faq-toggle-button" data-show="false" style="font-weight: normal;">Why aren't my changes showing up after I redeploy my theme?&nbsp;<span class="icon-caret-right" style="pointer-events:none;"></span></span>
   <div class="hide">
-    <p>By default CSS, JS, and theme template files are cached in the browser. During development, you can enable <a href="/develop/tutorials/-/knowledge_base/7-1/using-developer-mode-with-themes">Devloper Mode</a> to prevent your theme's files from caching. </p>
+    <p>By default CSS, JS, and theme template files are cached in the browser. During development, you can enable <a href="/docs/7-1/tutorials/-/knowledge_base/t/using-developer-mode-with-themes">Devloper Mode</a> to prevent your theme's files from caching. </p>
   </div>
 </div>
 

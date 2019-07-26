@@ -1,4 +1,10 @@
-# Getting Entities [](id=getting-entities)
+---
+header-id: getting-entities
+---
+
+# Getting Entities
+
+[TOC levels=1-4]
 
 The Documents and Media API contains many methods for getting entities from a 
 repository. Most methods in 

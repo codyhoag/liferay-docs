@@ -1,4 +1,10 @@
-# Updating 6.2 CSS Code [](id=updating-6-2-css-code)
+---
+header-id: updating-6-2-css-code
+---
+
+# Updating 6.2 CSS Code
+
+[TOC levels=1-4]
 
 @product-ver@'s UI improvements required these CSS-related changes:
 

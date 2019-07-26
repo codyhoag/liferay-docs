@@ -1,4 +1,10 @@
-# Developing a Web Application [](id=developing-a-web-application)
+---
+header-id: developing-a-web-application
+---
+
+# Developing a Web Application
+
+[TOC levels=1-4]
 
 In this Learning Path, you'll create the Liferay Guestbook Web Application from 
 scratch using tools like Liferay @ide@ and Blade tools. As you create this 
@@ -21,4 +27,4 @@ From there you'll see everything from UI standards to providing remote
 services. Once everything is completed and wrapped up with a bow, you can 
 distribute the application on Marketplace. 
 
-<a class="go-link btn btn-primary" href="/develop/tutorials/-/knowledge_base/7-1/development-setup-overview">Let's Go!<span class="icon-circle-arrow-right"></span></a>
+<a class="go-link btn btn-primary" href="/docs/7-1/tutorials/-/knowledge_base/t/development-setup-overview">Let's Go!<span class="icon-circle-arrow-right"></span></a>

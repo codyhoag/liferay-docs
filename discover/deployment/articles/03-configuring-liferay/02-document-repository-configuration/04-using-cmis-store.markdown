@@ -1,8 +1,21 @@
-# Using the CMIS Store [](id=using-the-cmis-store)
+---
+header-id: using-the-cmis-store
+---
+
+# Using the CMIS Store
+
+[TOC levels=1-4]
 
 Though you can mount as many different CMIS (Content Management Interoperability
 Services) repositories as you like in the Documents and Media library, you can
 also define the @product@ repository to point to a CMIS repository. 
+
+| **Note:** CMIS Store is not suitable for production use and is deprecated as 
+| of Liferay DXP Digital  Enterprise 7.0 Fix Pack 14 (SP3) and Liferay Portal CE
+| 7.0 GA4. Because it can have performance issues with large repositories, it's
+| recommended that you use one of the other configuration repositories listed
+| above, such as Advanced File System Store, to store your Documents and Media
+| files. 
 
 To use the CMIS store, follow these steps:
 
@@ -22,13 +35,13 @@ To use the CMIS store, follow these steps:
 To use the CMIS store in a cluster, follow these steps:
 
 1.  Copy the `portal-ext.properties` to each node's
-    [`[Liferay Home]` folder](/discover/deployment/-/knowledge_base/7-1/installing-liferay#liferay-home). 
+    [`[Liferay Home]` folder](/docs/7-1/deploy/-/knowledge_base/d/installing-liferay#liferay-home). 
 
 2.  Export the configuration from the *CMIS Store* screen to a 
-    [`.config` file](/discover/portal/-/knowledge_base/7-1/understanding-system-configuration-files). 
+    [`.config` file](/docs/7-1/user/-/knowledge_base/u/understanding-system-configuration-files). 
 
 3.  Export the configuration from the *CMIS Repository* screen to a 
-    [`.config` file](/discover/portal/-/knowledge_base/7-1/understanding-system-configuration-files). 
+    [`.config` file](/docs/7-1/user/-/knowledge_base/u/understanding-system-configuration-files). 
 
 4.  Copy the `.config` files to each node's `[Liferay Home]/osgi/configs` 
     folder. 

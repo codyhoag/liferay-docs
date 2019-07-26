@@ -1,4 +1,10 @@
-# What is @product@ [](id=what-is-liferay)
+---
+header-id: what-is-liferay
+---
+
+# What is @product@
+
+[TOC levels=1-4]
 
 Choosing a platform for your web presence can be daunting. You want something
 built on a solid technology foundation, fully featured, fully customizable, easy

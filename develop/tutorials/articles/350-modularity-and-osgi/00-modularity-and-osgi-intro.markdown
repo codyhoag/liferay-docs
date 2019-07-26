@@ -1,4 +1,10 @@
-# Modularity and OSGi [](id=modularity-and-osgi)
+---
+header-id: modularity-and-osgi
+---
+
+# Modularity and OSGi
+
+[TOC levels=1-4]
 
 Things we use every day are made of carefully designed, created, and tested
 subsystems. For example, a car has an engine, suspension, and air conditioner.

@@ -1,7 +1,13 @@
-# Updating Your Service Layer [](id=updating-your-service-layer)
+---
+header-id: updating-your-service-layer
+---
 
-<div class="learn-path-step">
-    <p>Writing the Guestbook Admin App<br>Step 3 of 5</p>
+# Updating Your Service Layer
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Writing the Guestbook Admin App</p><p>Step 3 of 5</p>
 </div>
 
 In an earlier section, you wrote an `addGuestbook` service method in
@@ -9,7 +15,7 @@ In an earlier section, you wrote an `addGuestbook` service method in
 over guestbooks, you must also add methods for updating and deleting guestbooks, 
 as well as for returning the number of guestbooks in a Site. 
 
-## Adding Guestbook Service Methods [](id=adding-guestbook-service-methods)
+## Adding Guestbook Service Methods
 
 Remember that when working with Service Builder, you define your service in the
 `*Impl` classes. After you add, remove a method, or change the signature of

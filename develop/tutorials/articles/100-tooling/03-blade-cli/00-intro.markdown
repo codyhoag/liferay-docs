@@ -1,4 +1,10 @@
-# Blade CLI [](id=blade-cli)
+---
+header-id: blade-cli
+---
+
+# Blade CLI
+
+[TOC levels=1-4]
 
 The [Blade CLI](https://github.com/liferay/liferay-blade-cli/) tool is the
 easiest way for Liferay developers to create new Liferay modules. Blade CLI lets

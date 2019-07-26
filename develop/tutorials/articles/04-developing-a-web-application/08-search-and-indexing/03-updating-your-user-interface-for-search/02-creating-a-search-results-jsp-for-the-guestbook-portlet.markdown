@@ -1,7 +1,13 @@
-# Creating a Search Results JSP for the Guestbook Portlet [](id=creating-a-search-results-jsp-for-the-guestbook-portlet)
+---
+header-id: creating-a-search-results-jsp-for-the-guestbook-portlet
+---
 
-<div class="learn-path-step">
-    <p>Updating Your UI for Search<br>Step 2 of 2</p>
+# Creating a Search Results JSP for the Guestbook Portlet
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Updating Your UI for Search</p><p>Step 2 of 2</p>
 </div>
 
 There are several design goals to implement in the search results JSP:

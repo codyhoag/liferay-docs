@@ -1,4 +1,10 @@
-# Apps [](id=apps)
+---
+header-id: apps
+---
+
+# Apps
+
+[TOC levels=1-4]
 
 This section focuses on Liferay sample applications. You can view these sample
 apps by visiting the `apps` folder corresponding to your preferred build tool:

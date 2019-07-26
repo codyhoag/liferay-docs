@@ -1,4 +1,10 @@
-# Refactoring the Prototype [](id=refactoring-the-prototype)
+---
+header-id: refactoring-the-prototype
+---
+
+# Refactoring the Prototype
+
+[TOC levels=1-4]
 
 Earlier, you created a Guestbook portlet prototype. Then you wrote
 a `service.xml` file to define your application's data model, and used Service
@@ -26,4 +32,4 @@ application, you'll make these changes:
 
 Ready to begin? 
 
-<a class="go-link btn btn-primary" href="/develop/tutorials/-/knowledge_base/7-1/organizing-folders-for-larger-applications">Let's Go!<span class="icon-circle-arrow-right"></span></a>
+<a class="go-link btn btn-primary" href="/docs/7-1/tutorials/-/knowledge_base/t/organizing-folders-for-larger-applications">Let's Go!<span class="icon-circle-arrow-right"></span></a>

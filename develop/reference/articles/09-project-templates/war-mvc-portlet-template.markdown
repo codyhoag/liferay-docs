@@ -1,10 +1,16 @@
-# WAR MVC Portlet Template [](id=war-mvc-portlet-template)
+---
+header-id: war-mvc-portlet-template
+---
+
+# WAR MVC Portlet Template
+
+[TOC levels=1-4]
 
 In this article, you'll learn how to create a Liferay MVC portlet project as a
 WAR file. To create a Liferay MVC portlet project as a WAR via the command line
 using Blade CLI or Maven, use one of the commands with the following parameters:
 
-    blade create -t war-mvc-portlet [-p packageName] projectName
+    blade create -t war-mvc-portlet -v 7.1 [-p packageName] projectName
 
 or
 
@@ -23,7 +29,7 @@ create a WAR MVC portlet project called `my-war-mvc-portlet-project` with a
 package name of `com.liferay.docs.war.mvc` and a class name of
 `MyWarMvcPortlet`. You could run the following command to accomplish this:
 
-    blade create -t war-mvc-portlet -p com.liferay.docs.war.mvc my-war-mvc-portlet-project
+    blade create -t war-mvc-portlet -v 7.1 -p com.liferay.docs.war.mvc my-war-mvc-portlet-project
 
 or
 
@@ -80,5 +86,5 @@ To build upon the generated project, modify the project by adding logic and
 additional files to the folders outlined above. Deploying WAR MVC portlets is
 supported for @product-ver@, however, it is recommended to optimize your WAR
 portlet to a module project, if possible. You can visit the
-[From Liferay Portal 6 to 7](/develop/tutorials/-/knowledge_base/7-0/from-liferay-6-to-liferay-7)
+[From Liferay Portal 6 to 7](/docs/7-0/tutorials/-/knowledge_base/t/from-liferay-6-to-liferay-7)
 section for info on how to do this.

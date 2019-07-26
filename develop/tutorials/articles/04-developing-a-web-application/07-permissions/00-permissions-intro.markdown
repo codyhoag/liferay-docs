@@ -1,4 +1,10 @@
-# Using Resources and Permissions [](id=using-resources-and-permissions)
+---
+header-id: using-resources-and-permissions
+---
+
+# Using Resources and Permissions
+
+[TOC levels=1-4]
 
 You now have an application that uses the database for data storage. This is a
 great foundation to build on. What comes next? What if users want a Guestbook 
@@ -17,4 +23,4 @@ implementing permissions, called *DRAC*:
 
 Ready to start? 
 
-<a class="go-link btn btn-primary" href="/develop/tutorials/-/knowledge_base/7-1/defining-permissions">Let's Go!<span class="icon-circle-arrow-right"></span></a>
+<a class="go-link btn btn-primary" href="/docs/7-1/tutorials/-/knowledge_base/t/defining-permissions">Let's Go!<span class="icon-circle-arrow-right"></span></a>

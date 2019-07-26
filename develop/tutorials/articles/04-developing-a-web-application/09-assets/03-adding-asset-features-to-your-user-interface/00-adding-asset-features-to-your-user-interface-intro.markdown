@@ -1,7 +1,13 @@
-# Adding Asset Features to Your User Interface [](id=adding-asset-features-to-your-user-interface)
+---
+header-id: adding-asset-features-to-your-user-interface
+---
 
-<div class="learn-path-step">
-    <p>Adding Asset Features to Your UI<br>Step 1 of 5</p>
+# Adding Asset Features to Your User Interface
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Adding Asset Features to Your UI</p><p>Step 1 of 5</p>
 </div>
 
 Now that your guestbook and guestbook entry entities are asset-enabled, you can

@@ -1,7 +1,13 @@
-# Integrating the New Back-end [](id=integrating-the-new-back-end)
+---
+header-id: integrating-the-new-back-end
+---
 
-<div class="learn-path-step">
-    <p>Refactoring the Prototype<br>Step 4 of 6</p>
+# Integrating the New Back-end
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Refactoring the Prototype</p><p>Step 4 of 6</p>
 </div>
 
 It's a good practice to start with a working prototype as a proof of concept, 

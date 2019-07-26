@@ -1,4 +1,10 @@
-# Updating Liferay Dev Studio [](id=updating-liferay-ide)
+---
+header-id: updating-liferay-ide
+---
+
+# Updating Liferay Dev Studio
+
+[TOC levels=1-4]
 
 If you're already using Liferay Dev Studio but need to update your environment,
 follow the steps below:

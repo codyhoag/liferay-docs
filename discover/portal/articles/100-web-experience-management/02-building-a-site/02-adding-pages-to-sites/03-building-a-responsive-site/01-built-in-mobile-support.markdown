@@ -1,4 +1,10 @@
-# Built-in Mobile Support [](id=built-in-mobile-support)
+---
+header-id: built-in-mobile-support
+---
+
+# Built-in Mobile Support
+
+[TOC levels=1-4]
 
 Out of the box, there are several features that help make your pages look just
 as good and have the same functionality on mobile devices as they do on
@@ -28,7 +34,7 @@ verify that everything displays as intended. The Device Simulator
 (![Simulation](../../../../../images/icon-simulation.png)) is
 a powerful tool that shows you how pages look on different devices. 
 
-## Using the Device Simulator [](id=using-the-device-simulator)
+## Using the Device Simulator
 
 When creating a page or reviewing a page before it is published, one of your 
 most important tools is the Device Simulator found in the top right corner of 
@@ -61,7 +67,7 @@ and that all functionality remains, it's also important to make sure that
 automatic features---like how columns are combined at lower resolutions---don't
 have unintended effects.
 
-## Designing Mobile Friendly Pages [](id=designing-mobile-friendly-pages)
+## Designing Mobile Friendly Pages
 
 @product@ provides the tools you need, but building pages that provide a good 
 experience across all kinds of devices still means working across all levels of

@@ -1,12 +1,18 @@
-# Implementing Service Methods [](id=implementing-service-methods)
+---
+header-id: implementing-service-methods
+---
 
-<div class="learn-path-step">
-    <p>Generating the Back-end<br>Step 3 of 3</p>
+# Implementing Service Methods
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Generating the Back-end</p><p>Step 3 of 3</p>
 </div>
 
 When you use Service Builder, you implement the services in the service module.
 Because your application's projects are 
-[components](/develop/tutorials/-/knowledge_base/7-1/fundamentals#components), 
+[components](/docs/7-1/tutorials/-/knowledge_base/t/fundamentals#components), 
 you can reference your service layer from your web module. 
 
 You'll implement services for guestbooks and entries in the `guestbook-service` 
@@ -257,7 +263,7 @@ Do so now by following these steps:
 Nice work! These local service methods implement the services that are 
 referenced in the portlet class. 
 
-## Updating Generated Classes [](id=updating-generated-classes)
+## Updating Generated Classes
 
 Now that you've implemented the service methods, you must make them available to 
 the rest of your application. To do this, run `buildService` again: 
@@ -275,12 +281,8 @@ the rest of your application. To do this, run `buildService` again:
     `guestbook-api` module. This ensures that your modules' Gradle dependencies 
     are up to date. 
 
-+$$$
-
-**Tip:** If something goes awry when working with Service Builder, repeat these 
-steps to run Service Builder again and refresh your API and service modules. 
-
-$$$
+| **Tip:** If something goes awry when working with Service Builder, repeat these
+| steps to run Service Builder again and refresh your API and service modules.
 
 Excellent! Your new back-end has been generated. Now it's time to refactor your
 prototype to use it. 

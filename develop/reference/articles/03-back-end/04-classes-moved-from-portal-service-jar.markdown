@@ -1,11 +1,17 @@
-# Classes Moved from portal-service.jar [](id=classes-moved-from-portal-service-jar)
+---
+header-id: classes-moved-from-portal-service-jar
+---
+
+# Classes Moved from portal-service.jar
+
+[TOC levels=1-4]
 
 To leverage the benefits of modularization in @product-ver@, many classes from
 former Liferay Portal 6 JAR file <em>portal-service.jar</em> have been moved
 into application and framework API modules. The table below provides details
 about these classes and the modules they've moved to. Package changes 
 and each module's symbolic name (artifact ID) are listed, to facilitate 
-<a href="/develop/tutorials/-/knowledge_base/7-1/configuring-dependencies">configuring dependencies</a>. 
+<a href="/docs/7-1/tutorials/-/knowledge_base/t/configuring-dependencies">configuring dependencies</a>. 
 
 <style>
 table, th, td {

@@ -1,4 +1,10 @@
-# Writing an Administrative Portlet [](id=writing-an-administrative-portlet)
+---
+header-id: writing-an-administrative-portlet
+---
+
+# Writing an Administrative Portlet
+
+[TOC levels=1-4]
 
 Like the prototype, the real application lets users add and view guestbook 
 entries. The application's back-end, however, is much more powerful. It can 
@@ -17,4 +23,4 @@ In short, this is a simple application with a simple interface:
 
 Are you ready to begin? 
 
-<a class="go-link btn btn-primary" href="/develop/tutorials/-/knowledge_base/7-1/creating-the-classes">Let's Go!<span class="icon-circle-arrow-right"></span></a>
+<a class="go-link btn btn-primary" href="/docs/7-1/tutorials/-/knowledge_base/t/creating-the-classes">Let's Go!<span class="icon-circle-arrow-right"></span></a>

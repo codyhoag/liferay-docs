@@ -1,4 +1,10 @@
-# Clay CSS and Themes [](id=clay-css-and-themes)
+---
+header-id: clay-css-and-themes
+---
+
+# Clay CSS and Themes
+
+[TOC levels=1-4]
 
 [Lexicon](https://lexicondesign.io/) 
 is a design language that provides a common framework for building consistent 

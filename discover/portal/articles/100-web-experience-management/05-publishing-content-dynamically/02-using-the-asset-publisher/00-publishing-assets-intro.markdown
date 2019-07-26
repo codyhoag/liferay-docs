@@ -1,4 +1,10 @@
-# Publishing Assets [](id=publishing-assets)
+---
+header-id: publishing-assets
+---
+
+# Publishing Assets
+
+[TOC levels=1-4]
 
 As you create web content, remember that pieces of content are assets, just like
 message board entries and blog posts. Since the Asset Publisher publishes

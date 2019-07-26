@@ -1,4 +1,10 @@
-# Adding Logic to MVC Commands [](id=adding-logic-to-mvc-commands)
+---
+header-id: adding-logic-to-mvc-commands
+---
+
+# Adding Logic to MVC Commands
+
+[TOC levels=1-4]
 
 You can completely override MVC commands, or any OSGi service for that matter,
 but *adding logic* to the commands is the better option. Discarding necessary
@@ -15,7 +21,7 @@ Here are the steps for adding logic to MVC commands.
 3.  [Refer to the original implementation](#refer-to-the-original-implementation)
 4.  [Add the logic, and call the original](#add-the-logic)
 
-## Step 1: Implement the interface [](id=implement-the-interface)
+## Step 1: Implement the interface
 
 Implement the respective MVC Command interface either directly or by extending
 an existing base class that implements it. Extending a base class for the
@@ -34,7 +40,7 @@ Check the MVC command interfaces for existing base classes:
 
 Next make your class a service component.
 
-## Step 2: Publish as a component [](id=publish-as-a-component)
+## Step 2: Publish as a component
 
 The Declarative Services `@Component` annotation facilitates customizing MVC
 commands. All the customization options require publishing your MVC command
@@ -88,7 +94,7 @@ custom MVC commands.
 
 Next reference the original implementation. 
 
-## Step 3: Refer to the original implementation [](id=refer-to-the-original-implementation)
+## Step 3: Refer to the original implementation
 
 Use a field annotated with `@Reference` to fetch a reference to the original MVC
 command component. If there are no additional customizations on the original
@@ -114,7 +120,7 @@ Here's how to add the reference:
 When your custom component resolves, the OSGi runtime assigns the targeted
 service to your field. It's time to add your custom logic. 
 
-## Step 4: Add the logic [](id=add-the-logic)
+## Step 4: Add the logic
 
 Adding the logic involves overriding the primary method of the base class
 you're extending or the interface you're implementing. In your method override,

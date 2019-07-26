@@ -1,7 +1,13 @@
-# Creating an Add Entry Button [](id=creating-an-add-guestbook-button)
+---
+header-id: creating-an-add-guestbook-button
+---
 
-<div class="learn-path-step">
-    <p>Developing Your First Portlet<br>Step 2 of 8</p>
+# Creating an Add Entry Button
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Developing Your First Portlet</p><p>Step 2 of 8</p>
 </div>
 
 A guestbook application is pretty simple, right? People come to your site and 

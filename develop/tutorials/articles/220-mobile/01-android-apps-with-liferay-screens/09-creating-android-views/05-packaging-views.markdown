@@ -1,4 +1,10 @@
-# Packaging Your Views [](id=packaging-your-views)
+---
+header-id: packaging-your-views
+---
+
+# Packaging Your Views
+
+[TOC levels=1-4]
 
 If you want to distribute or reuse Views, you should package them in a module
 that is then added as an app's project dependency. To do this, use the 
@@ -22,6 +28,6 @@ bintrayupload` to upload your project to jCenter. When finished, anyone can use
 the View as they would any Android dependency by adding the repository,
 artifact, group ID, and version to their Gradle file. 
 
-## Related Topics [](id=related-topics)
+## Related Topics
 
-[Creating Android Views](/develop/tutorials/-/knowledge_base/7-1/creating-android-views)
+[Creating Android Views](/docs/7-1/tutorials/-/knowledge_base/t/creating-android-views)

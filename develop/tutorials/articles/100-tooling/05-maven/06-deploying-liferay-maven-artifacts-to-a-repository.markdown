@@ -1,10 +1,16 @@
-# Deploying Liferay Maven Artifacts to a Repository [](id=deploying-liferay-maven-artifacts-to-a-repository)
+---
+header-id: deploying-liferay-maven-artifacts-to-a-repository
+---
+
+# Deploying Liferay Maven Artifacts to a Repository
+
+[TOC levels=1-4]
 
 Deploying artifacts to a remote repository is important if you intend to share
 your Maven projects with others. First, you must have a remote repository that
 can hold deployed Maven artifacts. If you do not currently have a remote
 repository, see the
-[Creating a Maven Repository](/develop/tutorials/-/knowledge_base/7-1/creating-a-maven-repository)
+[Creating a Maven Repository](/docs/7-1/tutorials/-/knowledge_base/t/creating-a-maven-repository)
 tutorial to learn how you can set up a Nexus repository. Also make sure your
 `[USER_HOME]/.m2/settings.xml` file specifies your remote repository's ID,
 user name, and password.
@@ -23,7 +29,7 @@ dependencies in their project POMs to reference it.
 To follow this tutorial, you'll need a Liferay module built with Maven. For
 demonstration purposes, this tutorial uses the `portlet.ds` sample module
 project. To follow along with this module, download the
-[portlet.ds](https://dev.liferay.com/documents/10184/656312/portlet.ds.zip)
+[portlet.ds](https://portal.liferay.dev/documents/113763090/114000186/portlet.ds.zip)
 Zip. 
 
 1.  Create a folder anywhere on your machine to serve as the parent folder
@@ -68,7 +74,7 @@ Zip.
     all module projects residing in the parent folder. You should include the
     repository's ID and URL. The above `distributionManagement` declaration is
     configured for the Liferay Nexus repository created in the
-    [Creating a Maven Repository](/develop/tutorials/-/knowledge_base/7-1/creating-a-maven-repository)
+    [Creating a Maven Repository](/docs/7-1/tutorials/-/knowledge_base/t/creating-a-maven-repository)
     tutorial. That tutorial also created the `[USER_HOME]/.m2/settings.xml`,
     which specified the remote repository's ID, user name, and password. Both
     the parent POM and `settings.xml` file's repository declarations are

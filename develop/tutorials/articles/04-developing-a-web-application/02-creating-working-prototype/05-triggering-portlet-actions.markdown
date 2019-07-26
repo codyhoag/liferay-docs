@@ -1,7 +1,13 @@
-# Triggering Portlet Actions [](id=triggering-portlet-actions)
+---
+header-id: triggering-portlet-actions
+---
 
-<div class="learn-path-step">
-    <p>Developing Your First Portlet<br>Step 5 of 8</p>
+# Triggering Portlet Actions
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Developing Your First Portlet</p><p>Step 5 of 8</p>
 </div>
 
 Recall that portlets run in a portion of a page, and a page can contain multiple 

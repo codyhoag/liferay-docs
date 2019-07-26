@@ -1,4 +1,10 @@
-# Internationalization [](id=internationalization)
+---
+header-id: internationalization
+---
+
+# Internationalization
+
+[TOC levels=1-4]
 
 Localizing content and designing apps for different locales is a straightforward
 process. You can centralize messages (language keys) and translate them manually

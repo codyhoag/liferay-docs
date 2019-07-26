@@ -1,4 +1,10 @@
-# Disabling Staging [](id=disabling-staging)
+---
+header-id: disabling-staging
+---
+
+# Disabling Staging
+
+[TOC levels=1-4]
 
 Disabling staging doesn't take a lot of steps, but should not be done lightly.
 It's important to know the consequences of turning the staging environment off
@@ -7,7 +13,7 @@ so you can decide if your circumstances really warrant it.
 The consequences for disabling Local Live and Remote Live staging are slightly
 different, so you'll learn about both.
 
-## Disabling Local Live Staging [](id=disabling-local-live-staging)
+## Disabling Local Live Staging
 
 Conceptually, the live site is the final approved version of your site, whereas
 the staging site is a temporary workspace containing information that is not
@@ -27,7 +33,7 @@ contains a large amount of content, however, those deletions could take
 a substantial amount of time to process. For this reason, don't disable staging
 when your portal instance is busy.
 
-## Disabling Remote Live Staging [](id=disabling-remote-live-staging)
+## Disabling Remote Live Staging
 
 Disabling remote staging does not delete the staged site; it only disables the
 connection between the live site and remote staging site. This means no data is
@@ -49,7 +55,7 @@ option erases the staged site's staging information---not the content. On the
 contrary, the live site remains in a locked state. A possible workaround is to
 create a new live site and import content to it, if necessary.
 
-## Steps to Disable Staging [](id=steps-to-disable-staging)
+## Steps to Disable Staging
 
 Follow the steps below to disable Local Live or Remote Live staging:
 

@@ -1,4 +1,10 @@
-# Using the WAB Generator [](id=using-the-wab-generator)
+---
+header-id: using-the-wab-generator
+---
+
+# Using the WAB Generator
+
+[TOC levels=1-4]
 
 You can create applications for @product@ as Java EE-style Web Application
 ARchive (WAR) artifacts or as Java ARchive (JAR) OSGi bundle artifacts. Some
@@ -92,7 +98,7 @@ Generator in action.
 
 1.  Create a WAR-style plugin that follows a similar structure to the one
     outlined above. You can download an example WAR-style portlet
-    [here](https://dev.liferay.com/documents/10184/656312/com.liferay.hello.user.jsf.portlet-1.0-SNAPSHOT.war),
+    [here](https://portal.liferay.dev/documents/113763090/114000186/com.liferay.hello.user.jsf.portlet-1.0-SNAPSHOT.war),
     for demonstration.
 
 2.  Open your @product@ instance in a file explorer and add a
@@ -113,7 +119,7 @@ Generator in action.
 
 Awesome! You've seen the WAB Generator in action!
 
-## Related Topics [](id=related-topics)
+## Related Topics
 
 <!-- TODO: add back, when available. -Cody
 [Generating a JSF Application](develop/tutorials/-/knowledge_base/7-1/generating-a-jsf-application)
@@ -122,4 +128,4 @@ Awesome! You've seen the WAB Generator in action!
 <!-- Uncomment in Product Nav Branch
 [Customizing the Product Menu](develop/tutorials/-/knowledge_base/7-1/customizing-the-product-menu)
 -->
-[Configurable Applications](/develop/tutorials/-/knowledge_base/7-1/configurable-applications)
+[Configurable Applications](/docs/7-1/tutorials/-/knowledge_base/t/configurable-applications)

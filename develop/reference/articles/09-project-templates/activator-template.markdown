@@ -1,10 +1,16 @@
-# Activator Template [](id=activator-template)
+---
+header-id: activator-template
+---
+
+# Activator Template
+
+[TOC levels=1-4]
 
 In this article, you'll learn how to create a Liferay activator as a Liferay
 module. To create a Liferay activator via the command line using Blade CLI or
 Maven, use one of the commands with the following parameters:
 
-    blade create -t activator [-p packageName] [-c className] projectName
+    blade create -t activator -v 7.1 [-p packageName] [-c className] projectName
 
 or
 
@@ -24,7 +30,7 @@ an activator project called `my-activator-project` with a package name of
 `com.liferay.docs.activator` and a class name of `Activator`. You could run the
 following command to accomplish this:
 
-    blade create -t activator -p com.liferay.docs.activator -c Activator my-activator-project
+    blade create -t activator -v 7.1 -p com.liferay.docs.activator -c Activator my-activator-project
 
 or
 

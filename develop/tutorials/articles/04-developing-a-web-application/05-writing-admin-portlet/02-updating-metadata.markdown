@@ -1,7 +1,13 @@
-# Adding Metadata [](id=adding-metadata)
+---
+header-id: adding-metadata
+---
 
-<div class="learn-path-step">
-    <p>Writing the Guestbook Admin App<br>Step 2 of 5</p>
+# Adding Metadata
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Writing the Guestbook Admin App</p><p>Step 2 of 5</p>
 </div>
 
 Now that you've generated the classes, you must turn them into OSGi components.

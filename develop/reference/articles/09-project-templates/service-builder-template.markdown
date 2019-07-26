@@ -1,11 +1,17 @@
-# Service Builder Template [](id=using-the-service-builder-template)
+---
+header-id: using-the-service-builder-template
+---
+
+# Service Builder Template
+
+[TOC levels=1-4]
 
 In this article, you'll learn how to create a Liferay portlet application that
 uses Service Builder as Liferay modules. To create a Liferay Service Builder
 project via the command line using Blade CLI or Maven, use one of the commands
 with the following parameters:
 
-    blade create -t service-builder [-p packageName] projectName
+    blade create -t service-builder -v 7.1 [-p packageName] projectName
 
 or
 
@@ -25,7 +31,7 @@ create a Service Builder project called `tasks` with a package name of
 `com.liferay.docs.tasks`. You could run the following command to accomplish
 this:
 
-    blade create -t service-builder -p com.liferay.docs.tasks tasks
+    blade create -t service-builder -v 7.1 -p com.liferay.docs.tasks tasks
 
 or
 
@@ -86,10 +92,10 @@ The generated module is functional and is
 deployable to a @product@ instance. To build upon the generated app, modify the
 project by adding logic and additional files to the folders outlined above.
 
-## Related Topics  [](id=related-topics)
+## Related Topics 
 
-[Running Service Builder and Understanding the Generated Code](/develop/tutorials/-/knowledge_base/7-0/running-service-builder-and-understanding-the-generated-code)
+[Running Service Builder and Understanding the Generated Code](/docs/7-0/tutorials/-/knowledge_base/t/running-service-builder-and-understanding-the-generated-code)
 
-[Using Service Builder in a Maven Project](/develop/tutorials/-/knowledge_base/7-0/using-service-builder-in-a-maven-project)
+[Using Service Builder in a Maven Project](/docs/7-0/tutorials/-/knowledge_base/t/using-service-builder-in-a-maven-project)
 
-[Service Builder with Maven](/develop/reference/-/knowledge_base/7-0/service-builder-with-maven)
+[Service Builder with Maven](/docs/7-0/reference/-/knowledge_base/r/service-builder-with-maven)

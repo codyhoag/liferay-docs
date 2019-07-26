@@ -1,4 +1,10 @@
-# Using JavaScript in Your Portlets [](id=using-javascript-in-your-portlets)
+---
+header-id: using-javascript-in-your-portlets
+---
+
+# Using JavaScript in Your Portlets
+
+[TOC levels=1-4]
 
 Would you like to use the latest ECMAScript features in your JavaScript files 
 and portlets? Do you wish you could use npm and npm packages in your portlets?

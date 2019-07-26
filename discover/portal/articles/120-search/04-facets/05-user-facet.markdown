@@ -1,4 +1,10 @@
-# User Facet [](id=user-facet)
+---
+header-id: user-facet
+---
+
+# User Facet
+
+[TOC levels=1-4]
 
 The User Facet narrows search results down to those created by a certain User.
 

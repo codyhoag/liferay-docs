@@ -1,4 +1,10 @@
-# Publishing RSS Feeds [](id=publishing-rss-feeds)
+---
+header-id: publishing-rss-feeds
+---
+
+# Publishing RSS Feeds
+
+[TOC levels=1-4]
 
 RSS is a family of web feed formats used to publish frequently updated works
 such as blog entries and news articles. RSS allows users to stay up-to-date with

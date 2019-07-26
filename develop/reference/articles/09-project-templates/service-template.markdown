@@ -1,10 +1,16 @@
-# Service Template [](id=using-the-service-template)
+---
+header-id: using-the-service-template
+---
+
+# Service Template
+
+[TOC levels=1-4]
 
 In this article, you'll learn how to create a Liferay service as a Liferay
 module. To create a Liferay service via the command line using Blade CLI or
 Maven, use one of the commands with the following parameters:
 
-    blade create -t service [-p packageName] [-c className] [-s serviceName] projectName
+    blade create -t service -v 7.1 [-p packageName] [-c className] [-s serviceName] projectName
 
 or
 
@@ -27,7 +33,7 @@ create a service of type `com.liferay.portal.kernel.events.LifecycleAction` that
 also implements that same service. You could run the following command to
 accomplish this:
 
-    blade create -t service -p com.liferay.docs.service -c Service -s com.liferay.portal.kernel.events.LifecycleAction my-service-project
+    blade create -t service -v 7.1 -p com.liferay.docs.service -c Service -s com.liferay.portal.kernel.events.LifecycleAction my-service-project
 
 or
 

@@ -1,15 +1,21 @@
-# Fragment Template [](id=using-the-fragment-template)
+---
+header-id: using-the-fragment-template
+---
+
+# Fragment Template
+
+[TOC levels=1-4]
 
 In this article, you'll learn how to create a Liferay fragment as a Liferay
 module. You can learn more about fragment modules in the
-[Declaring a Fragment Host](/develop/tutorials/-/knowledge_base/7-0/overriding-a-modules-jsps#declaring-a-fragment-host)
+[Declaring a Fragment Host](/docs/7-0/tutorials/-/knowledge_base/t/overriding-a-modules-jsps#declaring-a-fragment-host)
 article and in section 3.14 of the
 [OSGi Alliance's core specification document](https://www.osgi.org/developer/downloads/release-6/).
 
 To create a Liferay fragment via the command line using Blade CLI or
 Maven, use one of the commands with the following parameters:
 
-    blade create -t fragment [-h hostBundleName] [-H hostBundleVersion] projectName
+    blade create -t fragment -v 7.1 [-h hostBundleName] [-H hostBundleVersion] projectName
 
 or
 
@@ -29,7 +35,7 @@ a fragment project called `my-fragment-project` with a host bundle symbolic name
 of `com.liferay.login.web` and host bundle version of `1.0.0`. You could run the
 following command to accomplish this:
 
-    blade create -t fragment -h com.liferay.login.web -H 1.0.0 my-fragment-project
+    blade create -t fragment -v 7.1 -h com.liferay.login.web -H 1.0.0 my-fragment-project
 
 or
 

@@ -1,4 +1,10 @@
-# Users [](id=users)
+---
+header-id: users
+---
+
+# Users
+
+[TOC levels=1-4]
 
 Configure user settings at Control Panel &rarr; Configuration &rarr; Instance
 Settings. In the Configuration tab, scroll down to the Users section and expand

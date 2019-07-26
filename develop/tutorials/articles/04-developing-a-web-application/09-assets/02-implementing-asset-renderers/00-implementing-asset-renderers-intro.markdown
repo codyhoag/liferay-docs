@@ -1,4 +1,10 @@
-# Implementing Asset Renderers [](id=implementing-asset-renderers)
+---
+header-id: implementing-asset-renderers
+---
+
+# Implementing Asset Renderers
+
+[TOC levels=1-4]
 
 Assets are display versions of entities, so they contain fields like `title`,
 `description`, and `summary`. @product@ uses these fields to display assets. 
@@ -10,4 +16,4 @@ displays assets.
 
 Your next task is to create these Asset Renderers. Ready to begin? 
 
-<a class="go-link btn btn-primary" href="/develop/tutorials/-/knowledge_base/7-1/implementing-a-guestbook-asset-renderer">Let's Go!<span class="icon-circle-arrow-right"></span></a>
+<a class="go-link btn btn-primary" href="/docs/7-1/tutorials/-/knowledge_base/t/implementing-a-guestbook-asset-renderer">Let's Go!<span class="icon-circle-arrow-right"></span></a>

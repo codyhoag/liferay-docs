@@ -1,4 +1,10 @@
-# Building a Site [](id=building-a-site)
+---
+header-id: building-a-site
+---
+
+# Building a Site
+
+[TOC levels=1-4]
 
 A site is a set of pages where content or applications are published. Sites can
 be independent or serve as an associated organization's website. You can create

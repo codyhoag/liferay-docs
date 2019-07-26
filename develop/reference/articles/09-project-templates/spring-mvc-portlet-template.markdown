@@ -1,11 +1,17 @@
-# Spring MVC Portlet Template [](id=spring-mvc-portlet-template)
+---
+header-id: spring-mvc-portlet-template
+---
+
+# Spring MVC Portlet Template
+
+[TOC levels=1-4]
 
 In this article, you'll learn how to create a Liferay Spring MVC portlet
 application as a WAR. To create a Liferay Spring MVC portlet via the command
 line using Blade CLI or Maven, use one of the commands with the following
 parameters:
 
-    blade create -t spring-mvc-portlet [-p packageName] [-c className] projectName
+    blade create -t spring-mvc-portlet -v 7.1 [-p packageName] [-c className] projectName
 
 or
 
@@ -26,7 +32,7 @@ with a package name of `com.liferay.docs.springmvcportlet` and a class name of
 `MySpringMvcPortlet`. Also, you'd like to create a Spring-annotated portlet
 class named `MySpringMvcPortletViewController`.
 
-    blade create -t spring-mvc-portlet -p com.liferay.docs.springmvcportlet -c MySpringMvcPortlet my-spring-mvc-portlet-project
+    blade create -t spring-mvc-portlet -v 7.1 -p com.liferay.docs.springmvcportlet -c MySpringMvcPortlet my-spring-mvc-portlet-project
 
 or
 
@@ -90,5 +96,5 @@ Gradle-specific files, but otherwise, appears exactly the same.
 The generated WAR is a working application and is deployable to a @product@
 instance. To build upon the generated app, modify the project by adding logic
 and additional files to the folders outlined above. You can visit the
-[springmvc-portlet](/develop/reference/-/knowledge_base/7-0/spring-mvc-portlet)
+[springmvc-portlet](/docs/7-0/reference/-/knowledge_base/r/spring-mvc-portlet)
 sample project for a more expanded sample of a Spring MVC portlet.

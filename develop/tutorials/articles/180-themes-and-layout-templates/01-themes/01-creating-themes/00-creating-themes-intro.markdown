@@ -1,4 +1,10 @@
-# Creating Themes [](id=creating-themes)
+---
+header-id: creating-themes
+---
+
+# Creating Themes
+
+[TOC levels=1-4]
 
 The Liferay Theme Generator lets you create themes, themelets, layout templates 
 and more. It is just one of Liferay JS Theme Toolkit's 
@@ -11,27 +17,33 @@ Follow these steps to install the Liferay Theme Generator and generate a theme:
 1.  Install [Node.js](http://nodejs.org/). We recommend installing the Long Term 
     Support (LTS) version. Note that Node Package Manager (npm) is installed 
     with this as well. You'll use npm to install the remaining dependencies and 
-    generator. 
+    generator. Make sure to 
+    [set up your npm environment](/docs/7-1/reference/-/knowledge_base/r/setting-up-your-npm-environment) 
+    before moving to the next step. Failing to do this can lead to permissions 
+    issues later on. 
 
 2.  Use npm to install 
     [Yeoman](http://yeoman.io/) 
     and 
     [gulp](https://gulpjs.com/):
 
-        npm install -g yo gulp
+        npm install -g yo
 
-3.  Install the Liferay Theme Generator. 7.x.x versions of the Theme Generator 
-    let you create themes for 6.2 and 7.0. Versions 8.x.x and up let you create 
-    themes for 7.0 and later versions of @product@.
+    | **Note:** Gulp is included as a local dependency in generated themes, so you
+    | are not required to install it. It can be accessed by running
+    | `node_modules\.bin\gulp` followed by the Gulp task from a generated theme's
+    | root folder.
 
-    To create themes for **6.2** and **7.0**, run the following command:
+3.  Install the Liferay Theme Generator. A few versions of the Liferay Theme 
+    Generator are available. The version you must install depends on the version 
+    of @product@ you're developing on. The required versions are listed in the 
+    table below:
 
-        npm install -g generator-liferay-theme@^7.x.x
-    
-    To create themes for **7.0**, **7.1**, and later versions of @product@, run 
-    this command:
-    
-        npm install -g generator-liferay-theme
+    | Liferay Version | Liferay Theme Generator Version | Command |
+    | --- | --- | --- |
+    | 6.2 | 7.x.x | `npm install -g generator-liferay-theme@^7.x.x` |
+    | 7.0 | 7.x.x or 8.x.x | Same as above or below |
+    | 7.1 | 8.x.x | `npm install -g generator-liferay-theme@^8.x.x` |
    
     If you're on Windows, follow the instructions in step 4 to install Sass, 
     otherwise you can skip to step 5.

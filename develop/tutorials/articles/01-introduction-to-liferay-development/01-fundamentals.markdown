@@ -1,4 +1,10 @@
-# Fundamentals [](id=fundamentals)
+---
+header-id: fundamentals
+---
+
+# Fundamentals
+
+[TOC levels=1-4]
 
 What are the fundamentals that every Liferay developer should know?
 
@@ -17,7 +23,7 @@ What are the fundamentals that every Liferay developer should know?
 
 Interested? More details below. 
 
-## Open Source and based on Standards [](id=open-source-and-based-on-standards)
+## Open Source and based on Standards
 
 @product@ is both Open Source and built in the open, following a collaborative
 development model. That means that you can follow new development as it's
@@ -42,9 +48,9 @@ use to do all this:
 4.  [Blogs](http://blogs.liferay.com): Read the latest news, advice, and best
     practices from key core developers and our most active community members.
 
-5.  [Participate](http://dev.liferay.com/participate): Learn how to get started
-    participating. There are options for all levels of expertise and time
-    availability.
+5.  [Participate](https://portal.liferay.dev/participate): Learn how to get 
+    started participating. There are options for all levels of expertise and
+    time availability.
 
 In addition to being Open Source, Liferay is also heavily based on standards.
 This is great news for your project, since it significantly reduces the lock-in
@@ -67,12 +73,12 @@ Here are some key standards @product@ supports:
     integration of Babel JS.
 -   [Content Management Interoperability Services](https://www.oasis-open.org/committees/cmis) (CMIS):
     Liferay's
-    [Documents and Media](/discover/portal/-/knowledge_base/7-1/managing-documents-and-media)
+    [Documents and Media](/docs/7-1/user/-/knowledge_base/u/managing-documents-and-media)
     can behave as an interface for any external
     Documents Repository that supports this widely adopted standard.
 -   [Java Content Repository](https://jcp.org/en/jsr/detail?id=170) (JSR-170):
     Files stored in the internal repository of Liferay's
-    [Documents and Media can be configured](/discover/deployment/-/knowledge_base/7-1/document-repository-configuration)
+    [Documents and Media can be configured](/docs/7-1/deploy/-/knowledge_base/d/document-repository-configuration)
     to be stored in a JSR-170 compatible repository if desired.
 -   [WebDAV](http://www.webdav.org):
     Any Documents &amp; Media folder can be mounted anywhere WebDAV is
@@ -100,7 +106,7 @@ Here are some key standards @product@ supports:
         an auto-generated UI to change the configuration of any component
         that leverages this standard.
 
-## Technologies [](id=technologies)
+## Technologies
 
 Like any open source application, Liferay is built on the shoulders of giants.
 When we choose the technology on which to build our platform, it must have the
@@ -153,14 +159,14 @@ writing applications on Liferay, the sky's the limit: you can use any
 web framework you like, and you can write both servlet and portlet-based
 applications. If you're looking for a recommendation, though, we're happy to
 point you to our
-[MVCPortlet](/develop/tutorials/-/knowledge_base/7-1/liferay-mvc-portlet)
+[MVCPortlet](/docs/7-1/tutorials/-/knowledge_base/t/liferay-mvc-portlet)
 framework.
 
 
 <!-- TODO: readd JSF article when available. -Cody
 
 either our
-[MVCPortlet](/develop/tutorials/-/knowledge_base/7-1/liferay-mvc-portlet)
+[MVCPortlet](/docs/7-1/tutorials/-/knowledge_base/t/liferay-mvc-portlet)
 or our JSF-based
 [LiferayFaces](develop/tutorials/-/knowledge_base/7-1/jsf-portlets-with-liferay-faces)
 frameworks. 
@@ -186,9 +192,9 @@ You can also use any JavaScript library, including
 
 @product@ follows a design language created by our designers at Liferay called 
 [Lexicon Experience Language](https://lexicondesign.io/), which has been 
-implemented for use of the web as [Lexicon](https://liferay.github.io/clay/).
+implemented for use of the web as [Clay](https://liferay.github.io/clay/).
 
-Lexicon is automatically made available to you through a set of CSS classes and
+Clay is automatically made available to you through a set of CSS classes and
 markup, although it's even easier to use our tag library. 
 
 For templating, Java EE's JSP is there as expected as well as FreeMarker, but the
@@ -207,7 +213,7 @@ everything we can to provide you with the most flexible technology platform
 possible, so that you have the freedom to go and build great things on
 it--things we never could have expected or imagined. 
 
-## Architecture [](id=architecture)
+## Architecture
 
 Liferay's design goals have from the beginning been to give you all the tools to
 create exactly the web presence you have in mind. To achieve this, the product
@@ -237,7 +243,7 @@ their definitions, implementations, dependencies, and priorities.
 
 Anything a developer wants to do is implemented as one or more modules. If it's 
 a new application, that application can depend on existing modules and 
-[define a dependency](/develop/tutorials/-/knowledge_base/7-0/configuring-dependencies) 
+[define a dependency](/docs/7-0/tutorials/-/knowledge_base/t/configuring-dependencies) 
 on them. This enables you to use functionality that's already there without 
 rewriting it yourself for your app. If it's a customization, in many cases it's 
 just a simple matter of defining your customization with a higher priority than 
@@ -245,11 +251,11 @@ the existing functionality.
 
 This is the power of a modular architecture. 
 
-### Modules [](id=modules)
+### Modules
 
 All new applications, extensions, and customizations built on Liferay are
 built in a
-[modular way](/develop/tutorials/-/knowledge_base/7-1/the-benefits-of-modularity).
+[modular way](/docs/7-1/tutorials/-/knowledge_base/t/the-benefits-of-modularity).
 A module is the single unit of distribution and deployment in a modular
 architecture.
 
@@ -261,7 +267,7 @@ communicate. It also defines the packaging format for modules: OSGi bundles. An
 OSGi module is just a typical JAR file, familiar to Java developers as a ZIP
 file containing compiled code, templates, resources, and some meta information.
 
-### Services [](id=services)
+### Services
 
 One aspect of modern software architecture is the notion of services. These are
 independently running pieces of code that provide specific functionality when
@@ -301,7 +307,7 @@ The container then instantiates your implementation when the service is called
 by existing code. This simple, clean method is how most customizations are made
 to Liferay 7. 
 
-### Components [](id=components)
+### Components
 
 In OSGi, possibly the best and certainly the easiest way to create services is
 through Declarative Services. In Declarative Services (aka DS), you create
@@ -321,7 +327,7 @@ larger application, and that application is itself made up of many small
 components. This makes it easier to develop an application because you only have
 to deal with small, well-defined, bite-sized chunks of code at a time.
 
-### Real Life Benefits of Modular Development [](id=real-life-benefits-of-modular-development)
+### Real Life Benefits of Modular Development
 
 The next question then becomes, so what? Why is this a big deal? Why should I
 have components, and what do I need them for?

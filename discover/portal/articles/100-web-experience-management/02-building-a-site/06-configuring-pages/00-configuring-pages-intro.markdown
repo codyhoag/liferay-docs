@@ -1,4 +1,10 @@
-# Customizing Page Options [](id=customizing-page-options)
+---
+header-id: customizing-page-options
+---
+
+# Customizing Page Options
+
+[TOC levels=1-4]
 
 Every page has options to give it a unique configuration. You can handle that 
 configuration at the individual page level or configure a Page Set of public or 

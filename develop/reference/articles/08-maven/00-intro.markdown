@@ -1,4 +1,10 @@
-# Maven [](id=maven)
+---
+header-id: maven
+---
+
+# Maven
+
+[TOC levels=1-4]
 
 Liferay provides plugins that you can apply to your Maven project. This
 reference documentation describes
@@ -9,4 +15,4 @@ reference documentation describes
 
 If you're looking for additional instructions on using Maven with your modules,
 see the 
-[Maven tutorials](/develop/tutorials/-/knowledge_base/7-1/maven). 
+[Maven tutorials](/docs/7-1/tutorials/-/knowledge_base/t/maven). 

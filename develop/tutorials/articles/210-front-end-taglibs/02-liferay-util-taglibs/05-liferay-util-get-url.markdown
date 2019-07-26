@@ -1,4 +1,10 @@
-# Using Liferay Util Get URL [](id=using-liferay-util-get-url)
+---
+header-id: using-liferay-util-get-url
+---
+
+# Using Liferay Util Get URL
+
+[TOC levels=1-4]
 
 The get URL tag scrapes the URL provided by the `url` attribute. If a value is 
 provided for the `var` attribute, the content from the screen scrape is scoped 
@@ -7,14 +13,14 @@ is used.
 
 A basic configuration for the `<liferay-util:get-url>` tag is shown below:
     
-    <liferay-util:get-url url="https://dev.liferay.com/en/develop/tutorials" />
+    <liferay-util:get-url url="https://portal.liferay.dev/" />
  
 Here is an example that uses the `var` attribute:
 
-    <liferay-util:get-url url="https://dev.liferay.com/en/develop/tutorials" var="ldn" />
+    <liferay-util:get-url url="https://portal.liferay.dev/" var="ldn" />
 
     <div>
-    				<h2>We stole <a href="https://dev.liferay.com/en/develop/tutorials">LDN</a>, here it is.</h2>
+    				<h2>We stole <a href="https://portal.liferay.dev/">Liferay Portal</a>, here it is.</h2>
 
     				<div class="ldn">
     								<%= ldn %>
@@ -25,10 +31,10 @@ Here is an example that uses the `var` attribute:
 
 Now you know how to use the `<liferay-util:get-url>` tag to scrape URLs. 
 
-## Related Topics [](id=related-topics)
+## Related Topics
 
-[Using the Liferay Util Param Tag](/develop/tutorials/-/knowledge_base/7-1/using-liferay-util-param)
+[Using the Liferay Util Param Tag](/docs/7-1/tutorials/-/knowledge_base/t/using-liferay-util-param)
 
-[Using the Liferay Util Include Tag](/develop/tutorials/-/knowledge_base/7-1/using-liferay-util-include)
+[Using the Liferay Util Include Tag](/docs/7-1/tutorials/-/knowledge_base/t/using-liferay-util-include)
 
-[Using the AUI Taglib](/develop/tutorials/-/knowledge_base/7-1/using-aui-taglibs-in-your-portlets)
+[Using the AUI Taglib](/docs/7-1/tutorials/-/knowledge_base/t/using-aui-taglibs-in-your-portlets)

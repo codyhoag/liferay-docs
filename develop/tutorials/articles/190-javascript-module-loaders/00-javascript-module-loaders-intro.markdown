@@ -1,4 +1,10 @@
-# JavaScript Module Loaders [](id=javascript-module-loaders)
+---
+header-id: javascript-module-loaders
+---
+
+# JavaScript Module Loaders
+
+[TOC levels=1-4]
 
 A JavaScript module encapsulates code into a useful unit that exports its
 capability/value. This makes it easier to see the broader scope, easier to find

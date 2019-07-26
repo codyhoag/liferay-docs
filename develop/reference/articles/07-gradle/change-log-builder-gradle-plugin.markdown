@@ -1,4 +1,10 @@
-# Change Log Builder Gradle Plugin [](id=change-log-builder-gradle-plugin)
+---
+header-id: change-log-builder-gradle-plugin
+---
+
+# Change Log Builder Gradle Plugin
+
+[TOC levels=1-4]
 
 The Change Log Builder Gradle plugin lets you generate and maintain a
 change log file based on the Git commits in your project. A change log file
@@ -30,7 +36,7 @@ range end of the last line in the change log.
 
 The plugin has been successfully tested with Gradle 4.10.2.
 
-## Usage [](id=usage)
+## Usage
 
 To use the plugin, include it in your build script:
 
@@ -50,7 +56,7 @@ buildscript {
 apply plugin: "com.liferay.change.log.builder"
 ```
 
-## Tasks [](id=tasks)
+## Tasks
 
 The plugin adds one task to your project:
 
@@ -68,9 +74,9 @@ Property Name | Default Value
 [`changeLogFile`](#changelogfile) | <p>**If the `java` plugin is applied:** The `META-INF/liferay-releng.changelog` file in the first `resources` directory of the `main` source set (by default, `src/main/resources/META-INF/liferay-releng.changelog`).</p><p>**Otherwise:** `"${project.projectDir}/liferay-releng.changelog"`</p>
 [`dirs`](#dirs) | `[project.projectDir]`
 
-### BuildChangeLogTask [](id=buildchangelogtask)
+### BuildChangeLogTask
 
-#### Task Properties [](id=task-properties)
+#### Task Properties
 
 Property Name | Type | Default Value | Description
 ------------- | ---- | ------------- | -----------
@@ -86,7 +92,7 @@ The properties of type `File` support any type that can be resolved by [`project
 Moreover, it is possible to use Closures and Callables as values for the
 `String` properties to defer evaluation until task execution.
 
-#### Task Methods [](id=task-methods)
+#### Task Methods
 
 Method | Description
 ------ | -----------

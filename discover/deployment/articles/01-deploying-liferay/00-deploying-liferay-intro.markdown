@@ -1,4 +1,10 @@
-# Deploying @product@ [](id=deploying-product)
+---
+header-id: deploying-product
+---
+
+# Deploying @product@
+
+[TOC levels=1-4]
 
 @product@ is one of the most flexible applications on the market today with
 respect to database and application server support. @product@ supports a wide

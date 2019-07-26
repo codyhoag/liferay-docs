@@ -1,4 +1,10 @@
-# Creating Data Definitions [](id=creating-data-definitions)
+---
+header-id: creating-data-definitions
+---
+
+# Creating Data Definitions
+
+[TOC levels=1-4]
 
 Follow these steps to create a data definition: 
 

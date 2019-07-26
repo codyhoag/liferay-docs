@@ -1,7 +1,13 @@
-# Assigning Permissions to Resources [](id=assigning-permissions-to-resources)
+---
+header-id: assigning-permissions-to-resources
+---
 
-<div class="learn-path-step">
-    <p>Implementing Permissions<br>Step 3 of 4</p>
+# Assigning Permissions to Resources
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Implementing Permissions</p><p>Step 3 of 4</p>
 </div>
 
 You've now defined your permissions and registered them in the container and in

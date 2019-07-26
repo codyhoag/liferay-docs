@@ -1,4 +1,10 @@
-# Securing @product@ [](id=securing-product)
+---
+header-id: securing-product
+---
+
+# Securing @product@
+
+[TOC levels=1-4]
 
 Liferay follows the OWASP Top 10 (2013) and CWE/SANS Top 25 lists to ensure
 @product@ is as secure as possible. Following these recommendations protects the
@@ -24,7 +30,7 @@ This section of tutorials shows you how to configure various security and login
 features, such as LDAP, single sign-on, Service Access Policies, and more. What
 follows is an overview of what's available. 
 
-## Authentication Overview [](id=authentication-overview)
+## Authentication Overview
 
 @product@ user authentication can take place using any of a variety of prepared
 solutions:
@@ -38,7 +44,7 @@ solutions:
 
 Note: Although Liferay's SSO solutions are incompatible with WebDAV, they can
 be used with Liferay Sync. See the
-[Publishing Files](/discover/portal/-/knowledge_base/7-1/publishing-files) 
+[Publishing Files](/docs/7-1/user/-/knowledge_base/u/publishing-files) 
 article for more information on WebDAV and Liferay Sync.
 
 You can authenticate and authorize apps remotely using the `AuthVerifier` layer:
@@ -48,12 +54,12 @@ You can authenticate and authorize apps remotely using the `AuthVerifier` layer:
 - Portal session based solution for JavaScript applications
 
 Both user authentication and remote application authentication are
-[extensible](/develop/tutorials/-/knowledge_base/7-1/authentication-pipelines).
+[extensible](/docs/7-1/tutorials/-/knowledge_base/t/authentication-pipelines).
 Developers can create custom Login portlets and plugins, extend the default
 Login portlet `auth.pipeline`, create `AutoLogin` extensions for SSO, or create
 custom `AuthVerifier` implementations.
 
-## Authorization and Permission Checking [](id=authorization-and-permission-checking)
+## Authorization and Permission Checking
 
 There are several adjustable authorization layers in place to prevent
 unauthorized or unsecured access to data:
@@ -68,24 +74,20 @@ unauthorized or unsecured access to data:
 - Remote IP check for portal remote API authentication methods
 - Service Access Policies to control access to portal remote API
 
-## Additional Security Features [](id=additional-security-features)
+## Additional Security Features
 
 Users can be assigned to sites, teams, user groups, or organizations. Custom
 roles can be created, permissions can be assigned to those roles, and those
 roles can be applied to users. Roles are scoped to apply only with a specific
 context like a site, an organization, or globally. See the 
-[Roles and Permissions](/discover/portal/-/knowledge_base/7-1/roles-and-permissions) documentation for more information.
+[Roles and Permissions](/docs/7-1/user/-/knowledge_base/u/roles-and-permissions) documentation for more information.
 
-+$$$
-
-Note: @product@ relies on the application server for sanitizing CRLF in
-HTTP headers. You should, therefore, make sure this is configured properly in
-your application server, or you may experience false positives in reports from
-automatic security verification software such as Veracode. There is one
-exception to this for Resin, which does not have support for this feature. In
-this case, @product@ sanitizes HTTP headers. 
-
-$$$
+| Note: @product@ relies on the application server for sanitizing CRLF in
+| HTTP headers. You should, therefore, make sure this is configured properly in
+| your application server, or you may experience false positives in reports from
+| automatic security verification software such as Veracode. There is one
+| exception to this for Resin, which does not have support for this feature. In
+| this case, @product@ sanitizes HTTP headers.
 
 There are additional security plugins available from 
 [Liferay Marketplace](https://www.liferay.com/marketplace). 
@@ -101,7 +103,7 @@ are a few examples of these kinds of configuration actions:
 - Configure the list of portlets that can be accessed from any page
 - Configure the file types allowed to be uploaded and downloaded
 
-## Secure Configuration and Run Recommendations [](id=secure-configuration-and-run-recommendations)
+## Secure Configuration and Run Recommendations
 
 @product@ is built using the "secure by default" concept in mind. It's not
 recommended to disable built-in protections or to allow all values in security
@@ -109,8 +111,8 @@ white-lists. Such acts may lead to security misconfiguration and an insecure
 deployment.
 
 For more information about securing a @product@ installation, please see 
-[our security statement](https://www.liferay.com/security), 
-[the community security team](https://dev.liferay.com/web/community-security-team), 
+[our security overview](https://portal.liferay.dev/learn/security/overview), 
+[the community security team](https://portal.liferay.dev/people/community-security-team), 
 and the resources listed on those pages.
 
 Also, customers are advised to deploy security patches as described on the
@@ -120,5 +122,5 @@ For community and CE deployments, the stay secure by always using the latest
 community version, which contains all previous security patches. Until a new
 version is released, the Community Security Team issues patches for the latest
 CE version via the
-[community security team](https://dev.liferay.com/web/community-security-team)
+[security](https://portal.liferay.dev/learn/security/overview)
 page.

@@ -1,11 +1,17 @@
-# Portlet Configuration Icon [](id=portlet-configuration-icon)
+---
+header-id: portlet-configuration-icon
+---
+
+# Portlet Configuration Icon
+
+[TOC levels=1-4]
 
 In this article, you'll learn how to create a Liferay portlet configuration
 icon as a Liferay module. To create a portlet configuration icon via the command
 line using Blade CLI or Maven, use one of the commands with the following
 parameters:
 
-    blade create -t portlet-configuration-icon [-p packageName] [-c className] projectName
+    blade create -t portlet-configuration-icon -v 7.1 [-p packageName] [-c className] projectName
 
 or
 
@@ -27,7 +33,7 @@ you want to create a portlet configuration icon project called
 `SamplePortletConfigurationIcon`. You could run the following command to
 accomplish this:
 
-    blade create -t portlet-configuration-icon -p com.liferay.docs -c Sample my-portlet-config-icon
+    blade create -t portlet-configuration-icon -v 7.1 -p com.liferay.docs -c Sample my-portlet-config-icon
 
 or
 

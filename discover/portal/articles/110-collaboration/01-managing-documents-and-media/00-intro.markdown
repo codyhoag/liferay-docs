@@ -1,4 +1,10 @@
-# Managing Documents and Media [](id=managing-documents-and-media)
+---
+header-id: managing-documents-and-media
+---
+
+# Managing Documents and Media
+
+[TOC levels=1-4]
 
 The Documents and Media library stores files on the server using the same type
 of structure that you use to store files locally. It accepts files of any kind,

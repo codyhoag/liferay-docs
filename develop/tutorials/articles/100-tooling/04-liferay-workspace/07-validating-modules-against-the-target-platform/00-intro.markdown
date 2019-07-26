@@ -1,4 +1,15 @@
-# Validating Modules Against the Target Platform [](id=validating-modules-against-the-target-platform)
+---
+header-id: validating-modules-against-the-target-platform
+---
+
+# Validating Modules Against the Target Platform
+
+[TOC levels=1-4]
+
+| **Important:** Validating modules with the `resolve` task is deprecated. It
+| only functions as it's documented here in versions prior to Liferay Workspace
+| (Gradle only) version 2.0.3. It is being redesigned for workspace versions
+| 2.0.3+ and is still in development at this time.
 
 After you write a module in Liferay Workspace, you can validate it before
 deployment to make sure of several things: 

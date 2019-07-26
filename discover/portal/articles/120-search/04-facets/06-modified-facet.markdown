@@ -1,4 +1,10 @@
-# Modified Facet [](id=modified-facet)
+---
+header-id: modified-facet
+---
+
+# Modified Facet
+
+[TOC levels=1-4]
 
 The Modified Facet narrows search results down to those that match the searched
 keyword and that were created or modified during a certain time period.

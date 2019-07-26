@@ -1,13 +1,19 @@
-# Fitting it All Together [](id=fitting-it-all-together)
+---
+header-id: fitting-it-all-together
+---
 
-<div class="learn-path-step">
-    <p>Refactoring the Prototype<br>Step 6 of 6</p>
+# Fitting it All Together
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Refactoring the Prototype</p><p>Step 6 of 6</p>
 </div>
 
 You've created a complete data-driven application from the back-end to the 
 display. It's a great time to review how everything connects together. 
 
-## The Entry [](id=the-entry)
+## The Entry
 
 First, you defined your model in Service Builder's configuration file, 
 `service.xml`. The main part of this is your `Entry` object: 
@@ -117,7 +123,7 @@ information they want, and displays the data they've entered.
 Now that you've built the application, and you can see a clear picture of how it 
 all works, it's time to test it. 
 
-## Deploying and Testing the Application [](id=deploying-and-testing-the-application)
+## Deploying and Testing the Application
 
 1.  Drag and drop the `guestbook-api` module onto the server.
 
@@ -138,7 +144,7 @@ all works, it's time to test it.
 
 ![Figure 1: Your first guestbook and entry appears. Nice job!](../../../images/guestbook-entry-test.png)
 
-## What's Next? [](id=whats-next)
+## What's Next?
 
 You've created a working web application and deployed it on @product@. If you've 
 created web applications before, though, you know that it's missing some 

@@ -1,7 +1,13 @@
-# Creating a Form [](id=creating-a-form)
+---
+header-id: creating-a-form
+---
 
-<div class="learn-path-step">
-    <p>Developing Your First Portlet<br>Step 6 of 8</p>
+# Creating a Form
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Developing Your First Portlet</p><p>Step 6 of 8</p>
 </div>
 
 The form for creating guestbook entries has two fields: one for the name of the

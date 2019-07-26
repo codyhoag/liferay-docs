@@ -1,9 +1,15 @@
-# CSS Builder Plugin [](id=css-builder-plugin)
+---
+header-id: css-builder-plugin
+---
+
+# CSS Builder Plugin
+
+[TOC levels=1-4]
 
 The CSS Builder plugin lets you compile [Sass](http://sass-lang.com/) files in
 your project.
 
-## Usage [](id=usage)
+## Usage
 
 To use the plugin, include it in your project's root `pom.xml` file:
 
@@ -13,7 +19,7 @@ To use the plugin, include it in your project's root `pom.xml` file:
             <plugin>
                 <groupId>com.liferay</groupId>
                 <artifactId>com.liferay.css.builder</artifactId>
-                <version>2.1.3</version>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
                         <id>default-build</id>
@@ -33,7 +39,7 @@ To use the plugin, include it in your project's root `pom.xml` file:
 You can view an example POM containing the CSS Builder configuration
 [here](https://github.com/liferay/liferay-portal/blob/master/modules/util/css-builder/samples/pom.xml).
 
-## Goals [](id=goals)
+## Goals
 
 The plugin adds one Maven goal to your project:
 
@@ -41,7 +47,7 @@ Name | Description
 ---- | -----------
 `css-builder:build` | Compiles the Sass files in the project.
 
-## Available Parameters [](id=available-parameters)
+## Available Parameters
 
 You can set the following parameters in the `<configuration>` section of the
 POM:
@@ -77,5 +83,5 @@ by adding it as a project dependency:
 
 There are additional Liferay theme-related dependencies you can manage this way
 that are provided by the Theme Builder. See
-[this section](/develop/reference/-/knowledge_base/7-1/theme-builder-plugin) for
+[this section](/docs/7-1/reference/-/knowledge_base/r/theme-builder-plugin) for
 more information.

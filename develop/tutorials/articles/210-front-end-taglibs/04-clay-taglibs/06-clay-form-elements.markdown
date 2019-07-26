@@ -1,9 +1,15 @@
-# Clay Form Elements [](id=clay-form-elements)
+---
+header-id: clay-form-elements
+---
+
+# Clay Form Elements
+
+[TOC levels=1-4]
 
 The Liferay Clay tag library provides several tags for creating form elements. 
 An example of each tag is shown below. 
 
-## Checkbox [](id=checkbox)
+## Checkbox
 
 Checkboxes give the user a true or false input.
 			
@@ -30,7 +36,7 @@ Attributes:
 
 ![Figure 1: Clay taglibs provide checkboxes.](../../../images/clay-taglib-form-checkbox.png)
 
-## Radio [](id=radio)
+## Radio
 
 A radio button lets the user select one choice from a set of options in a form.
 
@@ -55,7 +61,7 @@ Attributes:
 
 ![Figure 2: Clay taglibs provide radio buttons.](../../../images/clay-taglib-form-radio-button.png)
 
-## Selector [](id=selector)
+## Selector
 
 A selector gives the user a select box with a set of options to choose from. 
 
@@ -103,10 +109,10 @@ Attributes:
 
 Now you know how to use Clay taglibs to add common form elements to your app!
 
-## Related Topics [](id=related-topics)
+## Related Topics
 
-[Clay Buttons](/develop/tutorials/-/knowledge_base/7-1/clay-buttons)
+[Clay Buttons](/docs/7-1/tutorials/-/knowledge_base/t/clay-buttons)
 
-[Clay Icons](/develop/tutorials/-/knowledge_base/7-1/clay-icons)
+[Clay Icons](/docs/7-1/tutorials/-/knowledge_base/t/clay-icons)
 
-[Clay Labels and Links](/develop/tutorials/-/knowledge_base/7-1/clay-labels-and-links)
+[Clay Labels and Links](/docs/7-1/tutorials/-/knowledge_base/t/clay-labels-and-links)

@@ -1,4 +1,10 @@
-# Creating the iOS Screenlet's Class [](id=creating-the-ios-screenlets-class)
+---
+header-id: creating-the-ios-screenlets-class
+---
+
+# Creating the iOS Screenlet's Class
+
+[TOC levels=1-4]
 
 The Screenlet class is the central hub of a Screenlet. It contains the 
 Screenlet's properties, a reference to the Screenlet's View class, methods for 

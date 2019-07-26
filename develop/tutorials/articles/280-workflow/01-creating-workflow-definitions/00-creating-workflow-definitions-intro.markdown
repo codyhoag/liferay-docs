@@ -1,4 +1,10 @@
-# Crafting XML Workflow Definitions [](id=crafting-xml-workflow-definitions)
+---
+header-id: crafting-xml-workflow-definitions
+---
+
+# Crafting XML Workflow Definitions
+
+[TOC levels=1-4]
 
 You don't need a fancy visual designer to build workflows. To be clear, Kaleo
 Designer may make you a faster workflow designer through its graphical
@@ -8,14 +14,14 @@ from existing workflows and a little handcrafted XML, you can build any workflow
 and attain workflow wizard-hood in the process. Follow this set of tutorials to
 learn what elements you can put into your definitions.
 
-## Existing Workflow Definitions [](id=existing-workflow-definitions)
+## Existing Workflow Definitions
 
 Only one workflow definition is installed by default: Single Approver. Several
 more, however, are embedded in the source code of your @product@ installation.
 If you're comfortable extracting the XML files from a JAR file embedded in an
 LPKG file, you're welcome to follow the steps below to obtain the workflow
 definitions. To obtain the files more conveniently, download a ZIP file
-[here](https://dev.liferay.com/documents/10184/1530512/Workflow+Definitions+Zip).
+[here](https://portal.liferay.dev/documents/113763090/114000653/Workflow+Definitions+Zip.zip).
 
 To extract the definitions for yourself, navigate to 
 
@@ -35,7 +41,7 @@ good reference material for many of the workflow features and elements described
 in these articles. In fact, most of the XML snippets you see here are lifted
 directly from these definitions.
 
-## Schema [](id=schema)
+## Schema
 
 The XML structure of a workflow definition is defined in an XSD file:
 
@@ -55,7 +61,7 @@ XML (it's practically poetic), check out the XSD
 [here](https://www.liferay.com/dtd/liferay-workflow-definition_7_0_0.xsd).
 Otherwise, move on to entering the definition's metadata.
 
-## Metadata [](id=metadata)
+## Metadata
 
 Give the definition a name, description, and version:
 

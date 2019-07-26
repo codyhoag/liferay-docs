@@ -1,4 +1,10 @@
-# Upgrading Plugins to @product-ver@ [](id=upgrading-plugins-to-liferay-7)
+---
+header-id: upgrading-plugins-to-liferay-7
+---
+
+# Upgrading Plugins to @product-ver@
+
+[TOC levels=1-4]
 
 The plugin upgrade tutorials guide you through a process of making the minimal
 changes necessary for existing plugins to work in @product-ver@. This group of

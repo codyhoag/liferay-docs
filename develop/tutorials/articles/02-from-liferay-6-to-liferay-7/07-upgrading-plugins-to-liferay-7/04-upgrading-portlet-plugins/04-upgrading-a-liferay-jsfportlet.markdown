@@ -1,7 +1,13 @@
-# Upgrading a Liferay JSF Portlet [](id=upgrading-a-liferay-jsf-portlet)
+---
+header-id: upgrading-a-liferay-jsf-portlet
+---
+
+# Upgrading a Liferay JSF Portlet
+
+[TOC levels=1-4]
 
 Liferay JSF portlets are easy to upgrade and require few changes. They interface
-with the [Liferay Faces](/develop/reference/-/knowledge_base/7-1/liferay-faces)
+with the [Liferay Faces](/docs/7-1/reference/-/knowledge_base/r/liferay-faces)
 project, which encapsulates @product@'s Java API and JavaScript code. Because
 of this, upgrading JSF portlets to @product-ver@ requires only updating
 dependencies.
@@ -11,7 +17,7 @@ There are two ways to find a JSF portlet's dependencies for @product-ver@:
 -   The [http://liferayfaces.org/](http://liferayfaces.org/) home page lets you
     look up the dependencies (Gradle or Maven) by @product@ version, JSF
     version, and component suites. 
--   The [Liferay Faces Version Scheme](/develop/reference/-/knowledge_base/7-1/liferay-faces-version-scheme)
+-   The [Liferay Faces Version Scheme](/docs/7-1/reference/-/knowledge_base/r/liferay-faces-version-scheme)
     article's tables list artifacts by @product@ version, JSF version, portlet
     version, and AlloyUI and Metal component suite version. 
 
@@ -22,9 +28,9 @@ portlet. This portlet provides a job application users can submit.
 ![Figure 1: The JSF Applicant portlet provides a job application for users to submit.](../../../../images/jsf-applicant-6-2.png)
 
 For reference, you can download the
-[pre-upgraded portlet code](https://dev.liferay.com/documents/10184/656312/jsf-applicant-portlet-6.2/48113118-3372-636f-4b5e-c0b501108a97)
+[pre-upgraded portlet code](https://portal.liferay.dev/documents/113763090/114000186/jsf-applicant-portlet-6.2.zip)
 and the
-[upgrade portlet code](https://dev.liferay.com/documents/10184/1608802/jsf-applicant-portlet-7.1/7e9d3296-0bf2-72a6-78e8-39f58a048081).
+[upgrade portlet code](https://portal.liferay.dev/documents/113763090/114000653/jsf-applicant-portlet-7.1.zip).
 This sample project uses Maven.
 
 Follow these steps to upgrade your Liferay JSF portlet.

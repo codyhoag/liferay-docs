@@ -1,4 +1,10 @@
-# Servlet Filters [](id=servlet-filters)
+---
+header-id: servlet-filters
+---
+
+# Servlet Filters
+
+[TOC levels=1-4]
 
 Servlet filters can both pre-process requests as they arrive and post-process
 responses before they go to the client browser. They let you apply functionality
@@ -25,22 +31,18 @@ are the steps for creating and deploying a servlet filter:
 4. [Deploy your plugin](#step-4-deploy-your-plugin) 
 
 For reference, you can download the example
-[servlet filter project code](https://dev.liferay.com/documents/10184/1608802/sample-servlet-filter-hook.zip). 
+[servlet filter project code](https://portal.liferay.dev/documents/113763090/114000653/sample-servlet-filter-hook.zip). 
 
 In a traditional web application (`.war`) project, start with creating your
 servlet filter class. 
 
-+$$$
+| **Note:**
+| [Portlet filters](https://portals.apache.org/pluto/portlet-3.0-apidocs/javax/portlet/filter/PortletFilter.html)
+| let you apply functionality to portlet requests and responses.
+| [JSP overrides](/docs/7-1/tutorials/-/knowledge_base/t/jsp-overrides-using-portlet-filters)
+| are one way to use portlet filters.
 
-**Note:**
-[Portlet filters](https://portals.apache.org/pluto/portlet-3.0-apidocs/javax/portlet/filter/PortletFilter.html)
-let you apply functionality to portlet requests and responses. 
-[JSP overrides](/develop/tutorials/-/knowledge_base/7-1/jsp-overrides-using-portlet-filters)
-are one way to use portlet filters. 
-
-$$$
-
-## Step 1: Create a Servlet Filter class [](id=step-1-create-a-servlet-filter-class)
+## Step 1: Create a Servlet Filter class
 
 Create a class that implements 
 [`javax.servlet.Filter`](https://tomcat.apache.org/tomcat-9.0-doc/servletapi/index.html).
@@ -123,7 +125,7 @@ methods to implement:
 
 It's time to map URLs to your servlet filter. 
 
-## Step 2: Map URLs to your Servlet Filter [](id=step-2-map-urls-to-your-servlet-filter)
+## Step 2: Map URLs to your Servlet Filter
 
 Traditionally, specifying a servlet filter and its filter mapping requires
 modifying your web application's `web.xml` file. @product@, however, lets you
@@ -189,14 +191,14 @@ Here's how to map URLs to your servlet filter:
     [constrain how the filter is applied to requests](https://docs.oracle.com/cd/E19798-01/821-1841/bnagf/index.html).
     (optional)
 
-## Step 3: Create a Liferay plugin descriptor [](id=step-3-create-a-liferay-plugin-descriptor)
+## Step 3: Create a Liferay plugin descriptor
 
 In a `WEB-INF/liferay-plugin-package.properties` file, specify the versions of
 @product@ your plugin supports:
 
     liferay-versions=7.1.0+
 
-## Step 4: Deploy your plugin [](id=step-4-deploy-your-plugin)
+## Step 4: Deploy your plugin
 
 Specify compile-time dependencies on these artifacts:
 
@@ -224,7 +226,7 @@ Maven:
 Build your plugin `.war` file and deploy it by copying it to the
 `[LIFERAY_HOME]/deploy` folder. Liferay's auto-deployer copies the `.war` to the
 `[LIFERAY_HOME]/osgi/war` folder. The
-[WAB Generator](/develop/tutorials/-/knowledge_base/7-1/using-the-wab-generator)
+[WAB Generator](/docs/7-1/tutorials/-/knowledge_base/t/using-the-wab-generator)
 converts the `.war` to an OSGi Web Application Bundle (WAB) and installs it to
 @product@'s runtime. The output in your console should look like this:
 
@@ -256,6 +258,6 @@ Undeploying your servlet filter `.war` invokes its `destroy()` method.
 
 Congratulations on filtering requests to your site's URLs. 
 
-## Related Topics [](id=related-topics)
+## Related Topics
 
-[Configuring Dependencies](/develop/tutorials/-/knowledge_base/7-1/configuring-dependencies)
+[Configuring Dependencies](/docs/7-1/tutorials/-/knowledge_base/t/configuring-dependencies)

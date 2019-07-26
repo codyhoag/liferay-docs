@@ -1,7 +1,13 @@
-# Enabling Tags, Categories, and Related Assets for Guestbook Entries [](id=enabling-tags-categories-and-related-assets-for-guestbook-entries)
+---
+header-id: enabling-tags-categories-and-related-assets-for-guestbook-entries
+---
 
-<div class="learn-path-step">
-    <p>Adding Asset Features to Your UI<br>Step 4 of 5</p>
+# Enabling Tags, Categories, and Related Assets for Guestbook Entries
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Adding Asset Features to Your UI</p><p>Step 4 of 5</p>
 </div>
 
 Enabling tags, categories, and related assets for guestbook entries is similar 
@@ -90,14 +96,10 @@ Replace its content with the following code:
 Test your JSP by using the Guestbook portlet to add and update Guestbook 
 entries. Add and remove tags, categories, and related assets. 
 
-+$$$
-
-**Note:** Setting your custom asset as the *Main Asset* of a page is
-required to display related assets in the Related Assets portlet. This is done
-when creating 
-[Friendly URLs](/develop/tutorials/-/knowledge_base/7-1/making-urls-friendlier) 
-in a later step.
-
-$$$
+| **Note:** Setting your custom asset as the *Main Asset* of a page is
+| required to display related assets in the Related Assets portlet. This is done
+| when creating
+| [Friendly URLs](/docs/7-1/tutorials/-/knowledge_base/t/making-urls-friendlier)
+| in a later step.
 
 Well done! Next, you'll enable comments and ratings for guestbook entries. 

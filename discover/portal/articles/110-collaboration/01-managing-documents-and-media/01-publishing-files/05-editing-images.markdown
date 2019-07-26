@@ -1,4 +1,10 @@
-# Editing Images [](id=editing-images)
+---
+header-id: editing-images
+---
+
+# Editing Images
+
+[TOC levels=1-4]
 
 Editing and re-uploading images when you only need to apply simple edits is 
 tedious. Docs & Media contains a simple built-in image editor for exactly this 

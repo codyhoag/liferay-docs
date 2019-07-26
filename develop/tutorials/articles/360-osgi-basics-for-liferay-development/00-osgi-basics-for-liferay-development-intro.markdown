@@ -1,4 +1,10 @@
-# OSGi Basics for Liferay Development [](id=osgi-basics-for-liferay-development)
+---
+header-id: osgi-basics-for-liferay-development
+---
+
+# OSGi Basics for Liferay Development
+
+[TOC levels=1-4]
 
 Liferay leverages the OSGi framework to provide a development environment for
 modular applications. There are many OSGi best practices that @product@ follows

@@ -1,15 +1,21 @@
-# Generating a JSF Project from the Command Line [](id=generating-a-jsf-application)
+---
+header-id: generating-a-jsf-application
+---
+
+# Generating a JSF Project from the Command Line
+
+[TOC levels=1-4]
 
 You can generate a Liferay Faces application without having to create your own
 folder structure, descriptor files, and such manually. If you really want to do
 that manually, you can examine the structure of a JSF application and create one
 from scratch in the
-[Creating a JSF Project Manually](/develop/tutorials/-/knowledge_base/7-1/creating-a-jsf-project-manually)
+[Creating a JSF Project Manually](/docs/7-1/tutorials/-/knowledge_base/t/creating-a-jsf-project-manually)
 tutorial.
 
-<div class="video-link">
-<img src="../../../images/jsf-vid-thumbnail.png" alt="video-thumbnail"/>
-</div>
+<div class="video-thumbnail"></div>
+
+!P[Video Thumbnail](https://portal.liferay.dev/documents/113763090/113919826/jsf-vid-thumbnail.png)
 
 Before generating your JSF application, you should first visit
 [liferayfaces.org](http://liferayfaces.org/), a great reference spot for JSF
@@ -55,13 +61,13 @@ archetype UI. To do this, execute `mvn archetype:generate -Dfilter=liferay` and
 select the JSF archetype you want to use. Then you'll step through each option
 and select the version, group ID, artifact ID, etc. To learn more about this,
 see the
-[Generating New Projects Using Archetypes](/develop/tutorials/-/knowledge_base/7-1/generating-new-projects-using-archetypes)
+[Generating New Projects Using Archetypes](/docs/7-1/tutorials/-/knowledge_base/t/generating-new-projects-using-archetypes)
 tutorial.
 
 Once you have your JSF application generated, you can
-[import it into Liferay @ide@](/develop/tutorials/-/knowledge_base/7-1/using-maven-in-liferay-ide#importing-maven-projects)
+[import it into Liferay @ide@](/docs/7-1/tutorials/-/knowledge_base/t/using-maven-in-liferay-ide#importing-maven-projects)
 and develop it further. To
-[deploy it to your @product@ instance](/develop/tutorials/-/knowledge_base/7-1/deploying-projects-with-liferay-ide),
+[deploy it to your @product@ instance](/docs/7-1/tutorials/-/knowledge_base/t/deploying-projects-with-liferay-ide),
 drag and drop it onto the @product@ server.
 
 You can build the project and deploy it to @product@ from the command line too!
@@ -80,10 +86,7 @@ Then copy the generated WAR to @product@'s `deploy` folder:
 Awesome! You've generated your JSF application and deployed it using the command
 line.
 
-<div class="video-tag" data-name="Developing a New JSF Portlet">
-  <video width="100%" height="100%" controls>
-    <source src="https://dev.liferay.com/documents/10184/367132/developing-a-new-jsf-portlet.mp4" type="video/mp4">
-    <source src="https://dev.liferay.com/documents/10184/367132/developing-a-new-jsf-portlet.mkv" type="video/webm">
-    Your browser does not support HTML5 video.
-  </video>
+<div class="video-wrapper" data-name="Developing a New JSF Portlet">
 </div>
+
+!V[Video Tutorial](https://portal.liferay.dev/documents/113763090/113919826/developing-a-new-jsf-portlet.mp4|https://portal.liferay.dev/documents/113763090/113919826/developing-a-new-jsf-portlet.mkv)

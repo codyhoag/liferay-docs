@@ -1,7 +1,13 @@
-# Indexing Guestbooks [](id=indexing-guestbooks)
+---
+header-id: indexing-guestbooks
+---
 
-<div class="learn-path-step">
-    <p>Enabling Search and Indexing for Guestbooks<br>Step 3 of 6</p>
+# Indexing Guestbooks
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Enabling Search and Indexing for Guestbooks</p><p>Step 3 of 6</p>
 </div>
 
 To control how Guestbook objects are translated into search engine documents,
@@ -15,7 +21,7 @@ create two classes in the new search package:
     Guestbooks. This code is executed when Guestbooks are re-indexed from the
     Search administration section of the Control Panel.
 
-## Implementing `ModelDocumentContributor` [](id=implementing-modeldocumentcontributor)
+## Implementing `ModelDocumentContributor`
 
 Create `GuestbookModelDocumentContributor` and populate it with this:
 
@@ -60,7 +66,7 @@ field (e.g., `title_en_US`), so the field gets passed to the search engine
 and goes through the right analysis and
 [tokenization](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/analysis-tokenizers.html). 
 
-## Implementing `ModelIndexerWriterContributor` [](id=implementing-modelindexerwritercontributor)
+## Implementing `ModelIndexerWriterContributor`
 
 Create `GuestbookModelIndexerWriterContributor` and populate it with this:
 

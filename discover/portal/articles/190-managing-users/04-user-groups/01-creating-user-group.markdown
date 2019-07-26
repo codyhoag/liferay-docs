@@ -1,4 +1,10 @@
-# Creating a User Group [](id=creating-a-user-group)
+---
+header-id: creating-a-user-group
+---
+
+# Creating a User Group
+
+[TOC levels=1-4]
 
 Follow these steps to create a user group: 
 
@@ -26,7 +32,7 @@ to add members to a user group.
 
 ![Figure 2: The user group you just created now appears in the table.](../../../images/user-groups-table.png)
 
-## Assigning Members to a User Group [](id=assigning-members-to-a-user-group)
+## Assigning Members to a User Group
 
 Follow these steps to add existing users to a user group: 
 

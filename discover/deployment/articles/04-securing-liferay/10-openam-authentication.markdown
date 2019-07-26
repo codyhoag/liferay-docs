@@ -1,17 +1,16 @@
-# OpenAM Single Sign On Authentication [](id=opensso-single-sign-on-authentication)
+---
+header-id: opensso-single-sign-on-authentication
+---
+
+# OpenAM Single Sign On Authentication
+
+[TOC levels=1-4]
 
 OpenAM is an open source single sign-on solution that comes from the code base
 of Sun's System Access Manager product. @product@ integrates with OpenAM,
 allowing you to use OpenAM to integrate @product@ into an infrastructure that
 contains a multitude of different authentication schemes against different
 repositories of identities.
-
-+$$$
-
-**Note:** OpenAM is deprecated in @product-ver@ and may be removed from future
-versions. 
-
-$$$
 
 Note that OpenAM relies on cookie sharing between applications. Thus, in order
 for OpenAM to work, **all applications that require SSO must be in the same web
@@ -31,12 +30,8 @@ Otherwise, follow the instructions at the
 [OpenAM 13 site](https://backstage.forgerock.com/docs/openam/13/install-guide/) to install
 OpenAM. 
 
-+$$$
-
-**Note**: OpenAM 12 and below work with @product@, but are at end of life.
-Because of this, we recommend only OpenAM 13 for production use. 
-
-$$$
+| **Note**: OpenAM 12 and below work with @product@, but are at end of life.
+| Because of this, we recommend only OpenAM 13 for production use.
 
 Once you have it installed, create the @product@
 administrative user in it. Users are mapped back and forth by screen names. By

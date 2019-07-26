@@ -1,4 +1,10 @@
-# JSP Overrides Using Portlet Filters [](id=jsp-overrides-using-portlet-filters)
+---
+header-id: jsp-overrides-using-portlet-filters
+---
+
+# JSP Overrides Using Portlet Filters
+
+[TOC levels=1-4]
 
 Portlet filters let you intercept portlet requests before they're processed and
 portlet responses after they're processed but before they're sent back to the
@@ -8,7 +14,7 @@ content sent back to the client.
 
 This demonstration uses a portlet filter to modify content in Liferay's Blogs
 portlet. For reference, you can download the 
-[example module](https://dev.liferay.com/documents/10184/656312/example-portlet-filter-customize-jsp-master.zip).
+[example module](https://portal.liferay.dev/documents/113763090/114000186/example-portlet-filter-customize-jsp-master.zip).
 
 1.  Create a new module and make sure it specifies these compile-only
     dependencies, shown here in Gradle format:
@@ -199,7 +205,7 @@ portlet. For reference, you can download the
         }
 
 Once you've
-[deployed your module](/develop/tutorials/-/knowledge_base/7-1/starting-module-development#building-and-deploying-a-module),
+[deployed your module](/docs/7-1/tutorials/-/knowledge_base/t/starting-module-development#building-and-deploying-a-module),
 the portlet's JSP shows your custom content.
 
 Your portlet filter operates directly on portlet response content. Unlike

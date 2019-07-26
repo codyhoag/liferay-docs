@@ -1,7 +1,13 @@
-# Querying for Guestbook Documents [](id=querying-for-guestbook-documents)
+---
+header-id: querying-for-guestbook-documents
+---
 
-<div class="learn-path-step">
-    <p>Enabling Search and Indexing for Guestbooks<br>Step 4 of 6</p>
+# Querying for Guestbook Documents
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Enabling Search and Indexing for Guestbooks</p><p>Step 4 of 6</p>
 </div>
 
 The code is in place for for indexing Guestbooks to the search engine. Next,
@@ -14,7 +20,7 @@ Implement two interfaces:
 2.  `ModelPreFilterContributor` controls how search results are filtered before
     they're returned from the search engine.
 
-## Implementing `KeywordQueryContributor` [](id=implementing-keywordquerycontributor)
+## Implementing `KeywordQueryContributor`
 
 Create `GuestbookKeywordQueryContributor`: 
 

@@ -1,4 +1,10 @@
-# Type Facet [](id=type-facet)
+---
+header-id: type-facet
+---
+
+# Type Facet
+
+[TOC levels=1-4]
 
 The Type Facet narrows search results down to those associated with a certain
 Asset Type. Each Type with content matching the searched keyword appears as a

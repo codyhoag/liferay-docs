@@ -1,4 +1,10 @@
-# Copying and Moving Entities [](id=copying-and-moving-entities)
+---
+header-id: copying-and-moving-entities
+---
+
+# Copying and Moving Entities
+
+[TOC levels=1-4]
 
 Although the Documents and Media API lets you copy and move entities, these
 operations have some important caveats and limitations. Keep these things in

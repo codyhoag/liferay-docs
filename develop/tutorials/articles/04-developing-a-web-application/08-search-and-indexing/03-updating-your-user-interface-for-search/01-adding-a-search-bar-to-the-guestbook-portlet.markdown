@@ -1,7 +1,13 @@
-# Adding a Search Bar to the Guestbook Portlet [](id=adding-a-search-bar-to-the-guestbook-portlet)
+---
+header-id: adding-a-search-bar-to-the-guestbook-portlet
+---
 
-<div class="learn-path-step">
-    <p>Updating Your UI for Search<br>Step 1 of 2</p>
+# Adding a Search Bar to the Guestbook Portlet
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Updating Your UI for Search</p><p>Step 1 of 2</p>
 </div>
 
 Create the search bar UI for the Guestbook portlet:

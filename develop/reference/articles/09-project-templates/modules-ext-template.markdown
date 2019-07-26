@@ -1,10 +1,16 @@
-# Modules Ext Template [](id=modules-ext-template)
+---
+header-id: modules-ext-template
+---
+
+# Modules Ext Template
+
+[TOC levels=1-4]
 
 In this article, you'll learn how to create an Ext module. To create an Ext
 module via the command line using Blade CLI or Maven, use one of the commands
 with the following parameters:
 
-    blade create -t modules-ext [-p packageName] [-m originalModuleName] [-M originalModuleVersion] projectName
+    blade create -t modules-ext -v 7.1 [-p packageName] [-m originalModuleName] [-M originalModuleVersion] projectName
 
 or
 
@@ -23,13 +29,13 @@ Maven project using Blade CLI.
 The template for this kind of project is `modules-ext`. Suppose you want to
 create an Ext module called `my-ext-module-project` that overrides the
 `com.liferay.test.web` module (BSN) with version `1.0.0`. If you have
-[Target Platform](/develop/tutorials/-/knowledge_base/7-1/managing-the-target-platform-for-liferay-workspace)
+[Target Platform](/docs/7-1/tutorials/-/knowledge_base/t/managing-the-target-platform-for-liferay-workspace)
 enabled, you're not required to specify the intended module version to override.
 Also, the override module has a package path of `com.liferay.docs.test`. You
 must use the exact path of the original module when creating an Ext module. You
 could run the following command to accomplish this: 
 
-    blade create -t modules-ext -p com.liferay.docs.test -m com.liferay.test.web -M 1.0.0 my-ext-module-project
+    blade create -t modules-ext -v 7.1 -p com.liferay.docs.test -m com.liferay.test.web -M 1.0.0 my-ext-module-project
 
 or
 

@@ -1,4 +1,10 @@
-# Customizing JSPs with Dynamic Includes [](id=customizing-jsps-with-dynamic-includes)
+---
+header-id: customizing-jsps-with-dynamic-includes
+---
+
+# Customizing JSPs with Dynamic Includes
+
+[TOC levels=1-4]
 
 The
 [`liferay-util:dynamic-include` tag](@platform-ref@/7.1-latest/taglibs/util-taglib/liferay-util/dynamic-include.html)
@@ -7,18 +13,14 @@ tag is an extension point for inserting content (e.g., JavaScript code, HTML,
 and more). To do this, create a module that has content you want to insert,
 register that content with the dynamic include tag, and deploy your module. 
 
-+$$$
-
-**Note**: If the JSP you want to customize has no `liferay-util:dynamic-include`
-tags (or tags whose classes inherit from `IncludeTag`), you must use a
-different customization approach, such as
-[portlet filters](/develop/tutorials/-/knowledge_base/7-1/jsp-overrides-using-portlet-filters).
-
-$$$
+| **Note**: If the JSP you want to customize has no `liferay-util:dynamic-include`
+| tags (or tags whose classes inherit from `IncludeTag`), you must use a
+| different customization approach, such as
+| [portlet filters](/docs/7-1/tutorials/-/knowledge_base/t/jsp-overrides-using-portlet-filters).
 
 Blogs entries contain a good example of how dynamic includes work. For
 reference, you can download the 
-[example module](https://dev.liferay.com/documents/10184/656312/example-dynamic-include-blogs-master.zip). 
+[example module](https://portal.liferay.dev/documents/113763090/114000186/example-dynamic-include-blogs-master.zip). 
 
 1.  Find the `liferay-util:dynamic-include` tag where you want to insert content
     and note the tag's key. 
@@ -39,7 +41,7 @@ reference, you can download the
     - `key="com.liferay.blogs.web#/blogs/view_entry.jsp#pre"`
     - `key="com.liferay.blogs.web#/blogs/view_entry.jsp#post"`
 
-2.  [Create a module](/develop/tutorials/-/knowledge_base/7-1/starting-module-development)
+2.  [Create a module](/docs/7-1/tutorials/-/knowledge_base/t/starting-module-development)
     (e.g., `blade create my-dynamic-include`). The module will 
     hold your dynamic include implementation. 
 
@@ -130,6 +132,6 @@ reference, you can download the
     	}
  
 Once you've
-[deployed your module](/develop/tutorials/-/knowledge_base/7-1/starting-module-development#building-and-deploying-a-module),
+[deployed your module](/docs/7-1/tutorials/-/knowledge_base/t/starting-module-development#building-and-deploying-a-module),
 the JSP dynamically includes your content. Congratulations on injecting dynamic
 content into a JSP! 

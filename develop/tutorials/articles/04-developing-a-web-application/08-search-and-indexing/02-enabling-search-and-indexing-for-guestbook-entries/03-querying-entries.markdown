@@ -1,7 +1,13 @@
-# Querying for Entry Documents [](id=querying-for-entry-documents)
+---
+header-id: querying-for-entry-documents
+---
 
-<div class="learn-path-step">
-    <p>Enabling Search and Indexing for Entries<br>Step 3 of 5</p>
+# Querying for Entry Documents
+
+[TOC levels=1-4]
+
+<div class="learn-path-step row">
+    <p id="stepTitle">Enabling Search and Indexing for Entries</p><p>Step 3 of 5</p>
 </div>
 
 The code is in place for indexing Entries to the search engine. Next code the
@@ -15,7 +21,7 @@ Implement two classes:
 2.  `EntryModelPreFilterContributor` controls how search results are filtered
     before they're returned from the search engine.
 
-## Implementing `KeywordQueryContributor` [](id=implementing-keywordquerycontributor)
+## Implementing `KeywordQueryContributor`
 
 Create `EntryKeywordQueryContributor` and populate it with this:
 

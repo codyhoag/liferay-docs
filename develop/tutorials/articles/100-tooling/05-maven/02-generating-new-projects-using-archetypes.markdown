@@ -1,4 +1,10 @@
-# Generating New Projects Using Archetypes [](id=generating-new-projects-using-archetypes)
+---
+header-id: generating-new-projects-using-archetypes
+---
+
+# Generating New Projects Using Archetypes
+
+[TOC levels=1-4]
 
 Creating Maven projects from scratch can be a lot of work. What dependencies
 does my Liferay portlet project need? What does a Liferay Maven Service Builder
@@ -30,16 +36,16 @@ for upcoming 7.1 Maven archetypes. -Cody -->
 
 Here's a brief list of some popular Maven archetypes provided by Liferay:
 
-- [Activator](/develop/reference/-/knowledge_base/7-1/activator-template)
-- [Fragment](/develop/reference/-/knowledge_base/7-1/using-the-fragment-template)
-- [MVC Portlet](/develop/reference/-/knowledge_base/7-1/using-the-mvc-portlet-template)
-- [npm Angular Portlet](/develop/reference/-/knowledge_base/7-1/npm-angular-portlet-template)
-- [npm React Portlet](/develop/reference/-/knowledge_base/7-1/npm-react-portlet-template)
-- [Panel App](/develop/reference/-/knowledge_base/7-1/panel-app-template)
-- [Portlet Provider](/develop/reference/-/knowledge_base/7-1/portlet-provider-template)
-- [Service Builder](/develop/reference/-/knowledge_base/7-1/using-the-service-builder-template)
-- [Soy Portlet](/develop/reference/-/knowledge_base/7-1/soy-portlet-template)
-- [Theme](/develop/reference/-/knowledge_base/7-1/theme-template)
+- [Activator](/docs/7-1/reference/-/knowledge_base/r/activator-template)
+- [Fragment](/docs/7-1/reference/-/knowledge_base/r/using-the-fragment-template)
+- [MVC Portlet](/docs/7-1/reference/-/knowledge_base/r/using-the-mvc-portlet-template)
+- [npm Angular Portlet](/docs/7-1/reference/-/knowledge_base/r/npm-angular-portlet-template)
+- [npm React Portlet](/docs/7-1/reference/-/knowledge_base/r/npm-react-portlet-template)
+- [Panel App](/docs/7-1/reference/-/knowledge_base/r/panel-app-template)
+- [Portlet Provider](/docs/7-1/reference/-/knowledge_base/r/portlet-provider-template)
+- [Service Builder](/docs/7-1/reference/-/knowledge_base/r/using-the-service-builder-template)
+- [Soy Portlet](/docs/7-1/reference/-/knowledge_base/r/soy-portlet-template)
+- [Theme](/docs/7-1/reference/-/knowledge_base/r/theme-template)
 - and many more...
 
 <!-- TODO: readd JSF archetype, when available -Cody.
@@ -51,19 +57,15 @@ Here's a brief list of some popular Maven archetypes provided by Liferay:
 
 For documentation on the archetypes (project templates) compatible with
 @product-ver@, see the
-[Project Templates](/develop/reference/-/knowledge_base/7-1/project-templates)
+[Project Templates](/docs/7-1/reference/-/knowledge_base/r/project-templates)
 reference section. Visit Maven's
 [Archetype Generation](http://maven.apache.org/archetype/maven-archetype-plugin/generate-mojo.html)
 documentation for further details on how to modify the Maven archetype
 generation process.
 
-+$$$
-
-**Note:** If you're creating a JSF portlet using Liferay Faces, you can find
-example archetype declarations for JSF component suites at
-[http://www.liferayfaces.org](http://www.liferayfaces.org/). 
-
-$$$
+| **Note:** If you're creating a JSF portlet using Liferay Faces, you can find
+| example archetype declarations for JSF component suites at
+| [http://www.liferayfaces.org](http://www.liferayfaces.org/).
 
 Here's an example that creates a Liferay MVC portlet using its Liferay Maven
 archetype.
@@ -76,9 +78,8 @@ archetype.
 2.  Select the `com.liferay.project.templates.mvc.portlet` archetype by
     choosing its corresponding number (e.g., `11`).
 
-    In some cases, an archetype provides multiple versions of itself for you to
-    select. Make sure to select the archetype version that corresponds with the
-    @product@ instance you're using (e.g., `1.0.0`, `1.0.1`, etc.).
+    In most cases, you should choose the latest archetype version. The archetype
+    versions provided are compatible with all 7.x versions of @product@.
 
 3.  Depending on the Maven archetype you selected, you're given a set of
     archetype options to fill out for your Maven project. For the MVC portlet

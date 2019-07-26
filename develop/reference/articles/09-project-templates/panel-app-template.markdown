@@ -1,11 +1,17 @@
-# Panel App Template [](id=panel-app-template)
+---
+header-id: panel-app-template
+---
+
+# Panel App Template
+
+[TOC levels=1-4]
 
 In this article, you'll learn how to create a Liferay panel app and category as
 a Liferay module. To create a Liferay panel app and category via the command
 line using Blade CLI or Maven, use one of the commands with the following
 parameters:
 
-    blade create -t panel-app [-p packageName] [-c className] projectName
+    blade create -t panel-app -v 7.1 [-p packageName] [-c className] projectName
 
 or
 
@@ -25,7 +31,7 @@ a panel app project called `my-panel-app-project` with a package name prefix of
 `com.liferay.docs` and a class name prefix of `Sample`. You could run the
 following command to accomplish this:
 
-    blade create -t panel-app -p com.liferay.docs -c Sample my-panel-app-project
+    blade create -t panel-app -v 7.1 -p com.liferay.docs -c Sample my-panel-app-project
 
 or
 
@@ -78,5 +84,5 @@ The generated module is functional and is deployable to a @product@ instance.
 The generated module, by default, creates a panel category with a panel app in
 @product@'s Product Menu. To build upon the generated app, modify the project by
 adding logic and additional files to the folders outlined above. You can visit
-the [Customizing the Product Menu](/develop/tutorials/-/knowledge_base/7-0/customizing-the-product-menu)
+the [Customizing the Product Menu](/docs/7-0/tutorials/-/knowledge_base/t/customizing-the-product-menu)
 tutorial for instructions on customizing a panel app project.

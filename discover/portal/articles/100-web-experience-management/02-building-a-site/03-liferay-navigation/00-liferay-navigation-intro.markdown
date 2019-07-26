@@ -1,4 +1,10 @@
-# Managing Site Navigation [](id=managing-site-navigation)
+---
+header-id: managing-site-navigation
+---
+
+# Managing Site Navigation
+
+[TOC levels=1-4]
 
 Liferay provides powerful tools for creating and organizing pages. You can have
 anything from a simple, flat Site navigation to a complex hierarchy with tree of

@@ -1,4 +1,10 @@
-# Merging Site Pages Variations [](id=using-site-pages-variations)
+---
+header-id: using-site-pages-variations
+---
+
+# Merging Site Pages Variations
+
+[TOC levels=1-4]
 
 Another powerful feature of Staging's Page Versioning framework is the
 possibility of *merging* Site Pages Variations. To merge two Site Pages
